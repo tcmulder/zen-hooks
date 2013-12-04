@@ -1,0 +1,34 @@
+{
+    "before": "7f4d19fa03e7fd0db3bd1177724f9cdb2bd94351",
+    "after": "a8bcdf7dadf57f196fb46fbcb05b1d01212d59fe",
+    "ref": "refs/heads/master",
+    "user_id": 4,
+    "user_name": "Tomas Mulder",
+    "repository": {
+        "name": "p",
+        "url": "git@git.zenman.com:tcmulder/p.git",
+        "description": "Example repo for webook creation",
+        "homepage": "http://git.zenman.com/tcmulder/p"
+    },
+    "commits": [
+    {
+        "id": "a8bcdf7dadf57f196fb46fbcb05b1d01212d59fe",
+        "message": "Add wp-config and gitignore",
+        "timestamp": "2013-11-03T00:54:29-04:00",
+        "url": "http://git.zenman.com/tcmulder/p/commit/a8bcdf7dadf57f196fb46fbcb05b1d01212d59fe",
+        "author": {
+            "name": "tcmulder",
+            "email": "tcmulder@gmail.com"
+        }
+    }, {
+        "id": "7f4d19fa03e7fd0db3bd1177724f9cdb2bd94351",
+        "message": "Add gitattributes",
+        "timestamp": "2013-11-03T00:53:47-04:00",
+        "url": "http://git.zenman.com/tcmulder/p/commit/7f4d19fa03e7fd0db3bd1177724f9cdb2bd94351",
+        "author": {
+            "name": "tcmulder",
+            "email": "tcmulder@gmail.com"
+        }
+    }],
+    "total_commits_count": 2
+}

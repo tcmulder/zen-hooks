@@ -1,0 +1,186 @@
+<?php
+
+// recieve, init vars, call scripts
+// if !init_repo
+// 	update_repo
+// if type == wp
+// 	wp_db
+// 	if !init_db
+// 		update_db
+
+
+//**** **** **** **** **** **** **** **** ****
+//for now just do the last error (empty any existing errors)
+file_put_contents("webhook.log", "");
+//**** **** **** **** **** **** **** **** ****
+
+/*/////////////////////////////////////////////////////////////////Initialize Data
+Initialize Data */
+$data = file_get_contents('data.json', true); //fake data
+$gitlab = json_decode($data); //fake data
+// $gitlab = json_decode(file_get_contents('php://input')); //data from gitlab
+$client = $_GET['client'];
+$proj = $_GET['project'];
+$proj_type = $_GET['type'];
+
+$branch_parts = explode('/', $gitlab->ref);
+$branch = array_pop($branch_parts); //the last item is the branch
+$branch_base_parts = explode('_', $branch);
+
+$server = $branch_base_parts[0];
+
+$dir_root = '/YOUR_SERVER_ADDRESS/zen_dev2/webhooks/';
+$dir_base = '/YOUR_SERVER_ADDRESS/zen_dev2/webhooks/xen_'.$server.'2/'; //psudo live
+$dir_client = $dir_base . $client . '/';
+$dir_proj = $dir_client . $proj . '/';
+
+$repo = $gitlab->repository->url;
+
+/*/////////////////////////////////////////////////////////////////Set Up Error Logging
+Set Up Error Logging */
+ini_set("log_errors", 1);
+ini_set("error_log", "webhook.log");
+error_reporting(E_ALL);
+ignore_user_abort(true);
+date_default_timezone_set('America/Denver');
+
+/*/////////////////////////////////////////////////////////////////Run All the Commands
+Run All the Commands */
+try{
+
+	// try to initialize the repo
+	$included = include_once 'lib/tasks/init_repo.php';
+	// if the repo's already initialized
+	if(!$included){
+		echo "<br>repo already initialized";
+	}
+
+	// if we've made it all the way through with no errors thrown
+	echo "<br>No Errors";
+
+} catch (Exception $e) {
+	//output the log
+	// error_log(sprintf("%s >> %s", date('Y-m-d H:i:s'), $e));
+
+	//temporary truncated output
+	error_log(sprintf("%s: <span style='font-size:2em;'>%s</span>", "", "<br><br>" . $e));
+}
+
+//**** **** **** **** **** **** **** **** ****
+$the_log = file_get_contents("webhook.log");
+echo "<div style='width:100%;font-size:.5em;font-family:monospace;'>";
+if(isset($the_log)){
+	print_r($the_log);
+	return true;
+}
+echo "</div>";
+//**** **** **** **** **** **** **** **** ****
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//shell_exec('git clone git@git.zenman.com:tcmulder/p.git');
+// shell_exec('bash test');
+// echo '<br>end update ' . date('i:s');
+
+// $str = print_r($gitlab, true);
+
+// chdir('my_repo');
+// echo 'test: ' . shell_exec("git pull origin master");
+// shell_exec("cd xen_dev2/my_repo && git fetch");
+// shell_exec("cd xen_dev2/my_repo && git pull master");
+
+// //run shell commands
+// function syscall ($cmd, $cwd) {
+
+// 	$descriptorspec = array(1 => array('pipe', 'w')); // stdout is a pipe that the child will write to
+// 	$resource = proc_open($cmd, $descriptorspec, $pipes, $cwd);
+
+// 	if (is_resource($resource)) {
+// 		$output = stream_get_contents($pipes[1]);
+// 		fclose($pipes[1]);
+// 		proc_close($resource);
+
+// 		return $output;
+// 	}
+
+// }
+
+// syscall('git clone git@git.zenman.com:tcmulder/p.git','.');
+
+// require_once 'lib/tasks/init_repo.php';
+
+// <?php
+// 	echo date('i:s');
+
+
+// 	// Get Data
+// 	$data = file_get_contents('./data.json', true);
+// 	$client = $_GET['client'];
+// 	$proj = $_GET['project'];
+// 	$proj_type = $_GET['type'];
+
+// 	// Parse Data
+// 	// $gitlab = json_decode($data);
+// 	// for actual data:
+// 	$gitlab = json_encode(file_get_contents('php://input'));
+
+// 	$branch_parts = explode('/', $gitlab->ref);
+// 	$branch = array_pop($branch_parts);
+// 	$branch_base_parts = explode('_', $branch);
+
+// 	$server = $branch_base_parts[0];
+
+// 	$dir_base = '/YOUR_SERVER_ADDRESS/zen_dev2/webhooks/xen_'.$server.'1/';
+// 	$dir_client = $dir_base . $client . '/';
+// 	$dir_proj = $dir_client . $proj . '/';
+
+// 	// for actual repo:
+// 	$repo = $gitlab->repository->url;
+
+// 	// $repo = '/YOUR_SERVER_ADDRESS/zen_dev2/webhooks/gitlab/my_repo/';
+
+// 	// Commands
+// 	require_once 'lib/tasks/init_repo.php';
+
+////////////////////////////////////////////////
+// Output
+////////////////////////////////////////////////
+	// echo date('i:s');
+	// echo '.<pre>';
+	// print_r($dir_proj);
+	// echo '</pre>.';
+
+	//CHANGE FOR LIVE SERVER
+	// $git_clone = '/usr/local/git/bin/git clone --mirror ' . $gitlab->{'repository'}->{'url'} . '; git fetch origin/master';
+	// $git_fetch = '/usr/local/git/bin/git fetch origin';
+	// $git_reset = '/usr/local/git/bin/git reset --hard origin/master';
+
+	// if(!file_exists($client_dir)){
+	// 	mkdir($client_dir);
+	// }
+	// if(!file_exists($project_dir)){
+	// 	chdir($client_dir);
+	// 	shell_exec($git_clone);
+	// } else {
+	// 	// shell_exec('')
+	// }
+
+
+	// shell_exec('/usr/local/git/bin/git clone git@git.zenman.com:tcmulder/test-project-to-delete.git');
