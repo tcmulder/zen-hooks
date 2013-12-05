@@ -11,30 +11,8 @@
 
 //**** **** **** **** **** **** **** **** ****
 //for now just do the last error (empty any existing errors)
-file_put_contents("webhook.log", "");
+// file_put_contents("webhook.log", "");
 //**** **** **** **** **** **** **** **** ****
-
-/*/////////////////////////////////////////////////////////////////Initialize Data
-Initialize Data */
-$data = file_get_contents('data.json', true); //fake data
-$gitlab = json_decode($data); //fake data
-// $gitlab = json_decode(file_get_contents('php://input')); //data from gitlab
-$client = $_GET['client'];
-$proj = $_GET['project'];
-$proj_type = $_GET['type'];
-
-$branch_parts = explode('/', $gitlab->ref);
-$branch = array_pop($branch_parts); //the last item is the branch
-$branch_base_parts = explode('_', $branch);
-
-$server = $branch_base_parts[0];
-
-$dir_root = '/YOUR_SERVER_ADDRESS/zen_dev2/webhooks/';
-$dir_base = '/YOUR_SERVER_ADDRESS/zen_dev2/webhooks/xen_'.$server.'2/'; //psudo live
-$dir_client = $dir_base . $client . '/';
-$dir_proj = $dir_client . $proj . '/';
-
-$repo = $gitlab->repository->url;
 
 /*/////////////////////////////////////////////////////////////////Set Up Error Logging
 Set Up Error Logging */
@@ -44,15 +22,44 @@ error_reporting(E_ALL);
 ignore_user_abort(true);
 date_default_timezone_set('America/Denver');
 
+/*/////////////////////////////////////////////////////////////////Initialize Data
+Initialize Data */
+try {
+// $data = file_get_contents('data.json', true); //fake data
+// $gitlab = json_decode($data); //fake data
+	$gitlab = json_decode(file_get_contents('php://input')); //data from gitlab
+	$client = $_GET['client'];
+	$proj = $_GET['project'];
+	$proj_type = $_GET['type'];
+
+	$branch_parts = explode('/', $gitlab->ref);
+	$branch = array_pop($branch_parts); //the last item is the branch
+	$branch_base_parts = explode('_', $branch);
+
+	if(!isset($branch)){
+		throw new Exception("Branch [$branch] not set");
+	}
+
+	$server = $branch_base_parts[0];
+
+	$dir_root = '/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/';
+	$dir_base = $dir_root . 'xen_'.$server.'2/'; //psudo live
+	$dir_client = $dir_base . $client . '/';
+	$dir_proj = $dir_client . $proj . '/';
+
+	$repo = $gitlab->repository->url;
+
+
 /*/////////////////////////////////////////////////////////////////Run All the Commands
 Run All the Commands */
-try{
+// try{
 
 	// try to initialize the repo
 	$included = include_once 'lib/tasks/init_repo.php';
 	// if the repo's already initialized
 	if(!$included){
-		echo "<br>repo already initialized";
+		// update the repo
+		$included = include_once 'lib/tasks/update_repo.php';
 	}
 
 	// if we've made it all the way through with no errors thrown
@@ -60,10 +67,10 @@ try{
 
 } catch (Exception $e) {
 	//output the log
-	// error_log(sprintf("%s >> %s", date('Y-m-d H:i:s'), $e));
+	error_log(sprintf("%s >> %s", date('Y-m-d H:i:s'), $e));
 
 	//temporary truncated output
-	error_log(sprintf("%s: <span style='font-size:2em;'>%s</span>", "", "<br><br>" . $e));
+	// error_log(sprintf("%s: <span style='font-size:2em;'>%s</span>", "", "<br><br>" . $e));
 }
 
 //**** **** **** **** **** **** **** **** ****
@@ -147,14 +154,14 @@ echo "</div>";
 
 // 	$server = $branch_base_parts[0];
 
-// 	$dir_base = '/YOUR_SERVER_ADDRESS/zen_dev2/webhooks/xen_'.$server.'1/';
+// 	$dir_base = '/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_'.$server.'1/';
 // 	$dir_client = $dir_base . $client . '/';
 // 	$dir_proj = $dir_client . $proj . '/';
 
 // 	// for actual repo:
 // 	$repo = $gitlab->repository->url;
 
-// 	// $repo = '/YOUR_SERVER_ADDRESS/zen_dev2/webhooks/gitlab/my_repo/';
+// 	// $repo = '/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/gitlab/my_repo/';
 
 // 	// Commands
 // 	require_once 'lib/tasks/init_repo.php';
@@ -184,3 +191,81 @@ echo "</div>";
 
 
 	// shell_exec('/usr/local/git/bin/git clone git@git.zenman.com:tcmulder/test-project-to-delete.git');
+
+
+//////////////////////////////////////////////////////////// FROM INIT_REPO
+
+// try{
+// 	// ensure we're working from a base directory
+// 	if(file_exists($dir_base)){
+// 		// if the project directory doesn't exist
+// 		if(!file_exists($dir_proj)){
+// 			// if the client directory doesn't exist
+// 			if(!file_exists($dir_client)){
+// 				// create the client directory
+// 				mkdir($dir_client);
+// 			}
+// 			// change into the client directory
+// 			chdir($dir_client);
+// 			// clone in the repo
+// 			shell_exec("git clone $repo");
+// 		} else {
+// 			// if the project directory already exists
+// 			return true;
+// 		}
+// 	} else {
+// 		throw new Exception("Base directory '$dir_base' does not exist");
+// 	}
+// } catch (Exception $e) {
+// 	error_log(sprintf("%s >> %s", date('Y-m-d H:i:s'), $e));
+// }
+
+// shell_exec('git clone git@git.zenman.com:tcmulder/p.git');
+
+// if($branch && $branch != "heads"){
+// 	if(is_dir("$dir_base/$branch")){   //lets check if branch dir exists
+// 		//hey look, the branch directory already exists, so lets use it as our working directory and just run the pull command -- obviously we want to pull from the remote origin &amp; branch name
+// 		$result = syscall("git pull origin $branch", "$dir_base/$branch");
+// 	} else {
+// 		//the repos name
+// 		$repo = $gitlab->repository->url;
+// 		//if branch dir doesn't exist, create it with a clone
+// 		$result = syscall("git clone $repo $branch", $dir_base);
+// 		//change dir to the clone directory, and checkout the branch
+// 		$result = syscall("git checkout $branch", "$dir_base/$branch");
+// 		throw new Exception("git clone $repo $branch in $dir_base");
+// 	}
+// } else {
+	//throw new Exception("branch variable is not set or == to 'heads'");
+	//throw new Exception("repo is $repo");
+// }
+// 	// ensure we're working from a base directory
+// 	if(file_exists($dir_base)){
+// 		// if the project directory doesn't exist
+// 		if(!file_exists($dir_proj)){
+// 			// if the client directory doesn't exist
+// 			if(!file_exists($dir_client)){
+// 				// create the client directory
+// 				mkdir($dir_client);
+// 			}
+// 			// change into the client directory
+// 			chdir($dir_client);
+// 			// clone in the repo
+// 			$cmd_clone = "git clone git@git.zenman.com:tcmulder\/test-project-to-delete.git";
+// 			$testing = shell_exec($cmd_clone);
+// 		}
+// 	}
+
+
+// ////////////////////////////////////////////////
+// // Output
+// ////////////////////////////////////////////////
+// 	echo '<pre>';
+// 	print_r($repo);
+// 	echo '</pre>';
+// 	// require 'lib/tasks/init_repo.php';
+
+
+
+
+// 	// shell_exec('/usr/local/git/bin/git clone git@git.zenman.com:tcmulder/test-project-to-delete.git');

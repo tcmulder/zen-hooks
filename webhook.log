@@ -1,0 +1,57 @@
+[03-Dec-2013 23:44:51] 2013-12-03 23:44:51 >> exception 'Exception' with message 'Base directory [/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_2/] does not exist' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/init_repo.php:23
+Stack trace:
+#0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(52): include_once()
+#1 {main}
+[03-Dec-2013 23:44:58] 2013-12-03 23:44:58 >> exception 'Exception' with message 'Base directory [/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_2/] does not exist' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/init_repo.php:23
+Stack trace:
+#0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(52): include_once()
+#1 {main}
+[04-Dec-2013 21:51:22] PHP Warning:  include_once(update_repo.php): failed to open stream: No such file or directory in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php on line 62
+[04-Dec-2013 21:51:22] PHP Warning:  include_once(): Failed opening 'update_repo.php' for inclusion (include_path='.:') in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php on line 62
+[04-Dec-2013 21:52:49] 2013-12-04 21:52:49 >> exception 'Exception' with message 'this should not be an exception' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php:15
+Stack trace:
+#0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(62): include_once()
+#1 {main}
+[04-Dec-2013 21:57:35] PHP Parse error:  syntax error, unexpected T_THROW in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php on line 16
+[04-Dec-2013 21:58:25] 2013-12-04 21:58:25 >> exception 'Exception' with message '----------- # On branch view
+nothing to commit (working directory clean)
+---------' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php:16
+Stack trace:
+#0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(62): include_once()
+#1 {main}
+[04-Dec-2013 22:15:32] PHP Notice:  Undefined variable: dir_proj in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php on line 14
+[04-Dec-2013 22:15:32] PHP Notice:  Undefined variable: dir_proj in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php on line 14
+[04-Dec-2013 22:17:24] PHP Notice:  Undefined variable: dir_proj in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php on line 14
+[04-Dec-2013 22:17:24] PHP Notice:  Undefined variable: dir_proj in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php on line 14
+[04-Dec-2013 22:17:51] PHP Warning:  Missing argument 2 for git_exec(), called in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php on line 20 and defined in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php on line 13
+[04-Dec-2013 22:17:51] PHP Notice:  Undefined variable: dir_proj in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php on line 14
+[04-Dec-2013 22:17:51] PHP Notice:  Undefined variable: dir_proj in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php on line 14
+[04-Dec-2013 22:19:24] PHP Notice:  Undefined variable: git_dir in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php on line 15
+[04-Dec-2013 22:26:08] 2013-12-04 22:26:08 >> exception 'Exception' with message 'made it through' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php:23
+Stack trace:
+#0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(62): include_once()
+#1 {main}
+[04-Dec-2013 22:27:54] 2013-12-04 22:27:54 >> exception 'Exception' with message 'made it through' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php:23
+Stack trace:
+#0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(62): include_once()
+#1 {main}
+[04-Dec-2013 22:28:20] 2013-12-04 22:28:20 >> exception 'Exception' with message 'made it through' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php:23
+Stack trace:
+#0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(62): include_once()
+#1 {main}
+[04-Dec-2013 22:35:49] 2013-12-04 22:35:49 >> exception 'Exception' with message 'made it through' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php:23
+Stack trace:
+#0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(62): include_once()
+#1 {main}
+[04-Dec-2013 22:36:41] 2013-12-04 22:36:41 >> exception 'Exception' with message 'made it through' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php:23
+Stack trace:
+#0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(62): include_once()
+#1 {main}
+[04-Dec-2013 22:37:09] 2013-12-04 22:37:09 >> exception 'Exception' with message 'made it through' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/update_repo.php:23
+Stack trace:
+#0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(62): include_once()
+#1 {main}
+[04-Dec-2013 22:42:20] 2013-12-04 22:42:20 >> exception 'Exception' with message 'Base directory [/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_test2/] does not exist' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/init_repo.php:34
+Stack trace:
+#0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(58): include_once()
+#1 {main}
