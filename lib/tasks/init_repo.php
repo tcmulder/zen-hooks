@@ -11,27 +11,34 @@ if(file_exists($dir_base)){
 		// change into the client directory
 		chdir($dir_client);
 		// clone in the repo
-		shell_exec("git clone $repo");
+		shell_exec("git clone --origin gitlab $repo");
 		// cd into it
 		chdir($dir_proj);
 		// establish credentials
 		shell_exec('git config user.email "dev@zenman.com"');
 		shell_exec('git config user.name "YOUR_USERNAME"');
-		// create the view branch and check it out
-		shell_exec("git checkout -b view");
-		// grab the branch
-		shell_exec("git fetch origin $branch:refs/remotes/origin/$branch");
-		// hard reset to the branch. we don't care about versioning
-		// this branch as it's only a view.
-		shell_exec("git reset --hard origin/$branch");
 		// change back to the root directory
 		chdir($dir_root);
-	// if the project directory already exists
-	} else {
-		// report false to signify init_repo is unnecessary
-		return false;
+		// report true to signify that initialization took place
+		return true;
+	// if the project isn't a git repo
+	} elseif(!file_exists($dir_proj . '.git')){
+		// change into the project directory
+		chdir($dir_proj);
+		// set up git
+		shell_exec('git init');
+		// establish credentials
+		shell_exec('git config user.email "dev@zenman.com"');
+		shell_exec('git config user.name "YOUR_USERNAME"');
+		// set up remote
+		shell_exec("git remote add gitlab $repo");
+		// change back to the root directory
+		chdir($dir_root);
+		// report true to signify that initialization took place
+		return true;
 	}
 // if the base directory doesn't exist (also true for non-supported branches)
 } else {
+	// throw an error
 	throw new Exception("Base directory [$dir_base] does not exist");
 }

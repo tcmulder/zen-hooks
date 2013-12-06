@@ -57,7 +57,7 @@ Run All the Commands */
 	// try to initialize the repo
 	$included = include_once 'lib/tasks/init_repo.php';
 	// if the repo's already initialized
-	if(!$included){
+	if($included){
 		// update the repo
 		$included = include_once 'lib/tasks/update_repo.php';
 	}
@@ -74,13 +74,13 @@ Run All the Commands */
 }
 
 //**** **** **** **** **** **** **** **** ****
-$the_log = file_get_contents("webhook.log");
-echo "<div style='width:100%;font-size:.5em;font-family:monospace;'>";
-if(isset($the_log)){
-	print_r($the_log);
-	return true;
-}
-echo "</div>";
+// $the_log = file_get_contents("webhook.log");
+// echo "<div style='width:100%;font-size:.5em;font-family:monospace;'>";
+// if(isset($the_log)){
+// 	print_r($the_log);
+// 	return true;
+// }
+// echo "</div>";
 //**** **** **** **** **** **** **** **** ****
 
 

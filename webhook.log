@@ -55,3 +55,25 @@ Stack trace:
 Stack trace:
 #0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(58): include_once()
 #1 {main}
+[05-Dec-2013 20:12:50] 2013-12-05 20:12:50 >> exception 'Exception' with message 'No git dir found' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/init_repo.php:33
+Stack trace:
+#0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(58): include_once()
+#1 {main}
+[05-Dec-2013 21:02:52] PHP Parse error:  syntax error, unexpected T_ELSEIF in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/init_repo.php on line 30
+[05-Dec-2013 21:03:17] PHP Parse error:  syntax error, unexpected '}' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/init_repo.php on line 58
+[05-Dec-2013 21:07:03] 2013-12-05 21:07:03 >> exception 'Exception' with message 'at least im here' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/init_repo.php:31
+Stack trace:
+#0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(58): include_once()
+#1 {main}
+[05-Dec-2013 21:25:00] 2013-12-05 21:25:00 >> exception 'Exception' with message 'WHY IS NOT THIS HAPPENING III' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/init_repo.php:58
+Stack trace:
+#0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(58): include_once()
+#1 {main}
+[05-Dec-2013 21:50:07] 2013-12-05 21:50:07 >> exception 'Exception' with message 'DO SOMETHING' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/init_repo.php:28
+Stack trace:
+#0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(58): include_once()
+#1 {main}
+[05-Dec-2013 21:54:12] 2013-12-05 21:54:12 >> exception 'Exception' with message 'GOT HERE' in /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/lib/tasks/init_repo.php:28
+Stack trace:
+#0 /YOUR_SERVER_ADDRESS/zen_dev2/zenpository/index.php(58): include_once()
+#1 {main}
