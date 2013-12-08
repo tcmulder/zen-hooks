@@ -27,7 +27,7 @@ try {
 
 	$branch_parts = explode('/', $gitlab->ref);
 	$branch = array_pop($branch_parts); //the last item is the branch
-/*FAKE*/$branch = 'dev_db';//fake
+// /*FAKE*/$branch = 'dev_db';//fake
 	$branch_base_parts = explode('_', $branch);
 
 	if(!isset($branch)){
@@ -63,9 +63,12 @@ Run All the Commands */
 	$wp_db_creds = read_wp_file($dir_proj, $db_prefix);
 	// if there's a functioning wp-config.php file
 	if($wp_db_creds){
-		// run the database initialization
-		include_once 'lib/tasks/init_db.php';
-		echo create_db($wp_db_creds);
+		// grab all the database helper functions
+		include_once 'lib/helpers/db.php';
+		// create a database (returns false if it's already there)
+		db_create($wp_db_creds);
+		// import a database
+		db_import($wp_db_creds, $dir_proj . '.db/');
 	}
 
 // if we've made it all the way through with no errors thrown
