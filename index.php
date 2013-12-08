@@ -1,5 +1,4 @@
 <?php
-
 // recieve, init vars, call scripts
 // if !init_repo
 // 	update_repo
@@ -7,12 +6,6 @@
 // 	wp_db
 // 	if !init_db
 // 		update_db
-
-
-//**** **** **** **** **** **** **** **** ****
-//for now just do the last error (empty any existing errors)
-// file_put_contents("webhook.log", "");
-//**** **** **** **** **** **** **** **** ****
 
 /*/////////////////////////////////////////////////////////////////Set Up Error Logging
 Set Up Error Logging */
@@ -34,6 +27,7 @@ try {
 
 	$branch_parts = explode('/', $gitlab->ref);
 	$branch = array_pop($branch_parts); //the last item is the branch
+/*FAKE*/$branch = 'dev_db';//fake
 	$branch_base_parts = explode('_', $branch);
 
 	if(!isset($branch)){
@@ -52,7 +46,6 @@ try {
 
 /*/////////////////////////////////////////////////////////////////Run All the Commands
 Run All the Commands */
-// try{
 
 	// try to initialize the repo
 	$included = include_once 'lib/tasks/init_repo.php';
@@ -62,16 +55,56 @@ Run All the Commands */
 		$included = include_once 'lib/tasks/update_repo.php';
 	}
 
-	// if we've made it all the way through with no errors thrown
-	echo "<br>No Errors";
+	// for wordpress sites
+	include_once 'lib/helpers/wp_db.php';
+	// set up the db prefix
+	$db_prefix = substr($branch, 0, 1) . '2_';
+	// try to get the db creds
+	$wp_db_creds = read_wp_file($dir_proj, $db_prefix);
+	// if there's a functioning wp-config.php file
+	if($wp_db_creds){
+		// run the database initialization
+		include_once 'lib/tasks/init_db.php';
+		echo create_db($wp_db_creds);
+	}
+
+// if we've made it all the way through with no errors thrown
+/*TEMP*/echo "<br>No Errors"; //fake
 
 } catch (Exception $e) {
 	//output the log
 	error_log(sprintf("%s >> %s", date('Y-m-d H:i:s'), $e));
-
-	//temporary truncated output
-	// error_log(sprintf("%s: <span style='font-size:2em;'>%s</span>", "", "<br><br>" . $e));
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //**** **** **** **** **** **** **** **** ****
 // $the_log = file_get_contents("webhook.log");
