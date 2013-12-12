@@ -40,6 +40,6 @@ function read_wp_file($this_dir_proj, $db_prefix = 'fail'){
         }
     }
     // create an array of the db creds and return it
-    $wpcontent = array('name' => $this_name, 'user' => $this_user, 'pass' => $this_pass, 'host' => $this_host, 'char' => $this_char);
-    return $wpcontent;
+    $wp_db_creds = array('name' => $this_name, 'user' => $this_user, 'pass' => $this_pass, 'host' => $this_host, 'char' => $this_char);
+    return $wp_db_creds;
 }

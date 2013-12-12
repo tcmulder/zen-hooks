@@ -10,24 +10,37 @@
  * and released under the WTFPL *
  */
 
-$wp_config_array = array(
-    'name'  => $argv[1],
-    'user'  => $argv[2],
-    'pass'  => $argv[3],
-    'host'  => $argv[4],
-    'char'  => $argv[5],
-    'from'  => $argv[6],
-    'to'    => $argv[7]
-);
-echo "** Find and replace called\n";
-echo "name............".$wp_config_array['name']."\n";
-echo "user............".$wp_config_array['user']."\n";
-echo "pass............".$wp_config_array['pass']."\n";
-echo "host............".$wp_config_array['host']."\n";
-echo "char............".$wp_config_array['char']."\n";
-echo "from............".$wp_config_array['from']."\n";
-echo "to..............".$wp_config_array['to'];
-$appDatabaseScrub = new AppDatabaseScrub($wp_config_array);
+// if all the values were received from shell
+if(count($argv) == 8){
+    // put the values in an array
+    $wp_config_array = array(
+        'name'  => $argv[1],
+        'user'  => $argv[2],
+        'pass'  => $argv[3],
+        'host'  => $argv[4],
+        'char'  => $argv[5],
+        'from'  => $argv[6],
+        'to'    => $argv[7]
+    );
+
+    // output the values
+    echo "** Find and replace called\n";
+    echo "name............".$wp_config_array['name']."\n";
+    echo "user............".$wp_config_array['user']."\n";
+    echo "pass............".$wp_config_array['pass']."\n";
+    echo "host............".$wp_config_array['host']."\n";
+    echo "char............".$wp_config_array['char']."\n";
+    echo "from............".$wp_config_array['from']."\n";
+    echo "to..............".$wp_config_array['to'];
+
+    // run far on them
+    $appDatabaseScrub = new AppDatabaseScrub($wp_config_array);
+// if all the values were not received by shell
+} else {
+    echo "FAR encountered an error.\n";
+    echo "Expected: name user pass host char from to\n";
+    echo "Received: " . print_r($argv, true);
+}
 
 class AppDatabaseScrub{
 

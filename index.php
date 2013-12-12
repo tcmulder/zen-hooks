@@ -18,16 +18,16 @@ date_default_timezone_set('America/Denver');
 /*/////////////////////////////////////////////////////////////////Initialize Data
 Initialize Data */
 try {
-// $data = file_get_contents('data.json', true); //fake data
-// $gitlab = json_decode($data); //fake data
-	$gitlab = json_decode(file_get_contents('php://input')); //data from gitlab
+$data = file_get_contents('data.json', true); //fake data
+$gitlab = json_decode($data); //fake data
+	// $gitlab = json_decode(file_get_contents('php://input')); //data from gitlab
 	$client = $_GET['client'];
 	$proj = $_GET['project'];
 	$proj_type = $_GET['type'];
 
 	$branch_parts = explode('/', $gitlab->ref);
-	$branch = array_pop($branch_parts); //the last item is the branch
-// /*FAKE*/$branch = 'dev_db';//fake
+	// $branch = array_pop($branch_parts); //the last item is the branch
+/*FAKE*/$branch = 'dev_db';//fake
 	$branch_base_parts = explode('_', $branch);
 
 	if(!isset($branch)){
@@ -47,13 +47,13 @@ try {
 /*/////////////////////////////////////////////////////////////////Run All the Commands
 Run All the Commands */
 
-	// try to initialize the repo
-	$included = include_once 'lib/tasks/init_repo.php';
-	// if the repo's already initialized
-	if($included){
-		// update the repo
-		$included = include_once 'lib/tasks/update_repo.php';
-	}
+	// // try to initialize the repo
+	// $included = include_once 'lib/tasks/init_repo.php';
+	// // if the repo's already initialized
+	// if($included){
+	// 	// update the repo
+	// 	$included = include_once 'lib/tasks/update_repo.php';
+	// }
 
 	// for wordpress sites
 	include_once 'lib/helpers/wp_db.php';
@@ -62,14 +62,21 @@ Run All the Commands */
 	// try to get the db creds
 	$wp_db_creds = read_wp_file($dir_proj, $db_prefix);
 	// if there's a functioning wp-config.php file
-	if($wp_db_creds){
-		// grab all the database helper functions
-		include_once 'lib/helpers/db.php';
-		// create a database (returns false if it's already there)
-		db_create($wp_db_creds);
-		// import a database
-		db_import($wp_db_creds, $dir_proj . '.db/');
-	}
+	// if($wp_db_creds){
+	// 	// grab all the database helper functions
+	// 	include_once 'lib/helpers/db.php';
+	// 	// create a database (returns false if it's already there)
+	// 	db_create($wp_db_creds);
+	// 	// import a database
+	// 	db_import($wp_db_creds, $dir_proj . '.db/');
+	// }
+
+
+	$wp_db_creds = array('name' => 'l1_p', 'user' => 'l1_p', 'pass' => 'passward', 'host' => 'localhost', 'char' => 'utf8');
+
+	include_once 'lib/helpers/db.php';
+	db_far($wp_db_creds, 'anything', 'something');
+
 
 // if we've made it all the way through with no errors thrown
 /*TEMP*/echo "<br>No Errors"; //fake
