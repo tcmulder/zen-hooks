@@ -11,7 +11,8 @@
  */
 
 // if all the values were received from shell
-if(count($argv) == 8){
+if($argv[8] == '' && ($argv[1] != '' && $argv[2] != '' && $argv[3] != '' && $argv[4] != '' && $argv[5] != '' && $argv[6] != '' && $argv[7] != '')){
+
     // put the values in an array
     $wp_config_array = array(
         'name'  => $argv[1],
