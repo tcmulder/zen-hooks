@@ -40,33 +40,20 @@ function db_import($db_creds, $db_dir){
     }
 }
 
-function db_far($db_creds, $db_to) {
-    $db_from = false;
-
-    $link = mysqli_connect("localhost", "l1_p", "passward", "l1_p");
-    if (mysqli_connect_errno()) {
-        printf("Connect failed: %s\n", mysqli_connect_error());
-        return false;
-    }
-    $query = "SELECT option_value FROM wp_options WHERE option_name='siteurl'";
-    if ($result = mysqli_query($link, $query)) {
-        $some_obj = $result->fetch_object();
-        $db_from = $some_obj->option_value;
-        mysqli_free_result($result);
-    }
-    mysqli_close($link);
-
-    if($db_from){
-
-        // $test = shell_exec('mysql -h' . $db_creds['host'] . ' -u' . $db_creds['user'] . ' -p' . $db_creds['pass'] . ' ' . $db_creds['name'] . ' -e "SHOW TABLES"');
-
-        $php_script = 'php lib/helpers/far.php ';
-        $db_connect = $db_creds['name'] . ' ';
-        $db_connect .= $db_creds['user'] . ' ';
-        $db_connect .= $db_creds['pass'] . ' ';
-        $db_connect .= $db_creds['host'] . ' ';
-        $db_connect .= $db_creds['char'] . ' ';
-        $from_to = $db_from . ' ' . $db_to;
-        echo shell_exec($php_script . $db_connect . $from_to);
+// find and replace in a database
+function db_far($db_creds, $server, $client, $proj) {
+    // if we have enough info
+    if(count($db_creds) == 7 && $server && $client && $proj){
+        // create find and replace command
+        $far = 'php lib/helpers/far.php ';
+        $far .= $db_creds['name'] . ' ';
+        $far .= $db_creds['user'] . ' ';
+        $far .= $db_creds['pass'] . ' ';
+        $far .= $db_creds['host'] . ' ';
+        $far .= $db_creds['char'] . ' ';
+        $far .= $db_creds['siteurl'] . ' ';
+        $far .= 'http://'.$server.'1.zenman.com/'.$client.'/'.$proj;
+        //execute find and replace
+        shell_exec($far);
     }
 }

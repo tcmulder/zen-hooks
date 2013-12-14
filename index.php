@@ -18,16 +18,16 @@ date_default_timezone_set('America/Denver');
 /*/////////////////////////////////////////////////////////////////Initialize Data
 Initialize Data */
 try {
-$data = file_get_contents('data.json', true); //fake data
-$gitlab = json_decode($data); //fake data
+/*temp*/$data = file_get_contents('data.json', true); //temp data
+/*temp*/$gitlab = json_decode($data); //temp data
 	// $gitlab = json_decode(file_get_contents('php://input')); //data from gitlab
 	$client = $_GET['client'];
 	$proj = $_GET['project'];
-	$proj_type = $_GET['type'];
+	// $proj_type = $_GET['type'];
 
 	$branch_parts = explode('/', $gitlab->ref);
 	// $branch = array_pop($branch_parts); //the last item is the branch
-/*FAKE*/$branch = 'dev_db';//fake
+/*temp*/$branch = 'dev_db';//temp
 	$branch_base_parts = explode('_', $branch);
 
 	if(!isset($branch)){
@@ -72,11 +72,8 @@ Run All the Commands */
 	// 	// import a database
 		// db_import($wp_db_creds, $dir_proj . '.db/');
 		// find and replace a database
-$wp_db_creds = array('name' => 'l1_p', 'user' => 'l1_p', 'pass' => 'passward', 'host' => 'localhost', 'char' => 'utf8');
-		echo "<pre>";
-		$wp_db_creds['from'] = 'from';
-		$wp_db_creds['to'] = 'to';
-		db_far($wp_db_creds);
+// /*TEMP*/$wp_db_creds = array('name' => 'l1_p', 'user' => 'l1_p', 'pass' => 'passward', 'host' => 'localhost', 'char' => 'utf8');
+		db_far($wp_db_creds, $server, $client, $proj);
 	}
 
 // if we've made it all the way through with no errors thrown

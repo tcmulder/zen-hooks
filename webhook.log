@@ -314,3 +314,85 @@ mysql -hlocalhost -ud2_p -p'zentest!!!' d2_p < /YOUR_SERVER_ADDRESS/zen_dev2/zen
 [12-Dec-2013 18:28:28 America/Denver] PHP Notice:  Undefined index: project in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 25
 [12-Dec-2013 18:28:28 America/Denver] PHP Notice:  Undefined index: type in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 26
 [12-Dec-2013 18:28:28 America/Denver] PHP Warning:  Missing argument 2 for db_far(), called in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 79 and defined in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 43
+[14-Dec-2013 12:20:02 America/Denver] PHP Warning:  Missing argument 2 for db_far(), called in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 79 and defined in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 43
+[14-Dec-2013 12:20:02 America/Denver] PHP Notice:  Undefined variable: db_to in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 69
+[14-Dec-2013 12:22:43 America/Denver] PHP Warning:  Missing argument 2 for db_far(), called in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 75 and defined in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 43
+[14-Dec-2013 12:22:43 America/Denver] PHP Notice:  Undefined variable: db_to in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 69
+[14-Dec-2013 12:22:57 America/Denver] PHP Warning:  Missing argument 2 for db_far(), called in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 75 and defined in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 43
+[14-Dec-2013 12:22:57 America/Denver] PHP Notice:  Undefined variable: db_to in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 69
+[14-Dec-2013 12:23:08 America/Denver] PHP Warning:  Missing argument 2 for db_far(), called in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 75 and defined in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 43
+[14-Dec-2013 12:23:08 America/Denver] PHP Notice:  Undefined variable: db_to in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 69
+[14-Dec-2013 12:23:09 America/Denver] PHP Warning:  Missing argument 2 for db_far(), called in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 75 and defined in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 43
+[14-Dec-2013 12:23:09 America/Denver] PHP Notice:  Undefined variable: db_to in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 69
+[14-Dec-2013 12:23:10 America/Denver] PHP Warning:  Missing argument 2 for db_far(), called in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 75 and defined in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 43
+[14-Dec-2013 12:23:10 America/Denver] PHP Notice:  Undefined variable: db_to in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 69
+[14-Dec-2013 12:23:22 America/Denver] PHP Notice:  Undefined variable: wp_db_cred in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 75
+[14-Dec-2013 12:23:22 America/Denver] PHP Warning:  Missing argument 2 for db_far(), called in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 75 and defined in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 43
+[14-Dec-2013 12:23:22 America/Denver] PHP Notice:  Undefined variable: db_to in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 69
+[14-Dec-2013 12:23:44 America/Denver] PHP Warning:  Missing argument 2 for db_far(), called in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 75 and defined in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 43
+[14-Dec-2013 12:23:44 America/Denver] PHP Notice:  Undefined variable: db_to in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 69
+[14-Dec-2013 12:28:18 America/Denver] PHP Notice:  Array to string conversion in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 75
+[14-Dec-2013 12:38:42 America/Denver] PHP Warning:  Missing argument 2 for db_far(), called in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 75 and defined in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 43
+[14-Dec-2013 12:43:32 America/Denver] PHP Parse error:  syntax error, unexpected '(array)' (array) (T_ARRAY_CAST) in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 46
+[14-Dec-2013 12:43:32 America/Denver] PHP Parse error:  syntax error, unexpected '(array)' (array) (T_ARRAY_CAST) in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 46
+[14-Dec-2013 12:43:39 America/Denver] PHP Parse error:  syntax error, unexpected '(array)' (array) (T_ARRAY_CAST) in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 46
+[14-Dec-2013 12:43:39 America/Denver] PHP Parse error:  syntax error, unexpected '(array)' (array) (T_ARRAY_CAST) in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 46
+[14-Dec-2013 12:43:41 America/Denver] PHP Parse error:  syntax error, unexpected '(array)' (array) (T_ARRAY_CAST) in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 46
+[14-Dec-2013 12:43:41 America/Denver] PHP Parse error:  syntax error, unexpected '(array)' (array) (T_ARRAY_CAST) in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 46
+[14-Dec-2013 12:43:42 America/Denver] PHP Parse error:  syntax error, unexpected '(array)' (array) (T_ARRAY_CAST) in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 46
+[14-Dec-2013 12:44:02 America/Denver] PHP Notice:  Undefined variable: host in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 75
+[14-Dec-2013 12:44:17 America/Denver] PHP Notice:  Undefined variable: host in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 75
+[14-Dec-2013 12:44:17 America/Denver] PHP Notice:  Undefined variable: host in /Applications/MAMP/htdocs/sites/zenpository/index.php on line 75
+[14-Dec-2013 12:44:38 America/Denver] PHP Notice:  Undefined variable: host in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 44
+[14-Dec-2013 12:44:38 America/Denver] PHP Notice:  Undefined variable: host in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 44
+[14-Dec-2013 12:46:51 America/Denver] PHP Notice:  Undefined variable: host in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 44
+[14-Dec-2013 12:46:51 America/Denver] PHP Notice:  Undefined variable: host in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 44
+[14-Dec-2013 12:50:26 America/Denver] PHP Notice:  Undefined variable: db_from in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 44
+[14-Dec-2013 12:50:26 America/Denver] PHP Notice:  Undefined variable: db_from in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 44
+[14-Dec-2013 12:52:30 America/Denver] PHP Parse error:  syntax error, unexpected '}' in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 57
+[14-Dec-2013 12:52:30 America/Denver] PHP Parse error:  syntax error, unexpected '}' in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 57
+[14-Dec-2013 12:52:57 America/Denver] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 12:52:57 America/Denver] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 12:53:03 America/Denver] PHP Notice:  Undefined variable: db_from in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 44
+[14-Dec-2013 12:53:03 America/Denver] PHP Notice:  Undefined variable: db_from in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 44
+[14-Dec-2013 12:53:10 America/Denver] PHP Notice:  Undefined variable: db_from in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 44
+[14-Dec-2013 12:53:10 America/Denver] PHP Notice:  Undefined variable: db_from in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 44
+[14-Dec-2013 12:53:25 America/Denver] PHP Notice:  Undefined variable: db_from in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 44
+[14-Dec-2013 12:53:25 America/Denver] PHP Notice:  Undefined variable: db_from in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 44
+[14-Dec-2013 12:53:26 America/Denver] PHP Notice:  Undefined variable: db_from in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 44
+[14-Dec-2013 12:53:26 America/Denver] PHP Notice:  Undefined variable: db_from in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 44
+[14-Dec-2013 12:53:29 America/Denver] PHP Notice:  Undefined variable: db_from in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 44
+[14-Dec-2013 12:54:00 America/Denver] PHP Notice:  Undefined variable: db_from in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 45
+[14-Dec-2013 12:54:00 America/Denver] PHP Notice:  Undefined variable: db_from in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 45
+[14-Dec-2013 12:56:43 America/Denver] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 45
+[14-Dec-2013 12:56:43 America/Denver] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 45
+[14-Dec-2013 12:59:21 America/Denver] PHP Parse error:  syntax error, unexpected '$server' (T_VARIABLE) in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 12:59:21 America/Denver] PHP Parse error:  syntax error, unexpected '$server' (T_VARIABLE) in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 12:59:32 America/Denver] PHP Notice:  Undefined variable: client in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 12:59:32 America/Denver] PHP Notice:  Undefined variable: proj in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 12:59:32 America/Denver] PHP Notice:  Undefined variable: client in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 12:59:32 America/Denver] PHP Notice:  Undefined variable: proj in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 12:59:42 America/Denver] PHP Notice:  Undefined variable: client in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 12:59:42 America/Denver] PHP Notice:  Undefined variable: proj in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 12:59:45 America/Denver] PHP Notice:  Undefined variable: client in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 12:59:45 America/Denver] PHP Notice:  Undefined variable: proj in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 13:00:03 America/Denver] PHP Notice:  Undefined variable: client in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 13:00:03 America/Denver] PHP Notice:  Undefined variable: proj in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 13:00:08 America/Denver] PHP Notice:  Undefined variable: client in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 13:00:08 America/Denver] PHP Notice:  Undefined variable: proj in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 13:00:36 America/Denver] PHP Notice:  Undefined variable: proj in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 48
+[14-Dec-2013 13:00:36 America/Denver] PHP Notice:  Undefined variable: client in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 48
+[14-Dec-2013 13:00:36 America/Denver] PHP Notice:  Undefined variable: client in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 13:00:36 America/Denver] PHP Notice:  Undefined variable: proj in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 48
+[14-Dec-2013 13:00:36 America/Denver] PHP Notice:  Undefined variable: client in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 48
+[14-Dec-2013 13:00:36 America/Denver] PHP Notice:  Undefined variable: client in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 13:00:36 America/Denver] PHP Notice:  Undefined variable: proj in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 13:00:36 America/Denver] PHP Notice:  Undefined variable: proj in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 13:00:38 America/Denver] PHP Notice:  Undefined variable: proj in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 48
+[14-Dec-2013 13:00:38 America/Denver] PHP Notice:  Undefined variable: client in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 48
+[14-Dec-2013 13:00:38 America/Denver] PHP Notice:  Undefined variable: client in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 13:00:38 America/Denver] PHP Notice:  Undefined variable: proj in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 13:00:38 America/Denver] PHP Notice:  Undefined variable: proj in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 48
+[14-Dec-2013 13:00:38 America/Denver] PHP Notice:  Undefined variable: client in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 48
+[14-Dec-2013 13:00:38 America/Denver] PHP Notice:  Undefined variable: client in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 13:00:38 America/Denver] PHP Notice:  Undefined variable: proj in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56

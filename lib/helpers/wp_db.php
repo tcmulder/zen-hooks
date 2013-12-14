@@ -39,7 +39,30 @@ function read_wp_file($this_dir_proj, $db_prefix = 'fail'){
             }
         }
     }
-    // create an array of the db creds and return it
+    // create an array of the db constants
     $wp_db_creds = array('name' => $this_name, 'user' => $this_user, 'pass' => $this_pass, 'host' => $this_host, 'char' => $this_char);
+
+    // add the db prefix to the array
+    preg_match_all('/\$table_prefix  = \'(.+)\'/', $file_content, $db_prefix);
+    $wp_db_creds['prefix'] = $db_prefix[1][0];
+
+
+
+
+
+
+
+
+
+
+    // add the siteurl to the array
+    $mysqli = new mysqli("localhost", "root", "root", "l1_p");
+    if ($mysqli->connect_errno) {
+        echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+    }
+    $siteurl = $mysqli->query("SELECT option_value FROM wp_options WHERE option_name = 'siteurl'")->fetch_object()->option_value;
+    $wp_db_creds['siteurl'] = $siteurl;
+
+    // return the db info
     return $wp_db_creds;
 }
