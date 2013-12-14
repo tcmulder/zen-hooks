@@ -396,3 +396,190 @@ mysql -hlocalhost -ud2_p -p'zentest!!!' d2_p < /YOUR_SERVER_ADDRESS/zen_dev2/zen
 [14-Dec-2013 13:00:38 America/Denver] PHP Notice:  Undefined variable: client in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 48
 [14-Dec-2013 13:00:38 America/Denver] PHP Notice:  Undefined variable: client in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
 [14-Dec-2013 13:00:38 America/Denver] PHP Notice:  Undefined variable: proj in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 56
+[14-Dec-2013 15:14:37 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:14:37 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:14:37 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:14:37 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:14:37 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:14:37 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:14:47 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:14:47 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:14:47 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:14:47 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:14:47 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:14:47 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:14:55 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:14:55 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:14:55 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:14:55 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:14:55 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:14:55 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:14:57 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:14:57 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:14:57 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:14:58 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:14:58 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:14:58 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:15:11 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:15:11 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:15:11 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:15:11 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:15:11 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:15:11 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:15:20 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:15:20 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:15:20 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:15:20 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:15:20 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:15:20 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:16:12 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:16:12 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:16:12 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:16:12 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:16:12 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:16:12 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:16:27 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:16:27 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:16:27 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:16:27 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:16:27 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:16:27 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:16:37 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:16:37 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:16:37 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:16:37 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:16:37 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:16:37 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:17:13 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:13 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:13 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:17:13 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:13 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:13 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:17:21 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:21 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:21 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:17:21 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:21 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:21 America/Denver] PHP Fatal error:  Call to undefined function db_export() in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 3
+[14-Dec-2013 15:17:50 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:50 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:50 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:50 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:51 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:51 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:52 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:52 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:53 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:53 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:53 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:17:53 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:18:05 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:18:05 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:18:05 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:18:05 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:18:07 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:18:07 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:18:07 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:18:07 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:18:09 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:18:09 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:18:09 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:18:09 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:18:15 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:18:15 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:18:15 America/Denver] PHP Warning:  include_once(../helpers/db.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:18:15 America/Denver] PHP Warning:  include_once(): Failed opening '../helpers/db.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.10/lib/php') in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php on line 2
+[14-Dec-2013 15:22:14 America/Denver] 2013-12-14 15:22:14 >> exception 'Exception' with message 'Base directory [/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/] does not exist' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php:43
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(51): include_once()
+#1 {main}
+[14-Dec-2013 15:22:14 America/Denver] 2013-12-14 15:22:14 >> exception 'Exception' with message 'Base directory [/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/] does not exist' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php:43
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(51): include_once()
+#1 {main}
+[14-Dec-2013 15:22:14 America/Denver] 2013-12-14 15:22:14 >> exception 'Exception' with message 'Base directory [/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/] does not exist' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php:43
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(51): include_once()
+#1 {main}
+[14-Dec-2013 15:22:14 America/Denver] 2013-12-14 15:22:14 >> exception 'Exception' with message 'Base directory [/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/] does not exist' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php:43
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(51): include_once()
+#1 {main}
+[14-Dec-2013 15:22:39 America/Denver] 2013-12-14 15:22:39 >> exception 'Exception' with message 'Base directory [/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/] does not exist' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php:43
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(51): include_once()
+#1 {main}
+[14-Dec-2013 15:22:39 America/Denver] 2013-12-14 15:22:39 >> exception 'Exception' with message 'Base directory [/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/] does not exist' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php:43
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(51): include_once()
+#1 {main}
+[14-Dec-2013 15:22:41 America/Denver] 2013-12-14 15:22:41 >> exception 'Exception' with message 'Base directory [/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/] does not exist' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php:43
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(51): include_once()
+#1 {main}
+[14-Dec-2013 15:22:41 America/Denver] 2013-12-14 15:22:41 >> exception 'Exception' with message 'Base directory [/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/] does not exist' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php:43
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(51): include_once()
+#1 {main}
+[14-Dec-2013 15:22:45 America/Denver] 2013-12-14 15:22:45 >> exception 'Exception' with message 'Base directory [/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/] does not exist' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php:43
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(51): include_once()
+#1 {main}
+[14-Dec-2013 15:22:45 America/Denver] 2013-12-14 15:22:45 >> exception 'Exception' with message 'Base directory [/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/] does not exist' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/init_repo.php:43
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(51): include_once()
+#1 {main}
+[14-Dec-2013 15:24:33 America/Denver] 2013-12-14 15:24:33 >> exception 'Exception' with message '/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/c/p//.git could not be found' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/update_repo.php:35
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(55): include_once()
+#1 {main}
+[14-Dec-2013 15:24:33 America/Denver] 2013-12-14 15:24:33 >> exception 'Exception' with message '/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/c/p//.git could not be found' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/update_repo.php:35
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(55): include_once()
+#1 {main}
+[14-Dec-2013 15:24:46 America/Denver] 2013-12-14 15:24:46 >> exception 'Exception' with message '/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/c/p//.git could not be found' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/update_repo.php:35
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(56): include_once()
+#1 {main}
+[14-Dec-2013 15:24:46 America/Denver] 2013-12-14 15:24:46 >> exception 'Exception' with message '/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/c/p//.git could not be found' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/update_repo.php:35
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(56): include_once()
+#1 {main}
+[14-Dec-2013 15:24:49 America/Denver] 2013-12-14 15:24:49 >> exception 'Exception' with message '/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/c/p//.git could not be found' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/update_repo.php:35
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(55): include_once()
+#1 {main}
+[14-Dec-2013 15:24:49 America/Denver] 2013-12-14 15:24:49 >> exception 'Exception' with message '/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/c/p//.git could not be found' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/update_repo.php:35
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(55): include_once()
+#1 {main}
+[14-Dec-2013 15:24:55 America/Denver] 2013-12-14 15:24:55 >> exception 'Exception' with message '/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/c/p//.git could not be found' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/update_repo.php:35
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(55): include_once()
+#1 {main}
+[14-Dec-2013 15:24:55 America/Denver] 2013-12-14 15:24:55 >> exception 'Exception' with message '/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/xen_dev2/c/p//.git could not be found' in /Applications/MAMP/htdocs/sites/zenpository/lib/tasks/update_repo.php:35
+Stack trace:
+#0 /Applications/MAMP/htdocs/sites/zenpository/index.php(55): include_once()
+#1 {main}
+[14-Dec-2013 15:34:24 America/Denver] PHP Warning:  mysql_connect(): Access denied for user 'admin'@'localhost' (using password: YES) in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 5
+[14-Dec-2013 15:34:24 America/Denver] PHP Warning:  mysql_close() expects parameter 1 to be resource, boolean given in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 21
+[14-Dec-2013 15:34:24 America/Denver] PHP Warning:  mysql_connect(): Access denied for user 'admin'@'localhost' (using password: YES) in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 5
+[14-Dec-2013 15:34:24 America/Denver] PHP Warning:  mysql_close() expects parameter 1 to be resource, boolean given in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 21
+[14-Dec-2013 15:34:44 America/Denver] PHP Warning:  mysql_connect(): Access denied for user 'admin'@'localhost' (using password: YES) in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 5
+[14-Dec-2013 15:34:44 America/Denver] PHP Warning:  mysql_close() expects parameter 1 to be resource, boolean given in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 21
+[14-Dec-2013 15:41:57 America/Denver] PHP Notice:  Undefined variable: dump in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 29
+[14-Dec-2013 15:43:19 America/Denver] PHP Notice:  Undefined variable: dump in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 29
+[14-Dec-2013 15:43:19 America/Denver] PHP Notice:  Undefined variable: dump in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 29
+[14-Dec-2013 15:43:40 America/Denver] PHP Notice:  Undefined variable: dump in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 29
+[14-Dec-2013 15:43:40 America/Denver] PHP Notice:  Undefined variable: dump in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 29
+[14-Dec-2013 15:47:40 America/Denver] PHP Notice:  Undefined variable: dump in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 29
+[14-Dec-2013 15:47:40 America/Denver] PHP Notice:  Undefined variable: dump in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 29
+[14-Dec-2013 15:49:43 America/Denver] PHP Notice:  Undefined variable: dump in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 29
+[14-Dec-2013 15:50:13 America/Denver] PHP Notice:  Undefined variable: dump in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 29
+[14-Dec-2013 15:50:13 America/Denver] PHP Notice:  Undefined variable: dump in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 29
+[14-Dec-2013 15:52:50 America/Denver] PHP Notice:  Undefined variable: dump in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 29
+[14-Dec-2013 15:52:58 America/Denver] PHP Notice:  Undefined variable: dump in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 29
+[14-Dec-2013 15:52:58 America/Denver] PHP Notice:  Undefined variable: dump in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 29
+[14-Dec-2013 15:57:36 America/Denver] PHP Notice:  Undefined variable: dump in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 29
+[14-Dec-2013 16:00:36 America/Denver] PHP Notice:  Undefined variable: dump in /Applications/MAMP/htdocs/sites/zenpository/lib/helpers/db.php on line 29

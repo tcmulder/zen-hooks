@@ -7,10 +7,13 @@ if(file_exists($dir_proj . '/.git')){
 	$status = shell_exec("$git status");
 	// if this is not a clean working directory
 	if(strpos($status, "working directory clean") == false){
-		//
-		// DUMP DB IF NEEDED (added below)
-		//
-		//
+		for wordpress sites
+		if($proj_type == 'wp'){
+			// include the database scripts
+			include_once 'lib/helpers/db.php';
+			// dump the database so it will be saved
+			db_export($wp_db_creds, $dir_proj . '.db/');
+		}
 		shell_exec("$git add --all .");
 		shell_exec("$git commit -m 'Automate commit to save working directory (switching to view)'");
 	}
@@ -22,13 +25,6 @@ if(file_exists($dir_proj . '/.git')){
 	shell_exec("$git fetch gitlab $branch:refs/remotes/gitlab/$branch");
 	// reset hard to the branch: no need to preserve history in the view
 	shell_exec("$git reset --hard gitlab/$branch");
-
-	//
-	//
-	// UPDATE DB IF NEEDED
-	//
-	//
-
 // if the .git directory can't be found in the project
 } else {
 	// talk about it
