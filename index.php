@@ -60,23 +60,24 @@ Run All the Commands */
 	// set up the db prefix
 	$db_prefix = substr($branch, 0, 1) . '2_';
 	// try to get the db creds
+/*TEMP*/$dir_proj = '/Applications/MAMP/htdocs/sites/zenpository/xen_dev2/c/p/';
+/*TEMP*/$db_prefix= 'l1_';
 	$wp_db_creds = read_wp_file($dir_proj, $db_prefix);
 	// if there's a functioning wp-config.php file
-	// if($wp_db_creds){
+	if($wp_db_creds){
 	// 	// grab all the database helper functions
-	// 	include_once 'lib/helpers/db.php';
+		include_once 'lib/helpers/db.php';
 	// 	// create a database (returns false if it's already there)
-	// 	db_create($wp_db_creds);
+		// db_create($wp_db_creds);
 	// 	// import a database
-	// 	db_import($wp_db_creds, $dir_proj . '.db/');
-	// }
-
-
-	$wp_db_creds = array('name' => 'l1_p', 'user' => 'l1_p', 'pass' => 'passward', 'host' => 'localhost', 'char' => 'utf8');
-
-	include_once 'lib/helpers/db.php';
-	db_far($wp_db_creds, 'anything', 'something');
-
+		// db_import($wp_db_creds, $dir_proj . '.db/');
+		// find and replace a database
+$wp_db_creds = array('name' => 'l1_p', 'user' => 'l1_p', 'pass' => 'passward', 'host' => 'localhost', 'char' => 'utf8');
+		echo "<pre>";
+		$wp_db_creds['from'] = 'from';
+		$wp_db_creds['to'] = 'to';
+		db_far($wp_db_creds);
+	}
 
 // if we've made it all the way through with no errors thrown
 /*TEMP*/echo "<br>No Errors"; //fake
