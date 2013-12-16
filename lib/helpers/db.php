@@ -22,7 +22,13 @@ function db_create($db_creds){
 
 // export (mysqldump) a database
 function db_export($db_creds, $db_dir){
-    exec('/usr/bin/mysqldump -hlocalhost -ul1_p -p\'passward\' l1_p > ' . $db_dir .'db.sql');
+    // if the /.db/ directory doesn't exist
+    if(!file_exists($db_dir)){
+        // create the directory
+        mkdir($db_dir);
+    }
+    // dump the database
+    shell_exec('/usr/bin/mysqldump -h' . $db_creds['host'] . ' -u' . $db_creds['user'] . ' -p\'' . $db_creds['pass'] . '\' ' . $db_creds['name'] . ' > ' . $db_dir .'db.sql');
 }
 
 // import a database

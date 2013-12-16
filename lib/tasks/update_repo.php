@@ -7,7 +7,7 @@ if(file_exists($dir_proj . '/.git')){
 	$status = shell_exec("$git status");
 	// if this is not a clean working directory
 	if(strpos($status, "working directory clean") == false){
-		for wordpress sites
+		// for wordpress sites
 		if($proj_type == 'wp'){
 			// include the database scripts
 			include_once 'lib/helpers/db.php';
