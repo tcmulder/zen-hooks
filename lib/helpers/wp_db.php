@@ -48,11 +48,8 @@ $wp_db_creds = array('name' => $this_name, 'user' => $this_user, 'pass' => $this
 // add the db prefix to the array
 preg_match_all('/\$table_prefix  = \'(.+)\'/', $file_content, $db_prefix);
 $wp_db_creds['prefix'] = $db_prefix[1][0];
-
-// add the siteurl to the array
-$mysqli = new mysqli($wp_db_creds['host'], $wp_db_creds['user'], $wp_db_creds['pass'], $wp_db_creds['name']);
-if ($mysqli->connect_errno) {
-    echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+// set siteurl
+$siteurl = wp_siteurl($wp_db_creds);
+if($siteurl){
+    $wp_db_creds['siteurl'] = $siteurl;
 }
-$siteurl = $mysqli->query("SELECT option_value FROM wp_options WHERE option_name = 'siteurl'")->fetch_object()->option_value;
-$wp_db_creds['siteurl'] = $siteurl;

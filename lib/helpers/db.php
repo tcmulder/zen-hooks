@@ -51,8 +51,19 @@ function db_far($db_creds, $server, $client, $proj) {
         $far .= $db_creds['host'] . ' ';
         $far .= $db_creds['char'] . ' ';
         $far .= $db_creds['siteurl'] . ' ';
-        $far .= 'http://'.$server.'1.zenman.com/'.$client.'/'.$proj;
+        $far .= 'http://'.$server.'2.zenman.com/sites/'.$client.'/'.$proj;
         //execute find and replace
         exec($far);
     }
+}
+
+// get and return the siteurl
+function wp_siteurl($db_creds){
+    $mysqli = new mysqli($db_creds['host'], $db_creds['user'], $db_creds['pass'], $db_creds['name']);
+    if ($mysqli->connect_errno) {
+        echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+    }
+    $siteurl = $mysqli->query("SELECT option_value FROM wp_options WHERE option_name = 'siteurl'")->fetch_object()->option_value;
+/*temp*/shell_exec('echo " ['.$siteurl.'] " > webhook.log');
+    return $siteurl;
 }

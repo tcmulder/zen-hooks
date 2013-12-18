@@ -39,6 +39,7 @@ try {
 
 	// for wordpress sites
 	if($proj_type == 'wp'){
+		include_once 'lib/helpers/db.php';
 		include_once 'lib/helpers/wp_db.php';
 	}
 
@@ -63,9 +64,13 @@ Run All the Commands */
 			// create a database (returns false if it's already there)
 			db_create($wp_db_creds);
 			// import a database
-			db_import($wp_db_creds, $dir_proj . '.db/');
-			// find and replace a database
+			db_import($wp_db_creds, $dir_proj . '.db/', $server, $client, $proj);
 // /*TEMP*/$wp_db_creds = array('name' => 'l1_p', 'user' => 'l1_p', 'pass' => 'passward', 'host' => 'localhost', 'char' => 'utf8');
+			// re-check siteurl (the first one was for the initial database)
+			$siteurl = wp_siteurl($wp_db_creds);
+		    $wp_db_creds['siteurl'] = $siteurl;
+			// find and replace a database
+// /*temp*/shell_exec('echo " [just before far'.print_r($wp_db_creds,1).'] " > webhook.log');
 			db_far($wp_db_creds, $server, $client, $proj);
 		}
 	}
