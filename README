@@ -1,16 +1,10 @@
 Zenpository: Connects gitlab to zenman's various servers.
 
-So far, it:
-
 - Checks to ensure it's going to an existing server based on branch prefix.
 - Creates the client directory if necessary.
 - Creates the project directory:
     - If there is no project yet, it clones the project.
     - If the project isn't version controlled, it git inits it.
-    - If the project isn't clean or is on the wrong branch, it's handled.
-
-To Do:
-- WordPress handling.
-- Database handling.
-- Hook creation.
-- Local setup automation.
+    - If the project isn't clean or is on the wrong branch, it commits changes.
+- Gets WordPress database credentials from wp-config.php.
+- Exports, imports, drops, and fars databases generically.
