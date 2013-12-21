@@ -8,3 +8,10 @@ Zenpository: Connects gitlab to zenman's various servers.
     - If the project isn't clean or is on the wrong branch, it commits changes.
 - Gets WordPress database credentials from wp-config.php.
 - Exports, imports, drops, and fars databases generically.
+
+To Do:
+- Handle missing /.db/db.sql files.
+- Handle wrong creds in wp-config.php.
+- Offer better progress log reporting.
+- Create local setup script/file set.
+- Switch to dev1.
