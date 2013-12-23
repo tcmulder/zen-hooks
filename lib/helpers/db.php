@@ -57,7 +57,7 @@ function db_import($db_creds, $db_dir){
 	// variable to store sql dump
 	$db_dump = $db_dir.'db.sql';
 	// if there is a /.db/db.sql file
-	if($db_dump){
+    if(file_exists($db_dump)){
 		log_status('db_import: file exists '.$db_dump);
 	    // drop the database's tables
 	    log_status('db_import: drop databases tables');
@@ -65,6 +65,7 @@ function db_import($db_creds, $db_dir){
 	    // import the /.db/db.sql file
 	    log_status('db_import: import file '.$db_dump);
 	    exec('mysql -h'.$db_creds['host'].' -u'.$db_creds['user'].' -p\''.$db_creds['pass'].'\' '.$db_creds['name'].' < '.$db_dump);
+        return true;
 	// if there is no /.db/db.sql
 	} else {
 		// report import as failed
@@ -140,9 +141,20 @@ function wp_siteurl($db_creds){
             $mysqli = @new mysqli($db_creds['host'], $db_creds['user'], $db_creds['pass'], $db_creds['name']);
             log_status('wp_siteurl: connected to '.$db_creds['host'].' '.$db_creds['user'].' '.$db_creds['pass'].' '.$db_creds['name']);
             // check the siteurl and return it
-            $siteurl = $mysqli->query("SELECT option_value FROM wp_options WHERE option_name = 'siteurl'")->fetch_object()->option_value;
-            log_status('wp_siteurl: siteurl is '.$siteurl);
-            return $siteurl;
+            $siteurl = $mysqli->query("SELECT option_value FROM wp_options WHERE option_name = 'siteurl'");
+            if($siteurl){
+                $siteurl_val = $siteurl->fetch_object()->option_value;
+                if($siteurl_val){
+                    log_status('wp_siteurl: siteurl is "'.$siteurl_val.'"');
+                    return $siteurl_val;
+                } else {
+                    log_status('wp_siteurl: siteurl value undetermined');
+                    return false;
+                }
+            } else {
+                log_status('wp_siteurl: database query for siteurl unsuccessful');
+                return false;
+            }
         }
     // if the connection failed
     } else {

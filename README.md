@@ -28,7 +28,7 @@ Similarly, you can push to any other Zenman web server by prefixing your branch 
 ### Usage for WordPress Sites
 The zenpository script can handle the database for WordPress sites. (If however you choose to handle updating the database manually, there's no need to implement the following instructions.)
 
-To tell the zenpository script to handle the WordPress database for your project, pass in the additional query ``&type=wp`` with the url. For example: 
+To tell the zenpository script to handle the WordPress database for your project, pass in the additional query ``&type=wp`` with the url. For example:
 
 ``http://YOUR_SERVER_ADDRESS/zenpository/?client=client_folder_name&project=project_folder_name&type=wp``
 
@@ -71,9 +71,5 @@ If you tell the script your project is a WordPress site, it employs some special
 ## To Do:
 The zenpository script can still use improvement. If you have time to implement any of these (or to make overall improvements to existing scripts), feel free to contribute. Here's the future enhancement list:
 
-- Copy client_template files properly.
-- Test missing ``/.db/db.sql`` files.
-- Test wrong credentials in ``wp-config.php`` files.
-- Only accept access from git.zenman.com's ip.
 - Create local setup script/file set.
 - Switch to dev1.

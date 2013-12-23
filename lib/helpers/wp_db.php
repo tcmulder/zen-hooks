@@ -57,9 +57,15 @@ function wp_db($branch, $dir_proj){
             log_status(print_r($wp_db_creds,1));
         }
     }
-    // if the credentials were generated
-    if($wp_db_creds){
-    	log_status('wp_db: return database credentials');
+    // if all credentials were generated
+    if(count($wp_db_creds) == 7){
+        log_status('wp_db: return database credentials');
+        log_status('wp_db: '.print_r($wp_db_creds,1));
+        return $wp_db_creds;
+    // if most credentials were generated (no siteurl)
+    } elseif(!isset($wp_db_creds['siteurl'])){
+    	log_status('wp_db: return database credentials without siteurl');
+        log_status('wp_db: '.print_r($wp_db_creds,1));
         return $wp_db_creds;
     // if the credentials were not generated
     } else {

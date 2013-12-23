@@ -12,6 +12,10 @@ if(file_exists($dir_base)){
 			// create the client directory
 			log_status('init_repo: create client directory');
 			mkdir($dir_client);
+			log_status('init_repo: create archive directory');
+			mkdir($dir_client.'archive');
+			log_status('init_repo: copy client_template/index.php');
+			copy($dir_base.'client_template/index.php',$dir_client.'index.php');
 		}
 		// change into the client directory
 		chdir($dir_client);
