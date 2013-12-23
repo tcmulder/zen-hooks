@@ -1,52 +1,50 @@
 <?php
-/*temp*/shell_exec('echo " [ init_repo.php running ] " >> webhook.log');
+log_status('init_repo: included');
 // ensure we're working from a base directory
-/*temp*/shell_exec('echo " [ dir base is '.$dir_base.' ] " >> webhook.log');
 if(file_exists($dir_base)){
-/*temp*/shell_exec('echo " [ there is a server for this branch ] " >> webhook.log');
+	log_status('init_repo: base directory is '.$dir_base);
 	// if the project directory doesn't exist
 	if(!file_exists($dir_proj)){
-/*temp*/shell_exec('echo " [ no proj dir ] " >> webhook.log');
+		log_status('init_repo: project directory does not exists '.$dir_proj);
 		// if the client directory doesn't exist
 		if(!file_exists($dir_client)){
+			log_status('init_repo: client directory does not exists '.$dir_client);
 			// create the client directory
+			log_status('init_repo: create client directory');
 			mkdir($dir_client);
-/*temp*/shell_exec('echo " [ no client dir ] " >> webhook.log');
 		}
 		// change into the client directory
 		chdir($dir_client);
 		// clone in the repo
-		shell_exec("git clone --origin gitlab $repo");
+		exec("git clone --origin gitlab $repo");
 		// cd into it
 		chdir($dir_proj);
 		// establish credentials
-		shell_exec('git config user.email "dev@zenman.com"');
-		shell_exec('git config user.name "YOUR_USERNAME"');
+		exec('git config user.email "dev@zenman.com"');
+		exec('git config user.name "YOUR_USERNAME"');
 		// change back to the root directory
 		chdir($dir_root);
-/*temp*/shell_exec('echo " [ true: init of repo (clone) ] " >> webhook.log');
 		// report true to signify that initialization took place
+		log_status('init_repo: initial clone requested');
 		return true;
 	// if the project isn't a git repo
 	} elseif(!file_exists($dir_proj . '.git')){
-/*temp*/shell_exec('echo " [ .git does not exist ] " >> webhook.log');
 		// change into the project directory
 		chdir($dir_proj);
 		// set up git
-		shell_exec('git init');
+		exec('git init');
 		// establish credentials
-		shell_exec('git config user.email "dev@zenman.com"');
-		shell_exec('git config user.name "YOUR_USERNAME"');
+		exec('git config user.email "dev@zenman.com"');
+		exec('git config user.name "YOUR_USERNAME"');
 		// set up remote
-		shell_exec("git remote add gitlab $repo");
+		exec("git remote add gitlab $repo");
 		// change back to the root directory
 		chdir($dir_root);
 		// report true to signify that initialization took place
-/*temp*/shell_exec('echo " [ true: init of repo (.git) ] " >> webhook.log');
+		log_status('init_repo: git initialized with existing files');
 		return true;
 	// if the base directory doesn't exist (also true for non-supported branches)
 	}
 } else {
 	throw new Exception("Branch [$branch] does not match server $dir_base");
 }
-/*temp*/shell_exec('echo " [ init_repo.php ran ] " >> webhook.log');
