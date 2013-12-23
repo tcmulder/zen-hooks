@@ -74,5 +74,6 @@ The zenpository script can still use improvement. If you have time to implement 
 - Copy client_template files properly.
 - Test missing ``/.db/db.sql`` files.
 - Test wrong credentials in ``wp-config.php`` files.
+- Only accept access from git.zenman.com's ip.
 - Create local setup script/file set.
 - Switch to dev1.
