@@ -1,0 +1,21 @@
+#!/bin/sh
+#########################
+# Export Database
+#########################
+
+# identify what we're doing
+echo 'exporting database'
+
+# grab the project-specific variables
+source `git rev-parse --git-dir`/hooks/config
+
+# identify the database dump location
+db_dir="`git rev-parse --show-toplevel`/.db/"
+
+# create the database dump location if it doesn't exist
+if [ ! -d "$db_dir" ]; then
+  mkdir $db_dir
+fi
+
+# dump the database
+mysqldump -h"$db_host" -u"$db_user" -p"$db_password" "$db_name" > "$db_dir"db.sql

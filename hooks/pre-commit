@@ -1,0 +1,14 @@
+#!/bin/sh
+#########################
+# Executed Before Committing
+#########################
+
+# identify what we're doing
+echo 'pre-commit running'
+
+# export the database
+bash `git rev-parse --git-dir`/hooks/db/db-export
+
+# add it for commit
+echo 'adding database for commit'
+git add `git rev-parse --show-toplevel`/.db/db.sql
