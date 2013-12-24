@@ -20,6 +20,7 @@ if(file_exists($dir_base)){
 		// change into the client directory
 		chdir($dir_client);
 		// clone in the repo
+		log_status('init_repo: clone repo '.$repo);
 		exec("git clone --origin gitlab $repo");
 		// cd into it
 		chdir($dir_proj);
@@ -33,6 +34,7 @@ if(file_exists($dir_base)){
 		return true;
 	// if the project isn't a git repo
 	} elseif(!file_exists($dir_proj . '.git')){
+		log_status('init_repo: not a git repository but project directory is present');
 		// change into the project directory
 		chdir($dir_proj);
 		// set up git
@@ -47,8 +49,10 @@ if(file_exists($dir_base)){
 		// report true to signify that initialization took place
 		log_status('init_repo: git initialized with existing files');
 		return true;
-	// if the base directory doesn't exist (also true for non-supported branches)
+	} else {
+		log_status('init_repo: initialization not run');
 	}
+// if the base directory doesn't exist (also true for non-supported branches)
 } else {
 	throw new Exception("Branch [$branch] does not match server $dir_base");
 }

@@ -36,12 +36,24 @@ Initialize Data */
 	log_status('gitlab data: '.($gitlab ? 'true' : 'false'));
 	// no need to continue if no data received or it's from an unauthorized source
 	if($gitlab && ($ip_addy == 'YOUR_IP_ADDRESS')){
-		$client = $_GET['client'];
-		log_status('client: '.$client);
-		$proj = $_GET['project'];
-		log_status('project: '.$proj);
-		$proj_type = $_GET['type'];
-		log_status('project type: '.$proj_type);
+		$client = (isset($_GET['client']) ? $_GET['client'] : false);
+		if($client){
+			log_status('client: '.$client);
+		} else {
+			throw new Exception('$_GET[\'client\'] does not exist');
+		}
+		$proj = (isset($_GET['project']) ? $_GET['project'] : false);
+		if($proj){
+			log_status('project: '.$proj);
+		} else {
+			throw new Exception('$_GET[\'project\'] does not exist');
+		}
+		$proj_type = (isset($_GET['type']) ? $_GET['type'] : false);
+		if($proj_type){
+			log_status('project type: '.$proj_type);
+		} else {
+			log_status('no project type defined');
+		}
 
 		$branch_parts = explode('/', $gitlab->ref);
 		$branch = array_pop($branch_parts); //the last item is the branch

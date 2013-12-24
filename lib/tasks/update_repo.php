@@ -36,5 +36,5 @@ if(file_exists($dir_proj . '/.git')){
 // if the .git directory can't be found in the project
 } else {
 	// talk about it
-	throw new Exception($dir_proj . '/.git could not be found');
+	throw new Exception($dir_proj . '.git could not be found. Is the deployment key added?');
 }

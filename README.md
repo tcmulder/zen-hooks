@@ -11,7 +11,7 @@ After creating a project in gitlab:
 Your gitlab project is now connected to the Zenman web servers.
 
 ## Usage
-The zenpository script is pretty flexible. Just clone a zepnository-enabled project to your local machine to get started. You can then create branches based on the Zenman web server you'd like to see changes on.
+The zenpository script is pretty flexible. Just clone a zepnository-enabled project to your local machine to get started. Make sure to push up an initial commit on the master branch to gitlab as the master branch is needed for things to work correctly. You can then create branches based on the Zenman web server you'd like to see changes on.
 
 For example, when pushed up to gitlab, the following branches will get pulled into ``YOUR_SERVER_ADDRESS`` via the zenpository script:
 
@@ -72,4 +72,3 @@ If you tell the script your project is a WordPress site, it employs some special
 The zenpository script can still use improvement. If you have time to implement any of these (or to make overall improvements to existing scripts), feel free to contribute. Here's the future enhancement list:
 
 - Create local setup script/file set.
-- Switch to dev1.

@@ -139,9 +139,9 @@ function wp_siteurl($db_creds){
             mysql_close($link);
             // reopen a connection with the database credentials
             $mysqli = @new mysqli($db_creds['host'], $db_creds['user'], $db_creds['pass'], $db_creds['name']);
-            log_status('wp_siteurl: connected to '.$db_creds['host'].' '.$db_creds['user'].' '.$db_creds['pass'].' '.$db_creds['name']);
+            log_status('wp_siteurl: connected to '.$db_creds['host'].' '.$db_creds['user'].' '.$db_creds['pass'].' '.$db_creds['name'].' with prefix '.$db_creds['prefix']);
             // check the siteurl and return it
-            $siteurl = $mysqli->query("SELECT option_value FROM wp_options WHERE option_name = 'siteurl'");
+            $siteurl = $mysqli->query('SELECT option_value FROM '.$db_creds['prefix'].'options WHERE option_name = "siteurl"');
             if($siteurl){
                 $siteurl_val = $siteurl->fetch_object()->option_value;
                 if($siteurl_val){

@@ -56,20 +56,22 @@ function wp_db($branch, $dir_proj){
             log_status('wp_db: resulting array ');
             log_status(print_r($wp_db_creds,1));
         }
-    }
-    // if all credentials were generated
-    if(count($wp_db_creds) == 7){
-        log_status('wp_db: return database credentials');
-        log_status('wp_db: '.print_r($wp_db_creds,1));
-        return $wp_db_creds;
-    // if most credentials were generated (no siteurl)
-    } elseif(!isset($wp_db_creds['siteurl'])){
-    	log_status('wp_db: return database credentials without siteurl');
-        log_status('wp_db: '.print_r($wp_db_creds,1));
-        return $wp_db_creds;
-    // if the credentials were not generated
+        // if all credentials were generated
+        if(count($wp_db_creds) == 7){
+            log_status('wp_db: return database credentials');
+            log_status('wp_db: '.print_r($wp_db_creds,1));
+            return $wp_db_creds;
+        // if most credentials were generated (no siteurl)
+        } elseif(!isset($wp_db_creds['siteurl']) && $wp_db_creds){
+            log_status('wp_db: return database credentials without siteurl');
+            log_status('wp_db: credentials are "'.print_r($wp_db_creds,1).'"');
+            return $wp_db_creds;
+        // if the credentials were not generated
+        } else {
+            log_status('wp_db: database credentials not generated');
+            return false;
+        }
     } else {
-    	log_status('wp_db: database credentials not generated');
-        return false;
+        log_status('wp_db: no wp-config.php found');
     }
 }
