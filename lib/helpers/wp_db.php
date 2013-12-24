@@ -6,7 +6,7 @@ function wp_db($branch, $dir_proj){
     // variable to store wordpress database credentials
     $wp_db_creds = null;
     // set up the db prefix
-    $db_prefix = substr($branch, 0, 1) . '2_';
+    $db_prefix = substr($branch, 0, 1) . '1_';
     log_status('wp_db: database prefix is '.$db_prefix);
     // set location of the wp-config.php file
     $wp_file = $dir_proj . 'wp-config.php';

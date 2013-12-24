@@ -6,7 +6,7 @@ The zenpository script connects gitlab to Zenman's various web servers.
 After creating a project in gitlab:
 
 1. Add the web hook ``http://YOUR_SERVER_ADDRESS/zenpository/?client=client_folder_name&project=project_folder_name`` under Settings > Web Hooks (replacing client and project folder names appropriately).
-2. Enable the ``dev1`` deployment key in Settings > Deployment Keys.
+2. Enable the ``Zenman Web Servers`` deployment key in Settings > Deployment Keys.
 
 Your gitlab project is now connected to the Zenman web servers.
 

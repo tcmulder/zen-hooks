@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 ignore_user_abort(true);
 date_default_timezone_set('America/Denver');
 
-$dir_root = '/YOUR_SERVER_ADDRESS/zen_dev2/zenpository/';
+$dir_root = '/YOUR_SERVER_ADDRESS/zen_dev1/zenpository/';
 
 try {
 
@@ -63,7 +63,7 @@ Initialize Data */
 		$server = $branch_base_parts[0];
 		log_status('server: '.$server);
 
-		$dir_base = '/YOUR_SERVER_ADDRESS/zen_'.$server.'2/sites/';
+		$dir_base = '/YOUR_SERVER_ADDRESS/zen_'.$server.'1/sites/';
 		log_status('directory base: '.$dir_base);
 
 		// exit if the server (based on branch prefix) doesn't exist
