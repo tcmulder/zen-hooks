@@ -8,14 +8,22 @@ To set up a local copy of a repository using the zenpository script, you can bas
 1. Create a ``sites/client`` directory to match the Zenman web server setup.
 2. ``cd`` into the client folder.
 3. Run ``git clone git@git.zenman.com:owner_name/project_name.git``.
-4. ``cd`` into the new project repository.
-5. Set up any brances you'd like to use.
+4. ``cd`` into the new project repository and set up any brances you'd like to use.
     1. Creat new brances with the command ``git checkout -b branch_name``.
     2. You can track existing branches by running ``git checkout --track -b branch_name origin/branch_name``.
 
+### New Projects
+For new projects, there are a couple additional steps you should complete in most cases *before starting to make commits*.
+
+1. Download the ``.gitattributes`` and ``.gitignore`` files from this ``local`` branch of the zempository repository.
+2. Commit these files before any other files to your project repository.
+
+The ``.gitignore`` file needs to be tracked for it to do it's job. So if, for instance, you start tracking the ``.sass-cache`` directory and then add the ``.gitignore`` later, your repository will continue to track changes to that directory.
+
+The ``.gitattributes`` file ensures git doesn't attempt line ending normalization which makes it hard to keep things synchronized, especially between multiple OS's that handle line endings differently.
+
 ### WordPress Type Projects
 *Word of warning for WordPress type projects:* You should make sure your ``wp-config.php`` file is up-to-date for all servers you expect to push to and that a database dump you'd like to use is in the ``/.db/db.sql`` file. The zenpository script is generally pretty trusting, so it will happily create a database named ``d1_enter_database_name_here`` if that's what the ``wp-config.php`` file instructs it to do.
-
 
 You should also grab the hooks located in this branch of the zenpository script. These scripts add a mysql dump of your database to your commits so you'll have a complete snapshot of the site at its current state. This dump is also used by the remote zenpository script to update the remote database.
 
