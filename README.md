@@ -52,5 +52,5 @@ If you choose not to (or if the hooks aren't working for some reason), you can a
 Feel free to contribute enhancements to the local setup if you'd like.
 
 - Create local script to setup projects via command line.
-- Automate ``wp-config.php`` creation.
-- Automate creation of a [safer ``wp-config.php``](https://basecamp.com/1781478/projects/432754-zenman-tech-forum/messages/18451467-idea-for-a-new).
+- Automate wp-config.php creation.
+- Automate creation of a safer [wp-config.php](https://basecamp.com/1781478/projects/432754-zenman-tech-forum/messages/18451467-idea-for-a-new).
