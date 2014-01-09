@@ -20,8 +20,8 @@ if(file_exists($dir_base)){
 		// change into the client directory
 		chdir($dir_client);
 		// clone in the repo
-		log_status('init_repo: clone repo '.$repo.' '.$proj);
-		exec("git clone --origin gitlab $repo $proj");
+		log_status('init_repo: clone --origin gitlab '.$repo.' '.$proj);
+		exec('git clone --origin gitlab '.$repo.' '.$proj);
 		// cd into it
 		chdir($dir_proj);
 		// establish credentials
