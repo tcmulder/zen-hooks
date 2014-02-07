@@ -4,7 +4,7 @@
 #########################
 
 # database credentials
-db_name='l1_iortho'
+db_name='l1_db'
 db_user='root'
 db_password='root'
 db_host='localhost'
