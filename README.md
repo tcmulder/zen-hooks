@@ -16,7 +16,10 @@ To set up a local copy of a repository using the zenpository script, you can bas
 For new projects, there are a couple additional steps you should complete in most cases *before starting to make commits*.
 
 1. Download the ``.gitattributes`` and ``.gitignore`` files from this ``local`` branch of the zempository repository.
-2. Commit these files before any other files to your project repository.
+2. Commit these files on the ``master`` branch before committing any other files.
+3. Push these changes up to gitlab.
+
+Git behaves pretty erratically without a ``master`` branch that has at least one file committed to it, so make sure to push a change to the ``master`` branch to gitlab before anything else.
 
 The ``.gitignore`` file needs to be tracked for it to do it's job. So if, for instance, you start tracking the ``.sass-cache`` directory and then add the ``.gitignore`` later, your repository will continue to track changes to that directory.
 
@@ -49,5 +52,5 @@ If you choose not to (or if the hooks aren't working for some reason), you can a
 Feel free to contribute enhancements to the local setup if you'd like.
 
 - Create local script to setup projects via command line.
-- Automate ``wp-config.php`` creation.
-- Automate creation of a [safer ``wp-config.php``](https://basecamp.com/1781478/projects/432754-zenman-tech-forum/messages/18451467-idea-for-a-new).
+- Automate wp-config.php creation.
+- Automate creation of a safer [wp-config.php](https://basecamp.com/1781478/projects/432754-zenman-tech-forum/messages/18451467-idea-for-a-new).
