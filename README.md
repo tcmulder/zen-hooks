@@ -16,7 +16,7 @@ To set up a local copy of a repository using the zenpository script, you can bas
 For new projects, there are a couple additional steps you should complete in most cases *before starting to make commits*.
 
 1. Download the ``.gitattributes``, ``.gitignore``, and ``changelog.md`` files from this ``local`` branch of the zempository repository.
-2. Update the ``changelogl.md`` file with the project name. You can add an initial ``* Created repo.`` entry if you'd like.
+2. Update the ``changelogl.md`` file with the project name.
 3. Commit these files on the ``master`` branch before committing any other files.
 4. Push these changes up to gitlab.
 
@@ -25,6 +25,8 @@ Git behaves pretty erratically without a ``master`` branch that has at least one
 The ``.gitignore`` file needs to be tracked for it to do it's job. So if, for instance, you start tracking the ``.sass-cache`` directory and then add the ``.gitignore`` later, your repository will continue to track changes to that directory.
 
 The ``.gitattributes`` file ensures git doesn't attempt line ending normalization which makes it hard to keep things synchronized, especially between multiple OS's that handle line endings differently.
+
+In the ``changelog.md``, you can add an initial ``* Created repo.`` entry with today's date if you'd like.
 
 ### WordPress Type Projects
 *Word of warning for WordPress type projects:* You should make sure your ``wp-config.php`` file is up-to-date for all servers you expect to push to and that a database dump you'd like to use is in the ``/.db/db.sql`` file. The zenpository script is generally pretty trusting, so it will happily create a database named ``d1_enter_database_name_here`` if that's what the ``wp-config.php`` file instructs it to do.
