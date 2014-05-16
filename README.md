@@ -15,9 +15,10 @@ To set up a local copy of a repository using the zenpository script, you can bas
 ### New Projects
 For new projects, there are a couple additional steps you should complete in most cases *before starting to make commits*.
 
-1. Download the ``.gitattributes`` and ``.gitignore`` files from this ``local`` branch of the zempository repository.
-2. Commit these files on the ``master`` branch before committing any other files.
-3. Push these changes up to gitlab.
+1. Download the ``.gitattributes``, ``.gitignore``, and ``changelog.md`` files from this ``local`` branch of the zempository repository.
+2. Update the ``changelogl.md`` file with the project name. You can add an initial ``* Created repo.`` entry if you'd like.
+3. Commit these files on the ``master`` branch before committing any other files.
+4. Push these changes up to gitlab.
 
 Git behaves pretty erratically without a ``master`` branch that has at least one file committed to it, so make sure to push a change to the ``master`` branch to gitlab before anything else.
 
