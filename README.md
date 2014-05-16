@@ -7,7 +7,7 @@ To set up a local copy of a repository using the zenpository script, you can bas
 
 1. Create a ``sites/client`` directory to match the Zenman web server setup.
 2. ``cd`` into the client folder.
-3. Run ``git clone git@git.zenman.com:owner_name/project_name.git``.
+3. Run ``git clone git@git.zenman.com:zen/project_name.git``.
 4. ``cd`` into the new project repository and set up any brances you'd like to use.
     1. Creat new brances with the command ``git checkout -b branch_name``.
     2. You can track existing branches by running ``git checkout --track -b branch_name origin/branch_name``.
