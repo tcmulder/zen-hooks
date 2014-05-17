@@ -46,7 +46,7 @@ function wp_db($branch, $dir_proj){
             // create an array of the db constants
             $wp_db_creds = array('name' => $this_name, 'user' => $this_user, 'pass' => $this_pass, 'host' => $this_host, 'char' => $this_char);
             // add the db prefix to the array
-            preg_match_all('/\$table_prefix  = \'(.+)\'/', $file_content, $db_prefix);
+            preg_match_all('/\$table_prefix\s+= \'(.+)\'/', $file_content, $db_prefix);
             $wp_db_creds['prefix'] = $db_prefix[1][0];
             // set siteurl
             $siteurl = wp_siteurl($wp_db_creds);
