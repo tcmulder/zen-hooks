@@ -16,17 +16,19 @@ try {
 Set Up Status Logging */
 
 	function log_status($status){
-		if(isset($_GET['log'])){
-			global $dir_root;
-			$file = $dir_root.'webhook.log';
-			file_put_contents($file, "$status\n", FILE_APPEND | LOCK_EX);
-			$truncated = shell_exec("tail -n 10000 $file");
-			file_put_contents($file, $truncated, LOCK_EX);
-		} else {
-			return false;
-		}
+	    if(isset($_GET['log'])){
+	        global $dir_root;
+	        $file = $dir_root.'webhook.log';
+	        file_put_contents($file, "$status\n", FILE_APPEND | LOCK_EX);
+	        if($lines = count(file($file)) >= 100000){
+	            $truncated = shell_exec("tail -n 1000 $file");
+	            file_put_contents($file, $truncated, LOCK_EX);
+	        }
+	    } else {
+	        return false;
+	    }
 	}
-	log_status('zenpository start ........................ [ '.date('Y-m-d H:i:s').' ]');
+	log_status('zen-hooks start ........................ [ '.date('Y-m-d H:i:s').' ]');
 
 /*/////////////////////////////////////////////////////////////////Initialize Data
 Initialize Data */
@@ -124,13 +126,13 @@ Run All the Commands */
 				}
 			}
 		}
-		log_status('zenpository end .......................... [ '.date('Y-m-d H:i:s').' ]');
+		log_status('zen-hooks end .......................... [ '.date('Y-m-d H:i:s').' ]');
 	// if data isn't right
 	} else {
 		// if no data was received from gitlab
 		if($ip_addy != 'YOUR_IP_ADDRESS'){
 			// show warning visibly just in case someone is visiting the url
-			echo 'Permission denied to access zenpository';
+			echo 'Permission denied to access zen-hooks';
 			throw new Exception('Unauthorized access attempted from '.$ip_addy);
 		// if the remote address is not the git server
 		} elseif(!$gitlab) {
@@ -140,5 +142,5 @@ Run All the Commands */
 } catch (Exception $e) {
 	//output the log
 	error_log(sprintf("%s >> %s", date('Y-m-d H:i:s'), $e));
-	log_status('zenpository end .......................... [ '.date('Y-m-d H:i:s').' ]');
+	log_status('zen-hooks end .......................... [ '.date('Y-m-d H:i:s').' ]');
 }
