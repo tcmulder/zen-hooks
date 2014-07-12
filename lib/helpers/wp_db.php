@@ -1,21 +1,29 @@
 <?php
 function wp_db($branch, $dir_proj, $server_version){
-	log_status('wp_db: called');
-	log_status('wp_db: branch is '.$branch);
-	log_status('wp_db: project directory is '.$dir_proj);
+    log_status('wp_db: called');
+    log_status('wp_db: branch is '.$branch);
+    log_status('wp_db: project directory is '.$dir_proj);
     // variable to store wordpress database credentials
     $wp_db_creds = null;
     // set up the db prefix
     $db_prefix = substr($branch, 0, 1) . $server_version . '_';
     log_status('wp_db: database prefix is '.$db_prefix);
-    // set location of the wp-config.php file
-    $wp_file = $dir_proj . 'wp-config.php';
-    // if there's a wp-config.php file then grab it's contents
+    // set location of the zen-config.php file
+    $wp_file = $dir_proj . 'zen-config.php';
+    // if there's a zen-config.php file then grab it's contents
     if(file_exists($wp_file) && is_file($wp_file) && is_readable($wp_file)) {
         log_status('wp_db: file found '.$wp_file);
         $file = @fopen($wp_file, 'r');
         $file_content = fread($file, filesize($wp_file));
         @fclose($file);
+
+        // get wp defined project name if available
+        preg_match_all('/\$proj_name\s+=\s+\'(.+)\'/', $file_content, $wp_proj_name_matches);
+        $wp_proj_name = (!empty($wp_proj_name_matches[1][0]) ? $wp_proj_name_matches[1][0] : false);
+
+        // get wp defined password if available
+        preg_match_all('/\$db_pass\s+=\s+\'(.+)\'/', $file_content, $wp_db_pass_matches);
+        $wp_db_pass = (!empty($wp_db_pass_matches[1][0]) ? $wp_db_pass_matches[1][0] : false);
 
         //  match the db credentials
         preg_match_all('/define\s*?\(\s*?([\'"])(DB_NAME|DB_USER|DB_PASSWORD|DB_HOST|DB_CHARSET)\1\s*?,\s*?([\'"])([^\3]*?)\3\s*?\)\s*?;/si', $file_content, $defines);
@@ -28,10 +36,16 @@ function wp_db($branch, $dir_proj, $server_version){
                     case 'DB_NAME':
                         if(strstr($defines[4][$key], $db_prefix)){
                             $this_name = $defines[4][$key];
+                            // if this wasn't customized then replace variable name
+                            $this_name = str_replace('$proj_name', $wp_proj_name, $this_name);
                             $key++;
                             $this_user = $defines[4][$key];
+                            // if this wasn't customized then replace variable name
+                            $this_user = str_replace('$proj_name', $wp_proj_name, $this_user);
                             $key++;
                             $this_pass = $defines[4][$key];
+                            // if this wasn't customized then replace variable name
+                            $this_pass = str_replace('$db_pass', $wp_db_pass, $this_pass);
                             $key++;
                             $this_host = $defines[4][$key];
                         }
@@ -72,6 +86,6 @@ function wp_db($branch, $dir_proj, $server_version){
             return false;
         }
     } else {
-        log_status('wp_db: no wp-config.php found');
+        log_status('wp_db: no zen-config.php found');
     }
 }
