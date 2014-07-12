@@ -1,4 +1,4 @@
-# zen-hooks
+# zen-hooks Server Setup
 ## Description
 The zen-hooks script enable gitlab, the zenman webservers, and local machines to talk to each other.
 
