@@ -1,12 +1,12 @@
 <?php
-function wp_db($branch, $dir_proj){
+function wp_db($branch, $dir_proj, $server_version){
 	log_status('wp_db: called');
 	log_status('wp_db: branch is '.$branch);
 	log_status('wp_db: project directory is '.$dir_proj);
     // variable to store wordpress database credentials
     $wp_db_creds = null;
     // set up the db prefix
-    $db_prefix = substr($branch, 0, 1) . '1_';
+    $db_prefix = substr($branch, 0, 1) . $server_version . '_';
     log_status('wp_db: database prefix is '.$db_prefix);
     // set location of the wp-config.php file
     $wp_file = $dir_proj . 'wp-config.php';

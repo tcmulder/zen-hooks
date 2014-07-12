@@ -75,7 +75,7 @@ function db_import($db_creds, $db_dir){
 }
 
 // find and replace in a database
-function db_far($db_creds, $server, $client, $proj) {
+function db_far($db_creds, $server, $server_version, $client, $proj) {
 	log_status('db_far: called');
 	log_status('db_far: database credentials received');
 	log_status('db_far: '.print_r($db_creds,1));
@@ -93,7 +93,7 @@ function db_far($db_creds, $server, $client, $proj) {
         $far .= $db_creds['host'].' ';
         $far .= $db_creds['char'].' ';
         $far .= $db_creds['siteurl'].' ';
-        $far .= 'http://'.$server.'1.zenman.com/sites/'.$client.'/'.$proj;
+        $far .= 'http://'.$server.$server_version.'.zenman.com/sites/'.$client.'/'.$proj;
         //execute find and replace
         $output = shell_exec($far);
         log_status('db_far: ran with output ');

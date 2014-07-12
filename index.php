@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 ignore_user_abort(true);
 date_default_timezone_set('America/Denver');
 
-$dir_root = '/YOUR_SERVER_ADDRESS/zen_dev1/zenpository/';
+$dir_root = dirname(__FILE__) . '/';
 
 try {
 
@@ -63,7 +63,10 @@ Initialize Data */
 		$server = $branch_base_parts[0];
 		log_status('server: '.$server);
 
-		$dir_base = '/YOUR_SERVER_ADDRESS/zen_'.$server.'1/sites/';
+		$server_version = substr(dirname($dir_root), -1, 1);
+		log_status('directory version: '.$server_version);
+
+		$dir_base = dirname(dirname($dir_root)) . '/zen_' . $server . $server_version . '/sites/';
 		log_status('directory base: '.$dir_base);
 
 		// exit if the server (based on branch prefix) doesn't exist
@@ -86,7 +89,7 @@ Initialize Data */
 			include_once 'lib/helpers/db.php';
 			// get the wordpress database credentials
 			include_once 'lib/helpers/wp_db.php';
-			$wp_db_creds = wp_db($branch, $dir_proj);
+			$wp_db_creds = wp_db($branch, $dir_proj, $server_version);
 		}
 
 /*/////////////////////////////////////////////////////////////////Run All the Commands
@@ -104,7 +107,7 @@ Run All the Commands */
 			include_once 'lib/helpers/db.php';
 			// get the wordpress database credentials
 			include_once 'lib/helpers/wp_db.php';
-			$wp_db_creds = wp_db($branch, $dir_proj);
+			$wp_db_creds = wp_db($branch, $dir_proj, $server_version);
 			// if the database credentials are established
 			if($wp_db_creds){
 				log_status('database credentials exist');
@@ -117,7 +120,7 @@ Run All the Commands */
 				    $wp_db_creds['siteurl'] = $siteurl;
 				    log_status('siteurl: '.$wp_db_creds['siteurl']);
 					// find and replace a database
-					db_far($wp_db_creds, $server, $client, $proj);
+					db_far($wp_db_creds, $server, $server_version, $client, $proj);
 				}
 			}
 		}
