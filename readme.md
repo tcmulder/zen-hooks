@@ -4,10 +4,8 @@ The zen-hooks script enable gitlab, the zenman webservers, and local machines to
 
 This ``master`` branch contains instructions pertinent to gitlab and the zenman webservers.
 
-If you're trying to set up your local machine, 
-check out the ``local`` branch's readme.md for 
-[local setup instructions
-](http://git.zenman.com/tcmulder/zen-hooks/tree/local).
+If you're trying to set up your local machine,
+check out the ``local`` branch's readme.md for [local setup instructions](http://git.zenman.com/tcmulder/zen-hooks/tree/local).
 
 
 
