@@ -13,18 +13,24 @@ To set up a local copy of a repository using the zen-hooks script, you can basic
     2. You can track existing branches by running ``git checkout --track -b branch_name origin/branch_name``.
 
 ### New Projects
-For new projects, there are a couple additional steps you must complete in most cases *before starting to make commits*.
+For new projects, there are a few additional steps you must complete in most cases *before starting to make commits*.
 
-1. Download the ``.gitattributes``, ``.gitignore``, and ``changelog.md`` files from this ``local`` branch of the zen-hooks repository.
+1. Download the ``.gitattributes``, ``.gitignore``, ``wp-config.php``, ``zen-config.php``, and ``changelog.md`` files from this ``local`` branch of the zen-hooks repository.
 2. Update the ``changelog.md`` file with the project name.
-3. Commit just these files on the ``master`` branch before committing any other files.
-4. Push these changes up to gitlab.
+4. Add line ``17`` (``include...``) line in the downloaded ``wp-config.php`` file to your site's ``wp-config.php`` file.
+5. Update the ``zen-config.php`` file to match your project.
+6. Commit just these files on the ``master`` branch before committing any other files.
+7. Push these changes up to gitlab.
 
-Git sometimes behaves pretty erratically without a ``master`` branch that has at least one change committed to it, so make sure to push a change to the ``master`` branch to gitlab before anything else.
+Git sometimes behaves erratically without a ``master`` branch that has at least one change committed to it, so make sure to push a change to the ``master`` branch to gitlab before anything else.
 
 The ``.gitignore`` file needs to be tracked for it to do it's job. So if, for instance, you start tracking the ``.sass-cache`` directory and then add the ``.gitignore`` later, your repository will continue to track changes to that directory.
 
 The ``.gitattributes`` file ensures git doesn't attempt line ending normalization which makes it hard to keep things synchronized, especially between multiple OS's that handle line endings differently.
+
+You don't need to replace the ``wp-config.php`` file WordPress gives you during installation with the one you download from this repo; the only line you need to add is the ``include`` line so WordPress knows to look for the ``zen-config.php`` file (and add the line to stop auto core updates, but that's not needed for zen-hooks to work). You can add the live WordPress database credentials to the ``wp-config.php`` at this time also if you know them.
+
+You can use the variables at the top of ``zen-config.php`` so you're not repeating the same information multiple times, or you can just use strings instead.
 
 In the ``changelog.md`` file, you can add an initial ``* Created repo.`` entry with today's date if you'd like.
 
