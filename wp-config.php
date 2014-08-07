@@ -14,7 +14,7 @@
  * @package WordPress
  */
 
-if(file_exists('zen-config.php') && include('zen-config.php')) return true;
+if(file_exists(dirname(__FILE__) . '/zen-config.php') && include('zen-config.php')) return true;
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
