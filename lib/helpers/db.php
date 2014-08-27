@@ -87,12 +87,12 @@ function db_far($db_creds, $server, $server_version, $client, $proj) {
     	log_status('db_far: run far');
         // create find and replace command
         $far = 'php lib/helpers/far.php ';
-        $far .= '\''.$db_creds['name'].'\' ';
-        $far .= '\''.$db_creds['user'].'\' ';
-        $far .= '\''.$db_creds['pass'].'\' ';
-        $far .= '\''.$db_creds['host'].'\' ';
-        $far .= '\''.$db_creds['char'].'\' ';
-        $far .= '\''.$db_creds['siteurl'].'\' ';
+        $far .= $db_creds['name'].' ';
+        $far .= $db_creds['user'].' ';
+        $far .= $db_creds['pass'].' ';
+        $far .= $db_creds['host'].' ';
+        $far .= $db_creds['char'].' ';
+        $far .= $db_creds['siteurl'].' ';
         $far .= 'http://'.$server.$server_version.'.zenman.com/sites/'.$client.'/'.$proj;
         //execute find and replace
         $output = shell_exec($far);
