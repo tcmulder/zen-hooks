@@ -95,7 +95,7 @@ function db_far($db_creds, $server, $server_version, $client, $proj) {
         $far .= $db_creds['siteurl'].' ';
         $far .= 'http://'.$server.$server_version.'.zenman.com/sites/'.$client.'/'.$proj;
         //execute find and replace
-        $output = shell_exec($far);
+        $output = shell_exec("$far");
         log_status('db_far: ran with output ');
         log_status($output);
     // if we do not have all the info
