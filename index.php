@@ -36,6 +36,7 @@ Initialize Data */
 	$gitlab = json_decode(file_get_contents('php://input')); //data from gitlab
 	$ip_addy = $_SERVER['REMOTE_ADDR'];
 	log_status('gitlab data: '.($gitlab ? 'true' : 'false'));
+	log_status('gitlab json: '.print_r($gitlab,1));
 	// no need to continue if no data received or it's from an unauthorized source
 	if($gitlab && ($ip_addy == 'YOUR_IP_ADDRESS')){
 		$client = (isset($_GET['client']) ? $_GET['client'] : false);
