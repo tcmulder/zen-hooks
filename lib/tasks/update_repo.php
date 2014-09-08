@@ -8,7 +8,7 @@ if(file_exists($dir_proj . '/.git')){
 	// get the current status
 	$status = shell_exec("$git status");
 	//get the current sha and show the after sha for comparison
-	$sha_cur = 'sha:' . shell_exec("$git rev-parse --verify HEAD");
+	$sha_cur = substr(shell_exec("$git rev-parse --verify HEAD"), 0, 40);
 	log_status('update_repo: the current sha is ' . $sha_cur);
 	log_status('update_repo: the after sha is ' . $sha_after);
 
