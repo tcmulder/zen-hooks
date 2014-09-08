@@ -16,11 +16,11 @@ if(file_exists($dir_proj . '/.git')){
 	log_status('update_repo: the comparison equals ' . ('zenman' != 'zenman'));
 
 
-	log_status('update_repo: the comparison equals ' . ($sha_cur != $sha_after));
+	log_status('update_repo: the comparison equals ' . ("$sha_cur" != "$sha_after"));
 
 
 
-	log_status('update_repo: which is equivalent to ' . $sha_cur . ' != ' . $sha_after);
+	log_status('update_repo: which is equivalent to ' . "$sha_cur" . ' != ' . "$sha_after");
 
 
 	// if this is not a clean working directory
