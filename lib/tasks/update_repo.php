@@ -11,8 +11,8 @@ if(file_exists($dir_proj . '/.git')){
 	$sha_cur = shell_exec("$git rev-parse --verify HEAD");
 	log_status('update_repo: the current sha is ' . $sha_cur);
 	log_status('update_repo: the after sha is ' . $sha_after);
-	log_status('update_repo: the comparison equals ' . ($sha_cur !== $sha_after));
-	log_status('update_repo: the oposite comparison equals ' . ($sha_cur == $sha_after));
+	log_status('update_repo: the comparison equals ' . ($sha_cur != $sha_after));
+	log_status('update_repo: which is equivalent to ' . $sha_cur . ' != ' . $sha_after);
 
 
 	// if this is not a clean working directory
@@ -30,7 +30,7 @@ if(file_exists($dir_proj . '/.git')){
 		exec("$git commit -m 'Automate commit to save working directory (switching to view)'");
 		log_status('update_repo: requested automated commit');
 	// if this is a new commit
-	} elseif($sha_cur !== $sha_after) {
+	} elseif($sha_cur != $sha_after) {
 		// create the view branch (doesn't to do so if it exists already)
 		exec("$git branch view");
 		// checkout the view branch (even if it is already)
