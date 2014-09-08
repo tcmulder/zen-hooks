@@ -7,6 +7,8 @@ if(file_exists($dir_proj . '/.git')){
 	$git = "git --git-dir=$dir_proj/.git --work-tree=$dir_proj";
 	// get the current status
 	$status = shell_exec("$git status");
+	//get the current sha
+	$sha_cur = shell_exec("$git rev-parse --verify HEAD");
 	// if this is not a clean working directory
 	if(strpos($status, "working directory clean") == false){
 		log_status('update_repo: working directory is not clean');
@@ -21,18 +23,23 @@ if(file_exists($dir_proj . '/.git')){
 		exec("$git add --all .");
 		exec("$git commit -m 'Automate commit to save working directory (switching to view)'");
 		log_status('update_repo: requested automated commit');
+	// if this is a new commit
+	} elseif($sha_cur != $sha_after) {
+		// create the view branch (doesn't to do so if it exists already)
+		exec("$git branch view");
+		// checkout the view branch (even if it is already)
+		exec("$git checkout view");
+		// get rid of untracked files and directories
+		exec("$git clean -f -d");
+		// fetch the branch
+		exec("$git fetch gitlab $branch:refs/remotes/gitlab/$branch");
+		// reset hard to the branch: no need to preserve history in the view
+		exec("$git reset --hard gitlab/$branch");
+		log_status('update_repo: reset hard requested on view branch');
+	// if the current and after commit are the same
+	} else {
+		throw new Exception('Current and requested commits are identical');
 	}
-	// create the view branch (doesn't to do so if it exists already)
-	exec("$git branch view");
-	// checkout the view branch (even if it is already)
-	exec("$git checkout view");
-	// get rid of untracked files and directories
-	exec("$git clean -f -d");
-	// fetch the branch
-	exec("$git fetch gitlab $branch:refs/remotes/gitlab/$branch");
-	// reset hard to the branch: no need to preserve history in the view
-	exec("$git reset --hard gitlab/$branch");
-	log_status('update_repo: reset hard requested on view branch');
 // if the .git directory can't be found in the project
 } else {
 	// talk about it

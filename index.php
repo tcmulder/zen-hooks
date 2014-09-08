@@ -43,8 +43,10 @@ Initialize Data */
 		$sha_before = $gitlab->before;
 		log_status('sha before: '.$gitlab->before);
 
-		$sha_after = $gitlab->before;
+		$sha_after = $gitlab->after;
 		log_status('sha after : '.$gitlab->after);
+
+		$sha_cur = null;
 
 		$client = (isset($_GET['client']) ? $_GET['client'] : false);
 		if($client){
