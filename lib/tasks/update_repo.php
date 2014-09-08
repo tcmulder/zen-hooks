@@ -27,7 +27,7 @@ if(file_exists($dir_proj . '/.git')){
 		exec("$git commit -m 'Automate commit to save working directory (switching to view)'");
 		log_status('update_repo: requested automated commit');
 	// if this is a new commit
-	} elseif($sha_cur != $sha_after) {
+	} elseif($sha_cur !== $sha_after) {
 		// create the view branch (doesn't to do so if it exists already)
 		exec("$git branch view");
 		// checkout the view branch (even if it is already)
