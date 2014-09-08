@@ -7,8 +7,11 @@ if(file_exists($dir_proj . '/.git')){
 	$git = "git --git-dir=$dir_proj/.git --work-tree=$dir_proj";
 	// get the current status
 	$status = shell_exec("$git status");
-	//get the current sha
+	//get the current sha and show the after sha for comparison
 	$sha_cur = shell_exec("$git rev-parse --verify HEAD");
+	log_status('update_repo: the current sha is ' . $sha_cur);
+	log_status('update_repo: the after sha is ' . $sha_after);
+
 	// if this is not a clean working directory
 	if(strpos($status, "working directory clean") == false){
 		log_status('update_repo: working directory is not clean');
