@@ -39,6 +39,15 @@ Initialize Data */
 	log_status('gitlab json: '.print_r($gitlab,1));
 	// no need to continue if no data received or it's from an unauthorized source
 	if($gitlab && ($ip_addy == 'YOUR_IP_ADDRESS')){
+
+		$sha_before = $gitlab->before;
+		log_status('sha before: '.$gitlab->before);
+
+		$sha_after = $gitlab->after;
+		log_status('sha after : '.$gitlab->after);
+
+		$sha_cur = null;
+
 		$client = (isset($_GET['client']) ? $_GET['client'] : false);
 		if($client){
 			log_status('client: '.$client);
