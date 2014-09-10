@@ -1,5 +1,9 @@
 <?php
 
+/*/////////////////////////////////////////////////////////////////Tell gitlab Everything's OK
+Tell gitlab Everything's OK */
+header( "HTTP/1.1 200 OK" );
+
 /*/////////////////////////////////////////////////////////////////Set Up Error Logging
 Set Up Error Logging */
 ini_set("log_errors", 1);
