@@ -52,7 +52,7 @@ function db_export($db_creds, $db_dir){
 function db_import($db_creds, $db_dir){
 	log_status('db_import: called');
 	log_status('db_import: database credentials received');
-	log_status('db_import: '.print_r($db_creds,1));
+	log_status('db_export: the credentials are '.print_r($db_creds,1));
 	log_status('db_import: database directory is '.$db_dir);
 	// variable to store sql dump
 	$db_dump = $db_dir.'db.sql';

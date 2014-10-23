@@ -23,7 +23,18 @@ Set Up Status Logging */
 	    if(isset($_GET['log'])){
 	        global $dir_root;
 	        $file = $dir_root.'webhook.log';
-	        file_put_contents($file, "$status\n", FILE_APPEND | LOCK_EX);
+
+	        //extra debug info
+	        $extra_debug = '';
+	        if($_GET['log'] == 'debug'){
+	        	$bt = debug_backtrace();
+          		$caller = array_shift($bt);
+          		$debug_line = str_pad($caller['line'],5);
+          		$debug_file = str_pad(array_pop(explode('/', $caller['file'])),17);
+          		$extra_debug = "$debug_line $debug_file " ;
+	        }
+
+	        file_put_contents($file, $extra_debug."$status\n", FILE_APPEND | LOCK_EX);
 	        if($lines = count(file($file)) >= 100000){
 	            $truncated = shell_exec("tail -n 1000 $file");
 	            file_put_contents($file, $truncated, LOCK_EX);
@@ -32,7 +43,7 @@ Set Up Status Logging */
 	        return false;
 	    }
 	}
-	log_status('zen-hooks start ........................ [ '.date('Y-m-d H:i:s').' ]');
+	log_status("\n\n\n\nzen-hooks start ........................ [ ".date("Y-m-d H:i:s")." ]");
 
 /*/////////////////////////////////////////////////////////////////Initialize Data
 Initialize Data */
