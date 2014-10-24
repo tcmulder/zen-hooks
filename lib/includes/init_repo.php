@@ -16,7 +16,8 @@ if(file_exists($dir_base)){
 		// report request to create client directory
 		log_status('new client directory creation requested');
 	} else {
-		log_status('client directory not created');
+		// report that this if statement was skipped
+		log_status('did not create client directory');
 	}
 	// if the project directory doesn't exist
 	if(!file_exists($dir_proj)){
@@ -26,7 +27,8 @@ if(file_exists($dir_base)){
 		mkdir($dir_proj);
 		log_status('new project directory creation requested');
 	} else {
-		log_status('project directory not created');
+		// report that this if statement was skipped
+		log_status('did not create project directory');
 	}
 	// if the project isn't a git repo
 	if(!file_exists($dir_proj . '.git')){
@@ -51,6 +53,7 @@ if(file_exists($dir_base)){
 		log_status('git init ran');
 		return true;
 	} else {
+		// report that this if statement was skipped
 		log_status('git init not run');
 	}
 // if the base directory doesn't exist (also true for non-supported branches)
