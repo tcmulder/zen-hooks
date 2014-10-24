@@ -43,7 +43,7 @@ Set Up Status Logging */
 	        return false;
 	    }
 	}
-	log_status("\n\n\n\nzen-hooks start ........................ [ ".date("Y-m-d H:i:s")." ]");
+	log_status("\n\n\n\nzen-hooks start :::::::::::::::::::::::: [ ".date("Y-m-d H:i:s")." ]");
 
 /*/////////////////////////////////////////////////////////////////Initialize Data
 Initialize Data */
@@ -151,14 +151,14 @@ Run All the Commands */
 				}
 			}
 		}
-		log_status('zen-hooks end .......................... [ '.date('Y-m-d H:i:s').' ]');
+		log_status("zen-hooks end :::::::::::::::::::::::::: [ ".date("Y-m-d H:i:s")." ]");
 	// if data isn't right
 	} else {
 		// if no data was received from gitlab
 		if($ip_addy != 'YOUR_IP_ADDRESS'){
 			// show warning visibly just in case someone is visiting the url
 			echo 'Permission denied to access zen-hooks';
-			throw new Exception('Unauthorized access attempted from '.$ip_addy);
+			throw new Exception("Unauthorized access attempted from $ip_addy");
 		// if the remote address is not the git server
 		} elseif(!$gitlab) {
 			throw new Exception('No data received from gitlab');
@@ -167,5 +167,5 @@ Run All the Commands */
 } catch (Exception $e) {
 	//output the log
 	error_log(sprintf("%s >> %s", date('Y-m-d H:i:s'), $e));
-	log_status('zen-hooks end .......................... [ '.date('Y-m-d H:i:s').' ]');
+	log_status("\nzen-hooks end :::::::::::::::::::::::::: [ ".date("Y-m-d H:i:s")." ]");
 }

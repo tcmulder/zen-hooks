@@ -1,26 +1,26 @@
 <?php
-log_status('init_repo: included');
+log_status("\n\n:: init_repo included");
 // ensure we're working from a base directory
 if(file_exists($dir_base)){
-	log_status('init_repo: base directory is '.$dir_base);
+	log_status('base directory is '.$dir_base);
 	// if the project directory doesn't exist
 	if(!file_exists($dir_proj)){
-		log_status('init_repo: project directory does not exists '.$dir_proj);
+		log_status('project directory does not exists '.$dir_proj);
 		// if the client directory doesn't exist
 		if(!file_exists($dir_client)){
-			log_status('init_repo: client directory does not exists '.$dir_client);
+			log_status('client directory does not exists '.$dir_client);
 			// create the client directory
-			log_status('init_repo: create client directory');
+			log_status('create client directory');
 			mkdir($dir_client);
-			log_status('init_repo: create archive directory');
+			log_status('create archive directory');
 			mkdir($dir_client.'archive');
-			log_status('init_repo: copy client_template/index.php');
+			log_status('copy client_template/index.php');
 			copy($dir_base.'client_template/index.php',$dir_client.'index.php');
 		}
 		// change into the client directory
 		chdir($dir_client);
 		// clone in the repo
-		log_status('init_repo: clone --origin gitlab '.$repo.' '.$proj);
+		log_status('clone --origin gitlab '.$repo.' '.$proj);
 		exec('git clone --origin gitlab '.$repo.' '.$proj);
 		// cd into it
 		chdir($dir_proj);
@@ -30,11 +30,11 @@ if(file_exists($dir_base)){
 		// change back to the root directory
 		chdir($dir_root);
 		// report true to signify that initialization took place
-		log_status('init_repo: initial clone requested');
+		log_status('initial clone requested');
 		return true;
 	// if the project isn't a git repo
 	} elseif(!file_exists($dir_proj . '.git')){
-		log_status('init_repo: not a git repository but project directory is present');
+		log_status('not a git repository but project directory is present');
 		// change into the project directory
 		chdir($dir_proj);
 		// set up git
@@ -47,10 +47,10 @@ if(file_exists($dir_base)){
 		// change back to the root directory
 		chdir($dir_root);
 		// report true to signify that initialization took place
-		log_status('init_repo: git initialized with existing files');
+		log_status('git initialized with existing files');
 		return true;
 	} else {
-		log_status('init_repo: initialization not run');
+		log_status('initialization not run');
 	}
 // if the base directory doesn't exist (also true for non-supported branches)
 } else {

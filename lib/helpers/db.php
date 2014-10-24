@@ -1,27 +1,27 @@
 <?php
 // create a database
 function db_create($db_creds){
-	log_status('db_create: called');
-	log_status('db_create: database credentials received');
-	log_status('db_create: '.print_r($db_creds,1));
+	log_status("\n\n: called");
+	log_status('database credentials received');
+	log_status('they are '.print_r($db_creds,1));
     // connect to mysql
     $link = mysql_connect('localhost', 'admin', 'iUu5xkAt/v8=');
     if($link) {
-    	log_status('db_create: connected to mysql as root');
+    	log_status('connected to mysql as root');
         // create the database
         $db = mysql_select_db($db_creds['name'], $link);
         // if the database doesn't exist already
         if (!$db) {
-        	log_status('db_create: database '.$db_creds['name'].' does not exist');
+        	log_status('database '.$db_creds['name'].' does not exist');
             mysql_query('CREATE DATABASE IF NOT EXISTS '.$db_creds['name'], $link);
-            log_status('db_create: ran create database '.$db_creds['name']);
+            log_status('ran create database '.$db_creds['name']);
             mysql_query('GRANT USAGE ON *.* TO '. $db_creds['user'].'@localhost IDENTIFIED BY \''.$db_creds['pass'].'\'', $link);
             mysql_query('GRANT ALL PRIVILEGES ON '.$db_creds['name'].'.* TO '.$db_creds['user'].'@localhost', $link);
-            log_status('db_create: created user '.$db_creds['user'].' with privaleges for '.$db_creds['name']);
+            log_status('created user '.$db_creds['user'].' with privaleges for '.$db_creds['name']);
             mysql_query('FLUSH PRIVILEGES', $link);
-            log_status('db_create: privileges flushed');
+            log_status('privileges flushed');
         } else {
-        	log_status('db_create: database already exists');
+        	log_status('database already exists');
             mysql_close($link);
             return false;
         }
@@ -31,28 +31,28 @@ function db_create($db_creds){
 
 // export (mysqldump) a database
 function db_export($db_creds, $db_dir){
-	log_status('db_export: called');
-	log_status('db_export: database credentials received');
-	log_status('db_export: '.print_r($db_creds,1));
-	log_status('db_export: database directory is '.$db_dir);
+	log_status("\n\n: db_export: called");
+	log_status('database credentials received');
+	log_status('they are '.print_r($db_creds,1));
+	log_status('database directory is '.$db_dir);
     // if the /.db/ directory doesn't exist
     if(!file_exists($db_dir)){
-    	log_status('db_export: create /.db/ directory');
+    	log_status('create /.db/ directory');
         // create the directory
         mkdir($db_dir);
     } else {
-    	log_status('db_export: /.db/ directory exists');
+    	log_status('/.db/ directory exists');
     }
     // dump the database
-    log_status('db_export: export /.db/db.sql');
+    log_status('export /.db/db.sql');
     shell_exec('/usr/bin/mysqldump -h'.$db_creds['host'].' -u'.$db_creds['user'].' -p\''.$db_creds['pass'].'\' '.$db_creds['name'].' > '.$db_dir .'db.sql');
 }
 
 // import a database
 function db_import($db_creds, $db_dir){
-	log_status('db_import: called');
+	log_status("\n\n: db_import: called");
 	log_status('db_import: database credentials received');
-	log_status('db_export: the credentials are '.print_r($db_creds,1));
+	log_status('the credentials are '.print_r($db_creds,1));
 	log_status('db_import: database directory is '.$db_dir);
 	// variable to store sql dump
 	$db_dump = $db_dir.'db.sql';
@@ -76,15 +76,15 @@ function db_import($db_creds, $db_dir){
 
 // find and replace in a database
 function db_far($db_creds, $server, $server_version, $client, $proj) {
-	log_status('db_far: called');
-	log_status('db_far: database credentials received');
-	log_status('db_far: '.print_r($db_creds,1));
-	log_status('db_far: server is '.$server);
-	log_status('db_far: client is '.$client);
-	log_status('db_far: project is '.$proj);
+	log_status("\n\n: db_far: called");
+	log_status('database credentials received');
+	log_status('they are '.print_r($db_creds,1));
+	log_status('server is '.$server);
+	log_status('client is '.$client);
+	log_status('project is '.$proj);
     // if we have enough info
     if(count($db_creds) == 7 && $server && $client && $proj){
-    	log_status('db_far: run far');
+    	log_status('run far');
         // create find and replace command
         $far = 'php lib/helpers/far.php ';
         $far .= '\''.$db_creds['name'].'\' ';
@@ -96,21 +96,21 @@ function db_far($db_creds, $server, $server_version, $client, $proj) {
         $far .= '\'http://'.$server.$server_version.'.zenman.com/sites/'.$client.'/'.$proj.'\'';
         //execute find and replace
         $output = shell_exec($far);
-        log_status('db_far: ran with output ');
+        log_status('ran with output ');
         log_status($output);
     // if we do not have all the info
     } else {
 		if(count($db_creds) != 7){
-			log_status('db_far: 7 perimeters not received');
+			log_status('7 perimeters not received');
 		}
 		if(!$server){
-			log_status('db_far: server not set');
+			log_status('server not set');
 		}
 		if(!$client){
-			log_status('db_far: client not set');
+			log_status('client not set');
 		}
 		if(!$proj){
-			log_status('db_far: project not set');
+			log_status('project not set');
 		}
     	return false;
     }
@@ -118,9 +118,9 @@ function db_far($db_creds, $server, $server_version, $client, $proj) {
 
 // get and return the siteurl
 function wp_siteurl($db_creds){
-	log_status('wp_siteurl: called');
-	log_status('wp_siteurl: database credentials received');
-	log_status('wp_siteurl: '.print_r($db_creds,1));
+	log_status("\n\n: wp_siteurl: called");
+	log_status('database credentials received');
+	log_status('they are '.print_r($db_creds,1));
 
     // aside: it seems ludicrous to me that it'd be impossible to test a database connection NOT as the
     // root user without throwing a php error, but I have to do it this way currently or it just fails
@@ -129,37 +129,37 @@ function wp_siteurl($db_creds){
     $link = mysql_connect('localhost', 'admin', 'iUu5xkAt/v8=');
     // if the connection succeeded
     if($link) {
-    	log_status('wp_siteurl: connected to mysql as root user');
+    	log_status('connected to mysql as root user');
         // see if the database exists
         $db = mysql_select_db($db_creds['name'], $link);
         // if the database exists
         if($db) {
-        	log_status('wp_siteurl: database '.$db_creds['name'].' found');
+        	log_status('database '.$db_creds['name'].' found');
             // close the connection as the administrator
             mysql_close($link);
             // reopen a connection with the database credentials
             $mysqli = @new mysqli($db_creds['host'], $db_creds['user'], $db_creds['pass'], $db_creds['name']);
-            log_status('wp_siteurl: connected to '.$db_creds['host'].' '.$db_creds['user'].' '.$db_creds['pass'].' '.$db_creds['name'].' with prefix '.$db_creds['prefix']);
+            log_status('connected to '.$db_creds['host'].' '.$db_creds['user'].' '.$db_creds['pass'].' '.$db_creds['name'].' with prefix '.$db_creds['prefix']);
             // check the siteurl and return it
             $siteurl = $mysqli->query('SELECT option_value FROM '.$db_creds['prefix'].'options WHERE option_name = "siteurl"');
             if($siteurl){
                 $siteurl_val = $siteurl->fetch_object()->option_value;
                 if($siteurl_val){
-                    log_status('wp_siteurl: siteurl is "'.$siteurl_val.'"');
+                    log_status('siteurl is "'.$siteurl_val.'"');
                     return $siteurl_val;
                 } else {
-                    log_status('wp_siteurl: siteurl value undetermined');
+                    log_status('siteurl value undetermined');
                     return false;
                 }
             } else {
-                log_status('wp_siteurl: database query for siteurl unsuccessful');
+                log_status('database query for siteurl unsuccessful');
                 return false;
             }
         }
     // if the connection failed
     } else {
     	mysql_close($link);
-    	log_status('wp_siteurl: connection failed as root user');
+    	log_status('connection failed as root user');
     	return false;
     }
     mysql_close($link);

@@ -25,7 +25,7 @@ if($argv[8] == '' && ($argv[1] != '' && $argv[2] != '' && $argv[3] != '' && $arg
     );
 
     // output the values
-    echo "** Find and replace called\n";
+    echo "\n\n:: Find and replace called\n";
     echo "name............".$wp_config_array['name']."\n";
     echo "user............".$wp_config_array['user']."\n";
     echo "pass............".$wp_config_array['pass']."\n";
