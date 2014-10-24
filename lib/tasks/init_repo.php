@@ -20,17 +20,19 @@ if(file_exists($dir_base)){
 		// change into the client directory
 		chdir($dir_client);
 		// clone in the repo
-		log_status('clone --origin gitlab '.$repo.' '.$proj);
-		exec('git clone --origin gitlab '.$repo.' '.$proj);
+		log_status('clone --depth 1 --branch '.$branch.' --origin gitlab '.$repo.' '.$proj);
+		exec('git clone --depth 1 --branch '.$branch.' --origin gitlab '.$repo.' '.$proj);
 		// cd into it
 		chdir($dir_proj);
+		// rename the branch
+		exec('git branch -m gitlab_preview');
 		// establish credentials
 		exec('git config user.email "dev@zenman.com"');
 		exec('git config user.name "YOUR_USERNAME"');
 		// change back to the root directory
 		chdir($dir_root);
 		// report true to signify that initialization took place
-		log_status('initial clone requested');
+		log_status('initial clone script ran');
 		return true;
 	// if the project isn't a git repo
 	} elseif(!file_exists($dir_proj . '.git')){
