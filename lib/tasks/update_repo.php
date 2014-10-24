@@ -11,9 +11,7 @@ if(file_exists($dir_proj . '/.git')){
 	$sha_cur = substr(shell_exec("$git rev-parse --verify HEAD"), 0, 40);
 	log_status('the current sha is ' . $sha_cur);
 	log_status('the after sha is ' . $sha_after);
-	log_status('the comparison equals ' . ($sha_cur != $sha_after));
-	log_status('which is equivalent to ' . $sha_cur . ' != ' . $sha_after);
-
+	log_status('sha not equal comparison is ' . ($sha_cur != $sha_after));
 	// if this is not a clean working directory
 	if(strpos($status, "working directory clean") == false){
 		log_status('working directory is not clean');
@@ -30,6 +28,7 @@ if(file_exists($dir_proj . '/.git')){
 		log_status('requested automated commit');
 	// if this is a new commit
 	} elseif($sha_cur != $sha_after) {
+		log_status('fetch new commit script running');
 		// create the gitlab_preview branch (doesn't to do so if it exists already)
 		exec("$git branch gitlab_preview");
 		// checkout the gitlab_preview branch (even if it is already)
@@ -37,7 +36,7 @@ if(file_exists($dir_proj . '/.git')){
 		// get rid of untracked files and directories
 		exec("$git clean -f -d");
 		// fetch the branch
-		exec("$git fetch gitlab $branch:refs/remotes/gitlab/$branch");
+		exec("$git fetch --depth=1 gitlab $branch:refs/remotes/gitlab/$branch");
 		// reset hard to the branch: no need to preserve history in the gitlab_preview
 		exec("$git reset --hard gitlab/$branch");
 		log_status('reset hard requested on gitlab_preview branch');
