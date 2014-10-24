@@ -113,9 +113,9 @@ Initialize Data */
 		if($proj_type == 'wp'){
 			log_status('is type wordpress');
 			// get all the database helper functions
-			include_once 'lib/helpers/db.php';
+			include_once 'lib/functions/db.php';
 			// get the wordpress database credentials
-			include_once 'lib/helpers/wp_db.php';
+			include_once 'lib/functions/wp_db.php';
 			$wp_db_creds = wp_db($branch, $dir_proj, $server_version);
 		}
 
@@ -123,17 +123,17 @@ Initialize Data */
 Run All the Commands */
 
 		// try to initialize the repo
-		include_once 'lib/tasks/init_repo.php';
+		include_once 'lib/includes/init_repo.php';
 		// update the branch
-		include_once 'lib/tasks/update_repo.php';
+		include_once 'lib/includes/update_repo.php';
 
 		// for wordpress sites
 		if($proj_type == 'wp'){
 			log_status('is type wordpress');
 			// grab all the database helper functions
-			include_once 'lib/helpers/db.php';
+			include_once 'lib/functions/db.php';
 			// get the wordpress database credentials
-			include_once 'lib/helpers/wp_db.php';
+			include_once 'lib/functions/wp_db.php';
 			$wp_db_creds = wp_db($branch, $dir_proj, $server_version);
 			// if the database credentials are established
 			if($wp_db_creds){

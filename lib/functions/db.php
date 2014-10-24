@@ -86,7 +86,7 @@ function db_far($db_creds, $server, $server_version, $client, $proj) {
     if(count($db_creds) == 7 && $server && $client && $proj){
     	log_status('run far');
         // create find and replace command
-        $far = 'php lib/helpers/far.php ';
+        $far = 'php lib/functions/far.php ';
         $far .= '\''.$db_creds['name'].'\' ';
         $far .= '\''.$db_creds['user'].'\' ';
         $far .= '\''.$db_creds['pass'].'\' ';

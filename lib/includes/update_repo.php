@@ -19,7 +19,7 @@ if(file_exists($dir_proj . '/.git')){
 		if($proj_type == 'wp'){
 			log_status('is type wordpress');
 			// include the database scripts
-			include_once 'lib/helpers/db.php';
+			include_once 'lib/functions/db.php';
 			// dump the database so it will be saved
 			db_export($wp_db_creds, $dir_proj . '.db/');
 		}
