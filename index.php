@@ -55,14 +55,7 @@ Initialize Data */
 	// no need to continue if no data received or it's from an unauthorized source
 	if($gitlab && ($ip_addy == 'YOUR_IP_ADDRESS')){
 
-		$sha_before = $gitlab->before;
-		log_status('sha before: '.$gitlab->before);
-
-		$sha_after = $gitlab->after;
-		log_status('sha after : '.$gitlab->after);
-
-		$sha_cur = null;
-
+		// grab all the get data
 		$client = (isset($_GET['client']) ? $_GET['client'] : false);
 		if($client){
 			log_status('client: '.$client);
@@ -82,6 +75,7 @@ Initialize Data */
 			log_status('no project type defined');
 		}
 
+		// set up necessary variables and report their values
 		$branch_parts = explode('/', $gitlab->ref);
 		$branch = array_pop($branch_parts); //the last item is the branch
 		log_status('branch: '.$branch);
@@ -101,6 +95,7 @@ Initialize Data */
 			throw new Exception("Server [$dir_base] does not exist");
 		}
 
+		// store directory locations and report where they are
 		$dir_client = $dir_base . $client . '/';
 		log_status('client directory: '.$dir_client);
 		$dir_proj = $dir_client . $proj . '/';
@@ -108,6 +103,20 @@ Initialize Data */
 
 		$repo = $gitlab->repository->url;
 		log_status('repo: '.$repo);
+
+		// check the commit sha
+		$sha_before = $gitlab->before;
+		$sha_after = $gitlab->after;
+		$git = "git --git-dir=$dir_proj/.git --work-tree=$dir_proj"; // run git commands in working directory
+		//compare the current and after sha values
+		$sha_cur = substr(shell_exec("$git rev-parse --verify HEAD"), 0, 40);
+		log_status("the current sha is \"$sha_cur\"");
+		log_status("the after sha is \"$sha_after\"");
+		log_status('the current sha and after sha are ' . ($sha_cur != $sha_after ? 'not equal' : 'equal'));
+		// if the current and after commit are the same
+		if($sha_cur == $sha_after) {
+			throw new Exception('Current and requested commits are identical');
+		}
 
 		// for wordpress sites
 		if($proj_type == 'wp'){
