@@ -36,7 +36,7 @@ if(file_exists($dir_proj . '/.git')){
 		// get rid of untracked files and directories
 		exec("$git clean -f -d");
 		// fetch the branch
-		exec("$git fetch --depth=1 gitlab $branch:refs/remotes/gitlab/$branch");
+		exec("$git fetch -f --depth=1 gitlab $branch:refs/remotes/gitlab/$branch");
 		// reset hard to the branch: no need to preserve history in the gitlab_preview
 		exec("$git reset --hard gitlab/$branch");
 		log_status('reset hard requested on gitlab_preview branch');
