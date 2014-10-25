@@ -60,7 +60,7 @@ Set Up Status Logging */
             file_put_contents($file, $extra_debug."called on command line: \n\t$exec\n", FILE_APPEND | LOCK_EX);
             // execute and capture response
             exec("$exec 2>&1", $output);
-            $exec_output = print_r($output,1);
+            $exec_output = str_replace("\n", "\n\t", print_r($output,1));
             // write the output to the log
             file_put_contents($file, $extra_debug."prevous command output: \n\t$exec_output\n", FILE_APPEND | LOCK_EX);
             // truncate the log if it gets too large
