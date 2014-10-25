@@ -24,7 +24,7 @@ Set Up Status Logging */
 	        global $dir_root;
 	        $file = $dir_root.'webhook.log';
 
-	        //extra debug info
+	        // extra debug info
 	        $extra_debug = '';
 	        if($_GET['log'] == 'debug'){
 	        	$bt = debug_backtrace();
@@ -34,7 +34,9 @@ Set Up Status Logging */
           		$extra_debug = "$debug_line $debug_file " ;
 	        }
 
+	        // write the output to the log
 	        file_put_contents($file, $extra_debug."$status\n", FILE_APPEND | LOCK_EX);
+	        // truncate the log if it gets too large
 	        if($lines = count(file($file)) >= 100000){
 	            $truncated = shell_exec("tail -n 1000 $file");
 	            file_put_contents($file, $truncated, LOCK_EX);
@@ -43,17 +45,46 @@ Set Up Status Logging */
 	        return false;
 	    }
 	}
+	function log_exec($exec){
+	    if(isset($_GET['log'])){
+	        global $dir_root;
+	        $file = $dir_root.'webhook.log';
+
+	        // extra debug info
+	        $extra_debug = '';
+	        if($_GET['log'] == 'debug'){
+	        	$bt = debug_backtrace();
+          		$caller = array_shift($bt);
+          		$debug_line = str_pad($caller['line'],5);
+          		$debug_file = str_pad(array_pop(explode('/', $caller['file'])),17);
+          		$extra_debug = "$debug_line $debug_file " ;
+	        }
+	        // report what was called
+	        file_put_contents($file, $extra_debug."called on command line: \n$exec\n", FILE_APPEND | LOCK_EX);
+	        // execute and capture response
+	        $exec_status = exec("$exec 2>&1");
+	        // write the output to the log
+	        file_put_contents($file, $extra_debug."prevous command output: \n$exec_status\n", FILE_APPEND | LOCK_EX);
+	        // truncate the log if it gets too large
+	        if($lines = count(file($file)) >= 100000){
+	            $truncated = shell_exec("tail -n 1000 $file");
+	            file_put_contents($file, $truncated, LOCK_EX);
+	        }
+	    } else {
+	        return false;
+	    }
+	}
+
 	log_status("\n\n\n\nzen-hooks start :::::::::::::::::::::::: [ ".date("Y-m-d H:i:s")." ]");
 
 /*/////////////////////////////////////////////////////////////////Initialize Data
 Initialize Data */
 
 	$gitlab = json_decode(file_get_contents('php://input')); //data from gitlab
-	$ip_addy = $_SERVER['REMOTE_ADDR'];
 	log_status('gitlab data: '.($gitlab ? 'true' : 'false'));
 	log_status('gitlab json: '.print_r($gitlab,1));
 	// no need to continue if no data received or it's from an unauthorized source
-	if($gitlab && ($ip_addy == 'YOUR_IP_ADDRESS')){
+	if($gitlab){
 
 		// grab all the get data
 		$client = (isset($_GET['client']) ? $_GET['client'] : false);
@@ -160,21 +191,14 @@ Run All the Commands */
 				}
 			}
 		}
-		log_status("zen-hooks end :::::::::::::::::::::::::: [ ".date("Y-m-d H:i:s")." ]");
+		log_status("\nzen-hooks end :::::::::::::::::::::::::: [ ".date("Y-m-d H:i:s")." ]\n");
 	// if data isn't right
 	} else {
 		// if no data was received from gitlab
-		if($ip_addy != 'YOUR_IP_ADDRESS'){
-			// show warning visibly just in case someone is visiting the url
-			echo 'Permission denied to access zen-hooks';
-			throw new Exception("Unauthorized access attempted from $ip_addy");
-		// if the remote address is not the git server
-		} elseif(!$gitlab) {
-			throw new Exception('No data received from gitlab');
-		}
+		throw new Exception('No data received from gitlab');
 	}
 } catch (Exception $e) {
 	//output the log
 	error_log(sprintf("%s >> %s", date('Y-m-d H:i:s'), $e));
-	log_status("\n\nzen-hooks end :::::::::::::::::::::::::: [ ".date("Y-m-d H:i:s")." ]");
+	log_status("\nzen-hooks end :::::::::::::::::::::::::: [ ".date("Y-m-d H:i:s")." ]\n");
 }
