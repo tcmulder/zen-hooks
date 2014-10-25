@@ -11,7 +11,7 @@ if(file_exists($dir_proj . '/.git')){
 	$sha_cur = substr(shell_exec("$git rev-parse --verify HEAD"), 0, 40);
 	log_status('the current sha is ' . $sha_cur);
 	log_status('the after sha is ' . $sha_after);
-	log_status('sha not equal comparison is ' . ($sha_cur != $sha_after));
+	log_status('the current sha and after sha are ' . ($sha_cur != $sha_after ? 'not equal' : 'equal'));
 	// if this is not a clean working directory
 	if(strpos($status, "working directory clean") == false){
 		log_status('working directory is not clean');

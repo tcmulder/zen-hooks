@@ -167,5 +167,5 @@ Run All the Commands */
 } catch (Exception $e) {
 	//output the log
 	error_log(sprintf("%s >> %s", date('Y-m-d H:i:s'), $e));
-	log_status("\nzen-hooks end :::::::::::::::::::::::::: [ ".date("Y-m-d H:i:s")." ]");
+	log_status("\n\nzen-hooks end :::::::::::::::::::::::::: [ ".date("Y-m-d H:i:s")." ]");
 }
