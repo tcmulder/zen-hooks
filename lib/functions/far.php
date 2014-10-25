@@ -85,7 +85,7 @@ class AppDatabaseScrub{
      *
      * @param array $table The list of tables from the $_post var to be checked.
      *
-     * @return array	Same array as passed in but with any tables that don'e exist removed.
+     * @return array    Same array as passed in but with any tables that don'e exist removed.
      */
     function check_table_array($table = ''){
         return in_array($table, $this->all_tables);
@@ -117,7 +117,7 @@ class AppDatabaseScrub{
      * @param array  $data       Used to pass any subordinate arrays back to in.
      * @param bool   $serialised Does the array passed via $data need serialising.
      *
-     * @return array	The original array with all elements replaced as needed.
+     * @return array    The original array with all elements replaced as needed.
      */
     function recursive_unserialize_replace($from = '', $to = '', $data = '', $serialised = false) {
 
@@ -292,40 +292,40 @@ class AppDatabaseScrub{
         return $before . implode($before . $sep . $after, $_tmp) . $after;
     }
     function check_db_load_tables($wp_config_array){
-    	$this->connection = @mysql_connect($this->host, $this->user, $this->pass);
-    	if (! $this->connection) {
-    		$this->errors[] = mysql_error();
-    	}
-    	if (! empty($this->char)) {
-    		if (function_exists('mysql_set_charset')){
-    			mysql_set_charset($this->char, $this->connection);
+        $this->connection = @mysql_connect($this->host, $this->user, $this->pass);
+        if (! $this->connection) {
+            $this->errors[] = mysql_error();
+        }
+        if (! empty($this->char)) {
+            if (function_exists('mysql_set_charset')){
+                mysql_set_charset($this->char, $this->connection);
             } else{
-    			mysql_query('SET NAMES ' . $this->char, $this->connection);  // Shouldn't really use this, but there for backwards compatibility
+                mysql_query('SET NAMES ' . $this->char, $this->connection);  // Shouldn't really use this, but there for backwards compatibility
             }
-    	}
+        }
 
-    	// Do we have any tables and if so build the all tables array
-    	$this->all_tables = array();
-    	@mysql_select_db($this->data, $this->connection);
-    	$this->all_tables_mysql = @mysql_query('SHOW TABLES', $this->connection);
-    	if (! $this->all_tables_mysql) {
-    		$this->errors[] = mysql_error();
-    	} else {
-    		while ($this->table = mysql_fetch_array($this->all_tables_mysql)) {
-    			$this->all_tables[] = $this->table[ 0 ];
-    		}
-    	}
+        // Do we have any tables and if so build the all tables array
+        $this->all_tables = array();
+        @mysql_select_db($this->data, $this->connection);
+        $this->all_tables_mysql = @mysql_query('SHOW TABLES', $this->connection);
+        if (! $this->all_tables_mysql) {
+            $this->errors[] = mysql_error();
+        } else {
+            while ($this->table = mysql_fetch_array($this->all_tables_mysql)) {
+                $this->all_tables[] = $this->table[ 0 ];
+            }
+        }
     }
     function validate_search(){
-    	if (empty($this->srch)) {
-    		$this->errors[] = 'Missing search string.';
-    	}
-    	if (empty($this->rplc)) {
-    		$this->errors[] = 'Replace string is blank.';
-    	}
-    	if (! (empty($this->rplc) && empty($this->srch)) && $this->rplc == $this->srch) {
-    		$this->errors[] = 'Search and replace are the same, please check your values.';
-    	}
+        if (empty($this->srch)) {
+            $this->errors[] = 'Missing search string.';
+        }
+        if (empty($this->rplc)) {
+            $this->errors[] = 'Replace string is blank.';
+        }
+        if (! (empty($this->rplc) && empty($this->srch)) && $this->rplc == $this->srch) {
+            $this->errors[] = 'Search and replace are the same, please check your values.';
+        }
     }
 
     function scrub_data(){
