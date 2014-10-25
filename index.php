@@ -25,7 +25,7 @@ Set Up Status Logging */
             $file = $dir_root.'webhook.log';
             // extra debug info
             $extra_debug = '';
-            if($_GET['log'] == 'debugTEMP'){
+            if($_GET['log'] == 'debug'){
                 $bt = debug_backtrace();
                 $caller = array_shift($bt);
                 $debug_file = array_pop(explode('/', $caller['file']));
@@ -49,7 +49,7 @@ Set Up Status Logging */
             $file = $dir_root.'webhook.log';
             // extra debug info
             $extra_debug = '';
-            if($_GET['log'] == 'debugTEMP'){
+            if($_GET['log'] == 'debug'){
                 $bt = debug_backtrace();
                 $caller = array_shift($bt);
                 $debug_file = array_pop(explode('/', $caller['file']));
@@ -59,9 +59,10 @@ Set Up Status Logging */
             // report what was called
             file_put_contents($file, $extra_debug."called on command line: \n\t$exec\n", FILE_APPEND | LOCK_EX);
             // execute and capture response
-            $exec_status = exec("$exec 2>&1");
+            exec("$exec 2>&1", $output);
+            $exec_output = print_r($output,1);
             // write the output to the log
-            file_put_contents($file, $extra_debug."prevous command output: \n\t$exec_status\n", FILE_APPEND | LOCK_EX);
+            file_put_contents($file, $extra_debug."prevous command output: \n\t$exec_output\n", FILE_APPEND | LOCK_EX);
             // truncate the log if it gets too large
             if($lines = count(file($file)) >= 100000){
                 $truncated = shell_exec("tail -n 1000 $file");

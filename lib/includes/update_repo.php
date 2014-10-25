@@ -6,7 +6,7 @@ if(file_exists($dir_proj . '.git')){
     // run git commands in working directory
     $git = "git --git-dir=$dir_proj.git --work-tree=$dir_proj";
     // get the current status
-    $status = shell_exec("$git status");
+    $status = log_exec("$git status");
     // if this is not a clean working directory
     if(strpos($status, "working directory clean") == false){
         log_status('working directory is not clean');

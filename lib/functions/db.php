@@ -45,7 +45,7 @@ function db_export($db_creds, $db_dir){
     }
     // dump the database
     log_status('export /.db/db.sql');
-    shell_exec('/usr/bin/mysqldump -h'.$db_creds['host'].' -u'.$db_creds['user'].' -p\''.$db_creds['pass'].'\' '.$db_creds['name'].' > '.$db_dir .'db.sql');
+    log_exec('/usr/bin/mysqldump -h'.$db_creds['host'].' -u'.$db_creds['user'].' -p\''.$db_creds['pass'].'\' '.$db_creds['name'].' > '.$db_dir .'db.sql');
 }
 
 // import a database
@@ -96,7 +96,7 @@ function db_far($db_creds, $server, $server_version, $client, $proj) {
         $far .= '\'http://'.$server.$server_version.'.zenman.com/sites/'.$client.'/'.$proj.'\'';
         //execute find and replace
         $output = shell_exec($far);
-        log_status('ran with output ');
+        log_status('ran with output: ');
         log_status($output);
     // if we do not have all the info
     } else {
