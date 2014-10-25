@@ -26,13 +26,13 @@ if($argv[8] == '' && ($argv[1] != '' && $argv[2] != '' && $argv[3] != '' && $arg
 
     // output the values
     echo "\n\n:: Find and replace called\n";
-    echo "name............".$wp_config_array['name']."\n";
-    echo "user............".$wp_config_array['user']."\n";
-    echo "pass............".$wp_config_array['pass']."\n";
-    echo "host............".$wp_config_array['host']."\n";
-    echo "char............".$wp_config_array['char']."\n";
-    echo "from............".$wp_config_array['from']."\n";
-    echo "to..............".$wp_config_array['to'];
+    echo " input name......".$wp_config_array['name']."\n";
+    echo " input user......".$wp_config_array['user']."\n";
+    echo " input pass......".$wp_config_array['pass']."\n";
+    echo " input host......".$wp_config_array['host']."\n";
+    echo " input char......".$wp_config_array['char']."\n";
+    echo " input from......".$wp_config_array['from']."\n";
+    echo " input to........".$wp_config_array['to'];
 
     // run far on them
     $appDatabaseScrub = new AppDatabaseScrub($wp_config_array);
@@ -347,15 +347,15 @@ class AppDatabaseScrub{
 
         // Calc the time taken.
         $this->time = array_sum(explode(' ', $this->report[ 'end' ])) - array_sum(explode(' ', $this->report[ 'start' ]));
-        printf("
-* Find and replace ran
-replaced........%s
-new string......%s
-tables..........%d
-row change......%d
-cell change.....%d
-db change.......%d
-seconds taken...%f\n",
+        printf("\n
+Find and replace ran
+ replaced........%s
+ new string......%s
+ tables..........%d
+ row change......%d
+ cell change.....%d
+ db change.......%d
+ seconds taken...%f\n",
             $this->srch,
             $this->rplc,
             $this->report[ 'tables' ],

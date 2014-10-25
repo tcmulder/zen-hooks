@@ -68,17 +68,17 @@ function wp_db($branch, $dir_proj, $server_version){
                 $wp_db_creds['siteurl'] = $siteurl;
             }
             log_status('resulting array ');
-            log_status(print_r($wp_db_creds,1));
+            log_status(str_replace("\n", "\n\t", print_r($wp_db_creds,1)));
         }
         // if all credentials were generated
         if(count($wp_db_creds) == 7){
             log_status('return database credentials');
-            log_status('they are '.print_r($wp_db_creds,1));
+            log_status('they are '.str_replace("\n", "\n\t", print_r($wp_db_creds,1)));
             return $wp_db_creds;
         // if most credentials were generated (no siteurl)
         } elseif(!isset($wp_db_creds['siteurl']) && $wp_db_creds){
             log_status('return database credentials without siteurl');
-            log_status('credentials are "'.print_r($wp_db_creds,1).'"');
+            log_status('credentials are "'.str_replace("\n", "\n\t", print_r($wp_db_creds,1)).'"');
             return $wp_db_creds;
         // if the credentials were not generated
         } else {

@@ -3,7 +3,7 @@
 function db_create($db_creds){
 	log_status("\n\n: called");
 	log_status('database credentials received');
-	log_status('they are '.print_r($db_creds,1));
+	log_status('they are '.str_replace("\n", "\n\t", print_r($db_creds,1)));
     // connect to mysql
     $link = mysql_connect('localhost', 'admin', 'iUu5xkAt/v8=');
     if($link) {
@@ -33,7 +33,7 @@ function db_create($db_creds){
 function db_export($db_creds, $db_dir){
 	log_status("\n\n: db_export: called");
 	log_status('database credentials received');
-	log_status('they are '.print_r($db_creds,1));
+	log_status('they are '.str_replace("\n", "\n\t", print_r($db_creds,1)));
 	log_status('database directory is '.$db_dir);
     // if the /.db/ directory doesn't exist
     if(!file_exists($db_dir)){
@@ -52,7 +52,7 @@ function db_export($db_creds, $db_dir){
 function db_import($db_creds, $db_dir){
 	log_status("\n\n: db_import: called");
 	log_status('db_import: database credentials received');
-	log_status('the credentials are '.print_r($db_creds,1));
+	log_status('the credentials are '.str_replace("\n", "\n\t", print_r($db_creds,1)));
 	log_status('db_import: database directory is '.$db_dir);
 	// variable to store sql dump
 	$db_dump = $db_dir.'db.sql';
@@ -78,7 +78,7 @@ function db_import($db_creds, $db_dir){
 function db_far($db_creds, $server, $server_version, $client, $proj) {
 	log_status("\n\n: db_far: called");
 	log_status('database credentials received');
-	log_status('they are '.print_r($db_creds,1));
+	log_status('they are '.str_replace("\n", "\n\t", print_r($db_creds,1)));
 	log_status('server is '.$server);
 	log_status('client is '.$client);
 	log_status('project is '.$proj);
@@ -120,7 +120,7 @@ function db_far($db_creds, $server, $server_version, $client, $proj) {
 function wp_siteurl($db_creds){
 	log_status("\n\n: wp_siteurl: called");
 	log_status('database credentials received');
-	log_status('they are '.print_r($db_creds,1));
+	log_status('they are '.str_replace("\n", "\n\t", print_r($db_creds,1)));
 
     // aside: it seems ludicrous to me that it'd be impossible to test a database connection NOT as the
     // root user without throwing a php error, but I have to do it this way currently or it just fails

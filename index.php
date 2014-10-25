@@ -23,17 +23,15 @@ Set Up Status Logging */
 	    if(isset($_GET['log'])){
 	        global $dir_root;
 	        $file = $dir_root.'webhook.log';
-
 	        // extra debug info
 	        $extra_debug = '';
-	        if($_GET['log'] == 'debug'){
+	        if($_GET['log'] == 'debugTEMP'){
 	        	$bt = debug_backtrace();
           		$caller = array_shift($bt);
-          		$debug_line = str_pad($caller['line'],5);
-          		$debug_file = str_pad(array_pop(explode('/', $caller['file'])),17);
-          		$extra_debug = "$debug_line $debug_file " ;
+          		$debug_file = array_pop(explode('/', $caller['file']));
+          		$debug_line = $caller['line'];
+          		$extra_debug = str_pad(" [$debug_file:$debug_line] ",22) ;
 	        }
-
 	        // write the output to the log
 	        file_put_contents($file, $extra_debug."$status\n", FILE_APPEND | LOCK_EX);
 	        // truncate the log if it gets too large
@@ -49,22 +47,21 @@ Set Up Status Logging */
 	    if(isset($_GET['log'])){
 	        global $dir_root;
 	        $file = $dir_root.'webhook.log';
-
 	        // extra debug info
 	        $extra_debug = '';
-	        if($_GET['log'] == 'debug'){
+	        if($_GET['log'] == 'debugTEMP'){
 	        	$bt = debug_backtrace();
           		$caller = array_shift($bt);
-          		$debug_line = str_pad($caller['line'],5);
-          		$debug_file = str_pad(array_pop(explode('/', $caller['file'])),17);
-          		$extra_debug = "$debug_line $debug_file " ;
+          		$debug_file = array_pop(explode('/', $caller['file']));
+          		$debug_line = $caller['line'];
+          		$extra_debug = str_pad(" [$debug_file:$debug_line] ",25) ;
 	        }
 	        // report what was called
-	        file_put_contents($file, $extra_debug."called on command line: \n$exec\n", FILE_APPEND | LOCK_EX);
+	        file_put_contents($file, $extra_debug."called on command line: \n\t$exec\n", FILE_APPEND | LOCK_EX);
 	        // execute and capture response
 	        $exec_status = exec("$exec 2>&1");
 	        // write the output to the log
-	        file_put_contents($file, $extra_debug."prevous command output: \n$exec_status\n", FILE_APPEND | LOCK_EX);
+	        file_put_contents($file, $extra_debug."prevous command output: \n\t$exec_status\n", FILE_APPEND | LOCK_EX);
 	        // truncate the log if it gets too large
 	        if($lines = count(file($file)) >= 100000){
 	            $truncated = shell_exec("tail -n 1000 $file");
@@ -138,7 +135,7 @@ Initialize Data */
 		// check the commit sha
 		$sha_before = $gitlab->before;
 		$sha_after = $gitlab->after;
-		$git = "git --git-dir=$dir_proj/.git --work-tree=$dir_proj"; // run git commands in working directory
+		$git = "git --git-dir=$dir_proj.git --work-tree=$dir_proj"; // run git commands in working directory
 		//compare the current and after sha values
 		$sha_cur = substr(shell_exec("$git rev-parse --verify HEAD"), 0, 40);
 		log_status("the current sha is \"$sha_cur\"");

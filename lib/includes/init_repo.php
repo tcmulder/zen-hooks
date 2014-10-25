@@ -36,17 +36,17 @@ if(file_exists($dir_base)){
 		// change into the project directory
 		chdir($dir_proj);
 		// set up git
-		echo exec('git init');
+		log_exec('git init');
 		// establish credentials
-		echo exec('git config user.email "dev@zenman.com"');
-		echo exec('git config user.name "YOUR_USERNAME"');
+		log_exec('git config user.email "dev@zenman.com"');
+		log_exec('git config user.name "YOUR_USERNAME"');
 		// set up remote
-		echo exec("git remote add gitlab $repo");
+		log_exec("git remote add gitlab $repo");
 		// run init commit in order to rename the branch from master
-		echo exec('echo "gitlab_preview" >> gitlab_preview');
-		echo exec('git add gitlab_preview');
-		echo exec('git commit -m "Initial commit"');
-		echo exec('git branch -m gitlab_preview');
+		log_exec('echo "gitlab_preview" >> gitlab_preview');
+		log_exec('git add gitlab_preview');
+		log_exec('git commit -m "Initial commit"');
+		log_exec('git branch -m gitlab_preview');
 		// change back to the root directory
 		chdir($dir_root);
 		// report true to signify that initialization took place
