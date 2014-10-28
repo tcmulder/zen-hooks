@@ -43,8 +43,8 @@ if(file_exists($dir_base)){
         // set up remote
         log_exec("git remote add gitlab $repo");
         // run init commit in order to rename the branch from master
-        log_exec('echo "gitlab_preview" >> gitlab_preview');
-        log_exec('git add gitlab_preview');
+        log_exec('echo "This file allows zen-hooks to make an initial commit. Read more here: http://git.zenman.com/tcmulder/zen-hooks/blob/master/readme.md" >> readme.md');
+        log_exec('git add readme.md');
         log_exec('git commit -m "Initial commit"');
         log_exec('git branch -m gitlab_preview');
         // change back to the root directory
