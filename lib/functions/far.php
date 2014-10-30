@@ -1,5 +1,7 @@
 #!/usr/bin/php
 <?php
+// exit if access isn't from git.zenman.com
+if($_SERVER['REMOTE_ADDR'] != 'YOUR_IP_ADDRESS'){ exit; }
 
 /*
  * Find and Replace

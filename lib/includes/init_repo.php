@@ -1,4 +1,8 @@
 <?php
+
+// exit if access isn't from git.zenman.com
+if($_SERVER['REMOTE_ADDR'] != 'YOUR_IP_ADDRESS'){ exit; }
+
 log_status("\n\n:: init_repo included");
 // ensure we're working from a base directory
 if(file_exists($dir_base)){

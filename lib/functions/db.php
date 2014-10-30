@@ -1,4 +1,8 @@
 <?php
+
+// exit if access isn't from git.zenman.com
+if($_SERVER['REMOTE_ADDR'] != 'YOUR_IP_ADDRESS'){ exit; }
+
 // create a database
 function db_create($db_creds){
     log_status("\n\n: called");

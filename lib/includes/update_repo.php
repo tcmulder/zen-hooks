@@ -1,4 +1,8 @@
 <?php
+
+// exit if access isn't from git.zenman.com
+if($_SERVER['REMOTE_ADDR'] != 'YOUR_IP_ADDRESS'){ exit; }
+
 log_status("\n\n:: update_repo included");
 // ensure this is a git project
 if(file_exists($dir_proj . '.git')){

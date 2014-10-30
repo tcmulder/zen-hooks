@@ -4,6 +4,9 @@
 Tell gitlab Everything's OK */
 header( "HTTP/1.1 200 OK" );
 
+// exit if access isn't from git.zenman.com
+if($_SERVER['REMOTE_ADDR'] != 'YOUR_IP_ADDRESS'){ exit; }
+
 /*/////////////////////////////////////////////////////////////////Set Up Error Logging
 Set Up Error Logging */
 ini_set("log_errors", 1);

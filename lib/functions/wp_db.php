@@ -1,4 +1,8 @@
 <?php
+
+// exit if access isn't from git.zenman.com
+if($_SERVER['REMOTE_ADDR'] != 'YOUR_IP_ADDRESS'){ exit; }
+
 function wp_db($branch, $dir_proj, $server_version){
     log_status("\n\n:: wp_db called");
     log_status('branch is '.$branch);
