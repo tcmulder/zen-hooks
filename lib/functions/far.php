@@ -1,7 +1,5 @@
 #!/usr/bin/php
 <?php
-// exit if access isn't from git.zenman.com
-if($_SERVER['REMOTE_ADDR'] != 'YOUR_IP_ADDRESS'){ exit; }
 
 /*
  * Find and Replace
@@ -40,9 +38,7 @@ if($argv[8] == '' && ($argv[1] != '' && $argv[2] != '' && $argv[3] != '' && $arg
     $appDatabaseScrub = new AppDatabaseScrub($wp_config_array);
 // if all the values were not received by shell
 } else {
-    echo "FAR encountered an error.\n";
-    echo "Expected: name user pass host char from to\n";
-    echo "Received: " . print_r($argv, true);
+    echo "far encountered an error.\n";
 }
 
 class AppDatabaseScrub{

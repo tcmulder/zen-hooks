@@ -192,6 +192,13 @@ Run All the Commands */
                 }
             }
         }
+
+        // run garbage collection to keep the repository size manageable
+        $git = "git --git-dir=$dir_proj.git --work-tree=$dir_proj";
+        log_status('git garbage collection script running');
+        log_exec("$git gc");
+        log_status('git garbage collection requested');
+
         log_status("\nzen-hooks end :::::::::::::::::::::::::: [ ".date("Y-m-d H:i:s")." ]\n");
     // if data isn't right
     } else {
