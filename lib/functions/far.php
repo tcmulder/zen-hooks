@@ -1,13 +1,22 @@
 #!/usr/bin/php
 <?php
-
 /*
+ * :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ * Zen Hooks Script :: Database Find and Replace
+ * -----------------------------------------------------------------
+ * author:          Tomas Mulder <tomas@zenman.com>
+ * repo:            git@git.zenman.com:tcmulder/zen-hooks.git
+ * since version:   3.0
+ *
+ * original script:
+ *
  * Find and Replace
  *
  * Code curtesy of:
  * First Written 2009-05-25 by David Coveney of Interconnect IT Ltd (UK)
  * http://www.davidcoveney.com or http://www.interconnectit.com
  * and released under the WTFPL *
+ * :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  */
 
 // if all the values were received from shell

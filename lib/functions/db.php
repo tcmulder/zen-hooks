@@ -1,4 +1,13 @@
 <?php
+/*
+ * :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ * Zen Hooks Script :: Database Functions
+ * -----------------------------------------------------------------
+ * author:          Tomas Mulder <tomas@zenman.com>
+ * repo:            git@git.zenman.com:tcmulder/zen-hooks.git
+ * since version:   3.0
+ * :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ */
 
 // exit if access isn't from git.zenman.com
 if($_SERVER['REMOTE_ADDR'] != 'YOUR_IP_ADDRESS'){ exit; }
