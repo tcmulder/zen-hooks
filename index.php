@@ -82,7 +82,7 @@ Set Up Status Logging */
                 file_put_contents($file, $truncated, LOCK_EX);
             }
         } else {
-            return false;
+            exec("$exec");
         }
     }
 
@@ -156,7 +156,7 @@ Initialize Data */
         log_status("the after sha is \"$sha_after\"");
         log_status('the current sha and after sha are ' . ($sha_cur != $sha_after ? 'not equal' : 'equal'));
         // if the current and after commit are the same
-        if($sha_cur == $sha_after) {
+        if($sha_cur == $sha_after && $sha_after != '0000000000000000000000000000000000000000') {
             throw new Exception('Current and requested commits are identical');
         }
 
