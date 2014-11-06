@@ -1,18 +1,31 @@
 <?php
+/*
+ * :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ * Zen Hooks Script :: WordPress Database Functions
+ * -----------------------------------------------------------------
+ * author:          Tomas Mulder <tomas@zenman.com>
+ * repo:            git@git.zenman.com:tcmulder/zen-hooks.git
+ * since version:   3.0
+ * :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ */
+
+// exit if access isn't from git.zenman.com
+if($_SERVER['REMOTE_ADDR'] != 'YOUR_IP_ADDRESS'){ exit; }
+
 function wp_db($branch, $dir_proj, $server_version){
-    log_status('wp_db: called');
-    log_status('wp_db: branch is '.$branch);
-    log_status('wp_db: project directory is '.$dir_proj);
+    log_status("\n\n:: wp_db called");
+    log_status('branch is '.$branch);
+    log_status('project directory is '.$dir_proj);
     // variable to store wordpress database credentials
     $wp_db_creds = null;
     // set up the db prefix
     $db_prefix = substr($branch, 0, 1) . $server_version . '_';
-    log_status('wp_db: database prefix is '.$db_prefix);
+    log_status('database prefix is '.$db_prefix);
     // set location of the zen-config.php file
     $wp_file = $dir_proj . 'zen-config.php';
     // if there's a zen-config.php file then grab it's contents
     if(file_exists($wp_file) && is_file($wp_file) && is_readable($wp_file)) {
-        log_status('wp_db: file found '.$wp_file);
+        log_status('file found '.$wp_file);
         $file = @fopen($wp_file, 'r');
         $file_content = fread($file, filesize($wp_file));
         @fclose($file);
@@ -67,25 +80,25 @@ function wp_db($branch, $dir_proj, $server_version){
             if($siteurl){
                 $wp_db_creds['siteurl'] = $siteurl;
             }
-            log_status('wp_db: resulting array ');
-            log_status(print_r($wp_db_creds,1));
+            log_status('resulting array ');
+            log_status(str_replace("\n", "\n\t", print_r($wp_db_creds,1)));
         }
         // if all credentials were generated
         if(count($wp_db_creds) == 7){
-            log_status('wp_db: return database credentials');
-            log_status('wp_db: '.print_r($wp_db_creds,1));
+            log_status('return database credentials');
+            log_status('they are '.str_replace("\n", "\n\t", print_r($wp_db_creds,1)));
             return $wp_db_creds;
         // if most credentials were generated (no siteurl)
         } elseif(!isset($wp_db_creds['siteurl']) && $wp_db_creds){
-            log_status('wp_db: return database credentials without siteurl');
-            log_status('wp_db: credentials are "'.print_r($wp_db_creds,1).'"');
+            log_status('return database credentials without siteurl');
+            log_status('credentials are "'.str_replace("\n", "\n\t", print_r($wp_db_creds,1)).'"');
             return $wp_db_creds;
         // if the credentials were not generated
         } else {
-            log_status('wp_db: database credentials not generated');
+            log_status('database credentials not generated');
             return false;
         }
     } else {
-        log_status('wp_db: no zen-config.php found');
+        log_status('no zen-config.php found');
     }
 }

@@ -1,12 +1,20 @@
 # zen-hooks Server Setup
+
+## ** Version 3.0 Notes **
+I've improved the file space usage at the expense of the script's speed. The last step in the script now runs git garbage collection (especially necessary with the new automated backups feature), which shrinks the repository's size but needs to run for a period of time.
+
+It'd be best to use this new zen-hooks version with logging turned on for a few pushes until you're familiar with how long the script now takes. It'd be best _not_ to push more than once while the script is running as it may behave unpredictably.
+
 ## Description
-The zen-hooks script enable gitlab, the zenman webservers, and local machines to talk to each other.
+The zen-hooks script enables gitlab, the zenman webservers, and our local machines to talk to each other.
 
 This ``master`` branch contains instructions pertinent to gitlab and the zenman webservers.
 
 If you're trying to set up your local machine, check out [local setup instructions](http://git.zenman.com/tcmulder/zen-hooks/tree/local) in the ``local`` branch's ``readme.md`` or [download the local files](http://git.zenman.com/tcmulder/zenpository/repository/archive?ref=local).
 
 ## Setup
+These are the basic setup instructions; you may want to skim over the other script options to see if there are other features you'd like to take advantage of.
+
 After creating a project in gitlab:
 
 1. Add the web hook ``http://YOUR_SERVER_ADDRESS/zen-hooks/?client=client_folder_name&project=project_folder_name`` under Settings > Web Hooks (replacing client and project folder names appropriately).
@@ -25,14 +33,12 @@ Basically, when pushed up to gitlab, branches similar to the following will get 
 
 Similarly, you can push to any other Zenman web server by prefixing your branch name appropriately:
 
-- ``test_qa`` will get pulled into ``YOUR_SERVER_ADDRESS``
 - ``test`` will get pulled into ``YOUR_SERVER_ADDRESS``
+- ``test_qa`` will get pulled into ``YOUR_SERVER_ADDRESS``
 - ``stage`` will get pulled into ``YOUR_SERVER_ADDRESS``
 
 ### Usage for WordPress Sites
-The zen-hooks script can handle the database for WordPress sites. (If however you choose to handle updating the database manually, there's no need to implement the following instructions.)
-
-To tell the zen-hooks script to handle the WordPress database for your project, pass in the additional query ``&type=wp`` with the url. For example:
+The zen-hooks script can handle the database for WordPress sites. (If however you choose to handle updating the database manually, there's no need to implement the following instructions.) You just need to pass in the additional query ``&type=wp`` with the url. For example:
 
 ``http://YOUR_SERVER_ADDRESS/zen-hooks/?client=client_folder_name&project=project_folder_name&type=wp``
 
@@ -40,31 +46,10 @@ You should have a few things in place before pushing up changes for WordPress si
 
 1. Your ``zen-config.php`` should have the correct database credentials for all servers you intend to pull into.
 
-2. Dump a database you'd like the zen-hooks script to use into ``/.db/db.sql``. No find and replace is necessary as the script will replace the value of ``siteurl`` with the appropriate url based on the server name.
+2. Dump a database you'd like the zen-hooks script to use into ``/.db/db.sql``. No find and replace is necessary as the script will replace the value of ``siteurl`` with the appropriate url based on the server that's pulling in the code.
 
 ## Extended Description
-The zen-hooks script is flexible enough to handle a variety of situations. The script always uses a branch called ``view``. Don't actually use this branch in your projects as the history gets really messed up (the script uses reset --hard to avoid merge conflicts).
-
-### Logging
-You can turn on logging by passing in the ``&log=true`` query. You can SSH into the server and tail this file like this:
-
-``tail -f /YOUR_SERVER_ADDRESS/zen_dev1/zen-hooks/webhook.log``
-
-The script uses a pretty primitive logging system but is better than nothing. PHP errors will also be logged in this file. The file will get truncated to 1000 lines when it reaches 100000 lines to ensure it doesn't get unmanageable. Therefore, don't wait too long to check the log or your results will get overwritten, and when the truncation occurs on occasion you might need to rerun your tail.
-
-### Server Check
-The script checks to ensure the branch matches an available server. If you push a branch named ``dev_feature_name``, it will pull changes into YOUR_SERVER_ADDRESS. However, if you push ``blah_feature`` or ``master``, the script will cease execution. It's important to note that gitlab is unaware of the zen-hooks script's activities, so you can certainly push such brances to gitlab and it will track your changes just fine.
-
-This adds quite a bit of flexibility as you can pull changes into any Zenman web server that follows the ``zen_servername1`` format. If we add a server (as we did with ``discovery1.zenman.com`` a while ago), the script will automatically work with it.
-
-### Nonexistent Directories
-If the client directory doesn't yet exist, the script creates it and copies the ``client_template`` setup. If the project directory doesn't exist, the script clones the branch pushed to it. Note that it might take a while for your changes to appear the first time if this clone is large.
-
-### Project Not in git
-If the script detects an existing project that is not version controlled with git, it initializes git and commits the current state (including the database if you've set the type to be WordPress). This commit happens on ``master`` and then your pushed changes are imported to the ``view`` branch so you can see them.
-
-### Dirty Working Directory
-If the script detects a dirty working directory (e.g. if you've been playing around on dev1), the script makes an automated commit (including the database if you've set the type to be WordPress) to preserve your changes, then switches over to the ``view`` branch and imports your changes. The commit message for these will be "Automate commit to save working directory (switching to view)."
+The zen-hooks script is flexible enough to handle a variety of situations.
 
 ### WordPress Sites
 If you tell the script your project is a WordPress site, it employs some special database handling capabilities. It relies on the details you feed it through the ``zen-config.php`` file, so ensure these are as you want them to be before pushing to gitlab. Then, a couple of things can happen:
@@ -72,7 +57,37 @@ If you tell the script your project is a WordPress site, it employs some special
 - If the database doesn't exist, the script creates it with a same-named user.
 - For existing databases, the script will drop tables, import the ``/.db/db.sql`` file, and do a find and replace based on the imported database ``siteurl``.
 
+### Logging
+You can turn on logging by passing in the ``&log=true`` query. (Another option is ``&log=debug``, which will include the file name and line number from the zen-hooks script itself; unless you're working on the zen-hooks script, this is probably unnecessary.) You can SSH into the server and tail this file for continuous logging like this:
+
+``tail -f /YOUR_SERVER_ADDRESS/zen_dev1/zen-hooks/webhook.log``
+
+The script uses a pretty primitive logging system but is better than nothing. Some PHP errors will also be logged in this file. The file will get truncated to 1000 lines when it reaches 100000 lines to ensure it doesn't get unmanageable. Therefore, don't wait too long to check the log or your results will get overwritten, and when the truncation occurs on occasion you might need to rerun your tail.
+
+### Server Check
+The script checks to ensure the branch matches an available server. If you push a branch named ``dev_feature_name``, it will pull changes into ``YOUR_SERVER_ADDRESS``. However, if you push ``blah_feature`` or ``master``, the script will cease execution. It's important to note that gitlab is unaware of the zen-hooks script's activities, so you can certainly push such brances to gitlab and it will track your changes just fine.
+
+This adds quite a bit of flexibility as you can pull changes into any Zenman web server that follows the ``zen_servername1`` format. If we add a server (as we did with ``discovery1.zenman.com`` a while ago), the script will automatically be compatible.
+
+### Preview Branch
+The script always uses a branch called ``gitlab_preview``. Don't actually use this branch in your projects as the history gets really messed up (the script uses reset --hard to avoid merge conflicts).
+
+### Automated Backup Commits
+The script also backs up the last five working directory states on branches in the format ``gitlab_autosave_at_Y_m_d_H_i_s`` (for example, ``gitlab_autosave_at_2014_11_02_17_14_08`` was saved on November 02, 2014 at 17 hours in 24 hour format, 14 minutes, and 8 seconds; it's essentially biggest to smallest time measurements). The script just keeps the last five automated backup commits, deleting older automated commits as needed.
+
+If you specified in the webhook url that your project is a WordPress-type project, the script will also attempt to find a ``zen-config.php`` file and include a database dump in the automated backup commit.
+
+### Existing Projects in Directory
+If there is existing code in the project directory, the automated backup commit will preserve it for you, whether it's currently a git repository or not.
+
+### Nonexistent Directories
+If the client directory doesn't yet exist, the script creates it and copies the ``client_template`` setup. If the project directory doesn't exist, the creates it and pulls the code into it. In theory, this makes the script compatible with Tom's server promotion app, although there may be some issues (e.g. currently script doesn't recognize the new zen-config.php setup).
+
 ## To Do:
 The zen-hooks script can still use improvement. If you have time to implement any of these (or to make overall improvements to existing scripts), feel free to contribute. Here's the future enhancement list:
 
 - Create local setup script/file set.
+- Handle back-to-back pushes (e.g. ensure one finishes before the next can start).
+- Create a status log (beyond the log=true feature) we can use to see when the script has finished running.
+- Eliminate the ``client_name`` and ``project__name`` webhook url requirement for WordPress sites by checking the ``.htaccess`` paths.
+- Eliminate the ``type=wp`` webhook url requirement by checking automatically (e.g. checking for zen-config.php or wp-content or something).

@@ -1,13 +1,22 @@
 #!/usr/bin/php
 <?php
-
 /*
+ * :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ * Zen Hooks Script :: Database Find and Replace
+ * -----------------------------------------------------------------
+ * author:          Tomas Mulder <tomas@zenman.com>
+ * repo:            git@git.zenman.com:tcmulder/zen-hooks.git
+ * since version:   3.0
+ *
+ * original script:
+ *
  * Find and Replace
  *
  * Code curtesy of:
  * First Written 2009-05-25 by David Coveney of Interconnect IT Ltd (UK)
  * http://www.davidcoveney.com or http://www.interconnectit.com
  * and released under the WTFPL *
+ * :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  */
 
 // if all the values were received from shell
@@ -25,22 +34,20 @@ if($argv[8] == '' && ($argv[1] != '' && $argv[2] != '' && $argv[3] != '' && $arg
     );
 
     // output the values
-    echo "** Find and replace called\n";
-    echo "name............".$wp_config_array['name']."\n";
-    echo "user............".$wp_config_array['user']."\n";
-    echo "pass............".$wp_config_array['pass']."\n";
-    echo "host............".$wp_config_array['host']."\n";
-    echo "char............".$wp_config_array['char']."\n";
-    echo "from............".$wp_config_array['from']."\n";
-    echo "to..............".$wp_config_array['to'];
+    echo "\n\n:: Find and replace called\n";
+    echo " input name......".$wp_config_array['name']."\n";
+    echo " input user......".$wp_config_array['user']."\n";
+    echo " input pass......".$wp_config_array['pass']."\n";
+    echo " input host......".$wp_config_array['host']."\n";
+    echo " input char......".$wp_config_array['char']."\n";
+    echo " input from......".$wp_config_array['from']."\n";
+    echo " input to........".$wp_config_array['to'];
 
     // run far on them
     $appDatabaseScrub = new AppDatabaseScrub($wp_config_array);
 // if all the values were not received by shell
 } else {
-    echo "FAR encountered an error.\n";
-    echo "Expected: name user pass host char from to\n";
-    echo "Received: " . print_r($argv, true);
+    echo "far encountered an error.\n";
 }
 
 class AppDatabaseScrub{
@@ -85,7 +92,7 @@ class AppDatabaseScrub{
      *
      * @param array $table The list of tables from the $_post var to be checked.
      *
-     * @return array	Same array as passed in but with any tables that don'e exist removed.
+     * @return array    Same array as passed in but with any tables that don'e exist removed.
      */
     function check_table_array($table = ''){
         return in_array($table, $this->all_tables);
@@ -117,7 +124,7 @@ class AppDatabaseScrub{
      * @param array  $data       Used to pass any subordinate arrays back to in.
      * @param bool   $serialised Does the array passed via $data need serialising.
      *
-     * @return array	The original array with all elements replaced as needed.
+     * @return array    The original array with all elements replaced as needed.
      */
     function recursive_unserialize_replace($from = '', $to = '', $data = '', $serialised = false) {
 
@@ -292,40 +299,40 @@ class AppDatabaseScrub{
         return $before . implode($before . $sep . $after, $_tmp) . $after;
     }
     function check_db_load_tables($wp_config_array){
-    	$this->connection = @mysql_connect($this->host, $this->user, $this->pass);
-    	if (! $this->connection) {
-    		$this->errors[] = mysql_error();
-    	}
-    	if (! empty($this->char)) {
-    		if (function_exists('mysql_set_charset')){
-    			mysql_set_charset($this->char, $this->connection);
+        $this->connection = @mysql_connect($this->host, $this->user, $this->pass);
+        if (! $this->connection) {
+            $this->errors[] = mysql_error();
+        }
+        if (! empty($this->char)) {
+            if (function_exists('mysql_set_charset')){
+                mysql_set_charset($this->char, $this->connection);
             } else{
-    			mysql_query('SET NAMES ' . $this->char, $this->connection);  // Shouldn't really use this, but there for backwards compatibility
+                mysql_query('SET NAMES ' . $this->char, $this->connection);  // Shouldn't really use this, but there for backwards compatibility
             }
-    	}
+        }
 
-    	// Do we have any tables and if so build the all tables array
-    	$this->all_tables = array();
-    	@mysql_select_db($this->data, $this->connection);
-    	$this->all_tables_mysql = @mysql_query('SHOW TABLES', $this->connection);
-    	if (! $this->all_tables_mysql) {
-    		$this->errors[] = mysql_error();
-    	} else {
-    		while ($this->table = mysql_fetch_array($this->all_tables_mysql)) {
-    			$this->all_tables[] = $this->table[ 0 ];
-    		}
-    	}
+        // Do we have any tables and if so build the all tables array
+        $this->all_tables = array();
+        @mysql_select_db($this->data, $this->connection);
+        $this->all_tables_mysql = @mysql_query('SHOW TABLES', $this->connection);
+        if (! $this->all_tables_mysql) {
+            $this->errors[] = mysql_error();
+        } else {
+            while ($this->table = mysql_fetch_array($this->all_tables_mysql)) {
+                $this->all_tables[] = $this->table[ 0 ];
+            }
+        }
     }
     function validate_search(){
-    	if (empty($this->srch)) {
-    		$this->errors[] = 'Missing search string.';
-    	}
-    	if (empty($this->rplc)) {
-    		$this->errors[] = 'Replace string is blank.';
-    	}
-    	if (! (empty($this->rplc) && empty($this->srch)) && $this->rplc == $this->srch) {
-    		$this->errors[] = 'Search and replace are the same, please check your values.';
-    	}
+        if (empty($this->srch)) {
+            $this->errors[] = 'Missing search string.';
+        }
+        if (empty($this->rplc)) {
+            $this->errors[] = 'Replace string is blank.';
+        }
+        if (! (empty($this->rplc) && empty($this->srch)) && $this->rplc == $this->srch) {
+            $this->errors[] = 'Search and replace are the same, please check your values.';
+        }
     }
 
     function scrub_data(){
@@ -347,15 +354,15 @@ class AppDatabaseScrub{
 
         // Calc the time taken.
         $this->time = array_sum(explode(' ', $this->report[ 'end' ])) - array_sum(explode(' ', $this->report[ 'start' ]));
-        printf("
-* Find and replace ran
-replaced........%s
-new string......%s
-tables..........%d
-row change......%d
-cell change.....%d
-db change.......%d
-seconds taken...%f\n",
+        printf("\n
+Find and replace ran
+ replaced........%s
+ new string......%s
+ tables..........%d
+ row change......%d
+ cell change.....%d
+ db change.......%d
+ seconds taken...%f\n",
             $this->srch,
             $this->rplc,
             $this->report[ 'tables' ],
