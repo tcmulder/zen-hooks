@@ -82,7 +82,7 @@ Set Up Status Logging */
                 file_put_contents($file, $truncated, LOCK_EX);
             }
         } else {
-            return false;
+            exec("$exec");
         }
     }
 
@@ -154,10 +154,16 @@ Initialize Data */
         $sha_cur = substr(shell_exec("$git rev-parse --verify HEAD"), 0, 40);
         log_status("the current sha is \"$sha_cur\"");
         log_status("the after sha is \"$sha_after\"");
-        log_status('the current sha and after sha are ' . ($sha_cur != $sha_after ? 'not equal' : 'equal'));
-        // if the current and after commit are the same
+        $sha_identical = ($sha_cur == $sha_after ? true : false);
+        log_status('the current sha and after sha are ' . ($sha_cur == $sha_after ? 'equal' : 'not equal'));
+        //check for empty after sha value
+        $sha_zero = ($sha_after == '0000000000000000000000000000000000000000' ? true : false);
+        log_status('the after sha ' . ($sha_after == '0000000000000000000000000000000000000000' ? 'is empty' : 'is not empty'));
+        // if the current and after commit are the same or the after sha is empty
         if($sha_cur == $sha_after) {
             throw new Exception('Current and requested commits are identical');
+        } elseif($sha_after == '0000000000000000000000000000000000000000'){
+            throw new Exception('The new commit is empty');
         }
 
         // for wordpress sites
