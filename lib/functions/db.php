@@ -18,7 +18,7 @@ function db_create($db_creds){
     log_status('database credentials received');
     log_status('they are '.str_replace("\n", "\n\t", print_r($db_creds,1)));
     // connect to mysql
-    $link = mysql_connect('localhost', 'admin', 'iUu5xkAt/v8=');
+    $link = mysql_connect('localhost', 'root', 'YOUR_PASSWORD');
     if($link) {
         log_status('connected to mysql as root');
         // create the database
@@ -139,7 +139,7 @@ function wp_siteurl($db_creds){
     // root user without throwing a php error, but I have to do it this way currently or it just fails
 
     // connect as the admin mysql user
-    $link = mysql_connect('localhost', 'admin', 'iUu5xkAt/v8=');
+    $link = mysql_connect('localhost', 'root', 'YOUR_PASSWORD');
     // if the connection succeeded
     if($link) {
         log_status('connected to mysql as root user');

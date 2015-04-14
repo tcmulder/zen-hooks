@@ -126,10 +126,13 @@ Initialize Data */
         $server = $branch_base_parts[0];
         log_status('server: '.$server);
 
-        $server_version = substr(dirname($dir_root), -1, 1);
+//        $server_version = substr(dirname($dir_root), -1, 1);
+        $subdomain = explode('.', $_SERVER['HTTP_HOST'])[0];
+        $server_version = substr($subdomain, -1, 1);
         log_status('directory version: '.$server_version);
 
-        $dir_base = dirname(dirname($dir_root)) . '/zen_' . $server . $server_version . '/sites/';
+//        $dir_base = dirname(dirname($dir_root)) . '/zen_' . $server . $server_version . '/sites/';
+        $dir_base = '/PATH_FROM_ROOT/' . $server . $server_version . '/public_html/sites/';
         log_status('directory base: '.$dir_base);
 
         // exit if the server (based on branch prefix) doesn't exist
