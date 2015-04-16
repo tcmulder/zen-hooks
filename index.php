@@ -21,7 +21,7 @@ if($_SERVER['REMOTE_ADDR'] != 'YOUR_IP_ADDRESS'){ exit; }
 Set Up Error Logging */
 ini_set("log_errors", 1);
 ini_set("error_log", "webhook.log");
-error_reporting(E_ALL);
+error_reporting(E_ALL & ~(E_WARNING | E_NOTICE | E_DEPRECATED | E_STRICT));
 ignore_user_abort(true);
 date_default_timezone_set('America/Denver');
 
@@ -132,7 +132,7 @@ Initialize Data */
         log_status('directory version: '.$server_version);
 
 //        $dir_base = dirname(dirname($dir_root)) . '/zen_' . $server . $server_version . '/sites/';
-        $dir_base = '/PATH_FROM_ROOT/' . $server . $server_version . '/public_html/sites/';
+        $dir_base = '/PATH_FROM_ROOT/' . $server . $server_version . '.zenman.com/public_html/sites/';
         log_status('directory base: '.$dir_base);
 
         // exit if the server (based on branch prefix) doesn't exist
