@@ -105,8 +105,8 @@ function db_far($db_creds, $server, $server_version, $client, $proj) {
         $far .= '\''.$db_creds['pass'].'\' ';
         $far .= '\''.$db_creds['host'].'\' ';
         $far .= '\''.$db_creds['char'].'\' ';
-        $far .= '\''.$db_creds['siteurl'].'\' ';
-        $far .= '\'http://'.$server.$server_version.'.zenman.com/sites/'.$client.'/'.$proj.'\'';
+        $far .= '\''.preg_replace("(^https?:)", "", $db_creds['siteurl']).'\' '; // protocol-relative url
+        $far .= '\'//'.$server.$server_version.'.zenman.com/sites/'.$client.'/'.$proj.'\'';
         //execute find and replace
         $output = shell_exec($far);
         log_status('ran with output: ');
