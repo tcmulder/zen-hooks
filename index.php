@@ -116,15 +116,29 @@ Initialize Data */
         } else {
             log_status('no project type defined');
         }
+        $pull_specific = (isset($_GET['pull']) ? $_GET['pull'] : false);
+        log_status('pull specific commit: '.$pull_specific);
 
         // set up necessary variables and report their values
-        $branch_parts = explode('/', $gitlab->ref);
-        $branch = array_pop($branch_parts); //the last item is the branch
-        log_status('branch: '.$branch);
-        $branch_base_parts = explode('_', $branch);
 
+
+
+        $branch = null;
+        if(!$pull_specific){
+            $branch_parts = explode('/', $gitlab->ref);
+            $branch = array_pop($branch_parts); //the last item is the branch
+        } else {
+            $branch = $pull_specific;
+        }
+        log_status('branch: '.$branch);
+
+        $branch_base_parts = explode('_', $branch);
         $server = $branch_base_parts[0];
         log_status('server: '.$server);
+
+
+
+
 
         $subdomain = explode('.', $_SERVER['HTTP_HOST'])[0];
         $server_version = substr($subdomain, -1, 1);
@@ -133,10 +147,27 @@ Initialize Data */
         $dir_base = '/PATH_FROM_ROOT/' . $server . $server_version . '.zenman.com/public_html/sites/';
         log_status('directory base: '.$dir_base);
 
+
+
+
+
+
+
+
+
         // exit if the server (based on branch prefix) doesn't exist
         if(!file_exists($dir_base)){
             throw new Exception("Server [$dir_base] does not exist");
         }
+
+
+
+
+
+
+
+
+
 
         // store directory locations and report where they are
         $dir_client = $dir_base . $client . '/';
@@ -146,6 +177,13 @@ Initialize Data */
 
         $repo = $gitlab->repository->url;
         log_status('repo: '.$repo);
+
+
+
+
+
+
+
 
         // check the commit sha
         $sha_before = $gitlab->before;
@@ -160,12 +198,31 @@ Initialize Data */
         //check for empty after sha value
         $sha_zero = ($sha_after == '0000000000000000000000000000000000000000' ? true : false);
         log_status('the after sha ' . ($sha_after == '0000000000000000000000000000000000000000' ? 'is empty' : 'is not empty'));
+
+
+
+
+
+
         // if the current and after commit are the same or the after sha is empty
-        if($sha_cur == $sha_after) {
-            throw new Exception('Current and requested commits are identical');
-        } elseif($sha_after == '0000000000000000000000000000000000000000'){
-            throw new Exception('The new commit is empty');
+        if(!$pull_specific){
+            log_status('no specific commit to pull');
+            if($sha_cur == $sha_after) {
+                throw new Exception('Current and requested commits are identical');
+            } elseif($sha_after == '0000000000000000000000000000000000000000'){
+                throw new Exception('The new commit is empty');
+            } else {
+                log_status('requested commit is new');
+            }
         }
+
+
+
+
+
+
+
+
 
         // for wordpress sites
         if($proj_type == 'wp'){
@@ -224,6 +281,6 @@ Run All the Commands */
     }
 } catch (Exception $e) {
     //output the log
-    error_log(sprintf("%s >> %s", date('Y-m-d H:i:s'), $e));
+    error_log(sprintf("%s >> %s", date('Y-m-d H:i:s'), "\n".$e));
     log_status("\nzen-hooks end :::::::::::::::::::::::::: [ ".date("Y-m-d H:i:s")." ]\n");
 }
