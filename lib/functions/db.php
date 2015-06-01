@@ -5,7 +5,7 @@
  * -----------------------------------------------------------------
  * author:          Tomas Mulder <tomas@zenman.com>
  * repo:            git@git.zenman.com:tcmulder/zen-hooks.git
- * since version:   3.0
+ * since version:   3.0.1
  * :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  */
 
