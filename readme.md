@@ -55,7 +55,7 @@ If you tell the script your project is a WordPress site, it employs some special
 ### Logging
 You can turn on logging by passing in the ``&log=true`` query. (Another option is ``&log=debug``, which will include the file name and line number from the zen-hooks script itself; unless you're working on the zen-hooks script, this is probably unnecessary.) You can SSH into the server and tail this file for continuous logging like this:
 
-``tail -f /YOUR_SERVER_ADDRESS/zen_dev1/zen-hooks/webhook.log``
+``ssh -t YOUR_USERNAME@YOUR_SERVER_ADDRESS 'tail -f /PATH_FROM_ROOT/YOUR_SERVER_ADDRESS/public_html/zen-hooks/webhook.log  && bash'``
 
 The script uses a pretty primitive logging system but is better than nothing. Some PHP errors will also be logged in this file. The file will get truncated to 1000 lines when it reaches 100000 lines to ensure it doesn't get unmanageable. Therefore, don't wait too long to check the log or your results will get overwritten, and when the truncation occurs on occasion you might need to rerun your tail.
 
