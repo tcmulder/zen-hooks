@@ -5,7 +5,7 @@
  * -----------------------------------------------------------------
  * author:          Tomas Mulder <tomas@zenman.com>
  * repo:            git@git.zenman.com:tcmulder/zen-hooks.git
- * since version:   3.0.1
+ * since version:   3.0.2
  * :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  */
 
@@ -152,22 +152,26 @@ function wp_siteurl($db_creds){
             mysql_close($link);
             // reopen a connection with the database credentials
             $mysqli = @new mysqli($db_creds['host'], $db_creds['user'], $db_creds['pass'], $db_creds['name']);
-            log_status('connected to '.$db_creds['host'].' '.$db_creds['user'].' '.$db_creds['pass'].' '.$db_creds['name'].' with prefix '.$db_creds['prefix']);
-            // check the siteurl and return it
-            $siteurl = $mysqli->query('SELECT option_value FROM '.$db_creds['prefix'].'options WHERE option_name = "siteurl"');
-            if($siteurl){
-                $siteurl_val = $siteurl->fetch_object()->option_value;
-                if($siteurl_val){
-                    log_status('siteurl is "'.$siteurl_val.'"');
-                    return $siteurl_val;
-                } else {
-                    log_status('siteurl value undetermined');
-                    return false;
-                }
-            } else {
-                log_status('database query for siteurl unsuccessful');
-                return false;
-            }
+	    if ($mysqli->connect_errno) {
+		    log_status('failed to connect to mysql as user: (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
+	    } else {
+		    log_status('connected to '.$db_creds['host'].' '.$db_creds['user'].' '.$db_creds['pass'].' '.$db_creds['name'].' with prefix '.$db_creds['prefix']);
+		    // check the siteurl and return it
+		    $siteurl = $mysqli->query('SELECT option_value FROM '.$db_creds['prefix'].'options WHERE option_name = "siteurl"');
+		    if($siteurl){
+			    $siteurl_val = $siteurl->fetch_object()->option_value;
+			    if($siteurl_val){
+				    log_status('siteurl is "'.$siteurl_val.'"');
+				    return $siteurl_val;
+			    } else {
+				    log_status('siteurl value undetermined');
+				    return false;
+			    }
+		    } else {
+			    log_status('database query for siteurl unsuccessful');
+			    return false;
+		    }
+	    }
         }
     // if the connection failed
     } else {

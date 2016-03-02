@@ -5,7 +5,7 @@
  * -----------------------------------------------------------------
  * author:          Tomas Mulder <tomas@zenman.com>
  * repo:            git@git.zenman.com:tcmulder/zen-hooks.git
- * version:         3.0.1
+ * version:         3.0.2
  * :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  */
 
@@ -92,6 +92,7 @@ Set Up Status Logging */
 Initialize Data */
 
     $gitlab = json_decode(file_get_contents('php://input')); //data from gitlab
+    log_status('raw json: '.file_get_contents('php://input'));
     log_status('gitlab data: '.($gitlab ? 'true' : 'false'));
     log_status('gitlab json: '.print_r($gitlab,1));
     // no need to continue if no data received or it's from an unauthorized source
