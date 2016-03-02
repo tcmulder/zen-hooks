@@ -99,6 +99,9 @@ The zen-hooks script can still use improvement. If you have time to implement an
 
 ## Changelog
 
+### 3.0.2
+- Added better error checking for database scripts.
+
 ### 3.0.1
 - Added ability to pull a specific branch via the ``pull=branch_name`` query string.
 
