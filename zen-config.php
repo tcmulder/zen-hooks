@@ -42,6 +42,13 @@ switch ($hostname) {
         define('DB_PASSWORD', "$db_pass");
         define('DB_HOST', 'localhost');
         break;
+    //host: preview1
+    case 'preview1.zenman.com':
+        define('DB_NAME', "p1_$proj_name");
+        define('DB_USER', "p1_$proj_name");
+        define('DB_PASSWORD', "$db_pass");
+        define('DB_HOST', 'localhost');
+        break;
     //fallback error
     default:
         define('DB_NAME', 'wp_fail');
