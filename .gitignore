@@ -4,3 +4,4 @@ sitemap.xml.gz
 .sass-cache
 node_modules
 webhook.log
+wp-content/plugins/wordfence/tmp/
