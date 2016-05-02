@@ -11,3 +11,4 @@ node_modules
 
 # wordfence
 wp-content/plugins/wordfence/tmp/
+wp-content/wflogs/
