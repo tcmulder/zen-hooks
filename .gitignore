@@ -1,7 +1,13 @@
+# apple system files
 .DS_Store
+
+# sitemaps shouldn't reflect dev environment
 sitemap.xml
 sitemap.xml.gz
+
+# build tool
 .sass-cache
 node_modules
-webhook.log
+
+# wordfence
 wp-content/plugins/wordfence/tmp/
