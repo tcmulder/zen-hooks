@@ -1,1 +1,10 @@
+# line ending normalization
 * -text
+
+# ignore diffs
+.db/db.sql -diff
+wp-content/themes/**/style.css -diff
+wp-content/themes/**/*.min.* -diff
+
+# treat as binary
+*.sql binary
