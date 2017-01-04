@@ -5,7 +5,7 @@ The zen-hooks script enables gitlab, the zenman webservers, and our local machin
 
 This ``master`` branch contains instructions pertinent to gitlab and the zenman webservers.
 
-If you're trying to set up your local machine, check out [local setup instructions](http://git.zenman.com/tcmulder/zen-hooks/tree/local) in the ``local`` branch's ``readme.md`` or [download the local files](http://git.zenman.com/tcmulder/zenpository/repository/archive?ref=local).
+If you're trying to set up your local machine, check out [local setup instructions](https://github.com/tcmulder/zen-hooks/tree/local) in the ``local`` branch's ``readme.md`` or [download the local files](http://git.zenman.com/tcmulder/zenpository/repository/archive?ref=local).
 
 ## Setup
 These are the basic setup instructions; you may want to skim over the other script options to see if there are other features you'd like to take advantage of.
@@ -18,7 +18,7 @@ After creating a project in gitlab:
 Your gitlab project is now connected to the Zenman web servers.
 
 ## Usage
-The zen-hooks script is pretty flexible. Most interaction after setup happens locally, and you can [find instructions here](http://git.zenman.com/tcmulder/zen-hooks/tree/local).
+The zen-hooks script is pretty flexible. Most interaction after setup happens locally, and you can [find instructions here](https://github.com/tcmulder/zen-hooks/tree/local).
 
 Basically, when pushed up to gitlab, branches similar to the following will get pulled into ``YOUR_SERVER_ADDRESS`` via the zen-hooks script:
 
@@ -55,7 +55,7 @@ If you tell the script your project is a WordPress site, it employs some special
 ### Logging
 You can turn on logging by passing in the ``&log=true`` query. (Another option is ``&log=debug``, which will include the file name and line number from the zen-hooks script itself; unless you're working on the zen-hooks script, this is probably unnecessary.) You can SSH into the server and tail this file for continuous logging like this:
 
-``ssh -t YOUR_USERNAME@YOUR_SERVER_ADDRESS 'tail -f /PATH_FROM_ROOT/YOUR_SERVER_ADDRESS/public_html/zen-hooks/webhook.log  && bash'``
+``ssh -t YOUR_USERNAME@YOUR_SERVER_ADDRESS 'tail -f /PATH_FROM_ROOT/zen-hooks/webhook.log  && bash'``
 
 The script uses a pretty primitive logging system but is better than nothing. Some PHP errors will also be logged in this file. The file will get truncated to 1000 lines when it reaches 100000 lines to ensure it doesn't get unmanageable. Therefore, don't wait too long to check the log or your results will get overwritten, and when the truncation occurs on occasion you might need to rerun your tail.
 
