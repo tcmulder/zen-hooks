@@ -51,7 +51,7 @@ if(file_exists($dir_base)){
         // set up git
         log_exec('git init');
         // establish credentials
-        log_exec('git config user.email "dev@zenman.com"');
+        log_exec('git config user.email "YOUR@EMAIL.com"');
         log_exec('git config user.name "YOUR_USERNAME"');
         // set up remote
         log_exec("git remote add gitlab $repo");
