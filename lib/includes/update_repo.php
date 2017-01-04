@@ -4,7 +4,7 @@
  * Zen Hooks Script :: Update Repository
  * -----------------------------------------------------------------
  * author:          Tomas Mulder <tomas@zenman.com>
- * repo:            git@git.zenman.com:tcmulder/zen-hooks.git
+ * repo:            https://github.com/tcmulder/zen-hooks
  * since version:   3.0.1
  * :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  */

@@ -4,7 +4,7 @@
  * Zen Hooks Script :: Controller
  * -----------------------------------------------------------------
  * author:          Tomas Mulder <tomas@zenman.com>
- * repo:            git@git.zenman.com:tcmulder/zen-hooks.git
+ * repo:            https://github.com/tcmulder/zen-hooks
  * version:         3.0.2
  * :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  */
