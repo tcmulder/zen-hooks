@@ -22,9 +22,6 @@ include 'config.php';
 // exit if access isn't from git.zenman.com
 if($_SERVER['REMOTE_ADDR'] != $config['gitlab_ip']){ exit; }
 echo 'made it';
-{
-    $this->foo = $foo;
-}
 exit();
 
 /*/////////////////////////////////////////////////////////////////Set Up Error Logging
