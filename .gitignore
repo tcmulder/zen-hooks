@@ -10,5 +10,8 @@ sitemap.xml.gz
 node_modules
 
 # wordfence
-wp-content/plugins/wordfence/tmp/
-wp-content/wflogs/
+*/wp-content/plugins/wordfence/tmp/
+*/wp-content/wflogs/
+
+# fly images
+*/wp-content/uploads/fly-images/

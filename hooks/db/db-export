@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #########################
 # Export Database
 #########################
@@ -18,4 +18,7 @@ if [ ! -d "$db_dir" ]; then
 fi
 
 # dump the database
-mysqldump -h"$db_host" -u"$db_user" -p"$db_password" "$db_name" > "$db_dir"db.sql
+mysqldump -h"$db_host" -u"$db_user" -p"$db_password" "$db_name" --skip-dump-date --extended-insert=FALSE > "$db_dir"db.sql
+
+# show size
+du -sh "$db_dir"db.sql
