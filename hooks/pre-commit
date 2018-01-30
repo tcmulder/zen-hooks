@@ -11,4 +11,4 @@ bash `git rev-parse --git-dir`/hooks/db/db-export
 
 # add it for commit
 echo 'adding database for commit'
-git add `git rev-parse --show-toplevel`/.db/db.sql
+git add "`git rev-parse --show-toplevel`"/.db/db.sql
