@@ -10,7 +10,7 @@ echo 'exporting database'
 source `git rev-parse --git-dir`/hooks/config
 
 # identify the database dump location
-db_dir="`git rev-parse --show-toplevel`/.db/"
+db_dir="`git rev-parse --git-dir`/../.db/"
 
 # create the database dump location if it doesn't exist
 if [ ! -d "$db_dir" ]; then
